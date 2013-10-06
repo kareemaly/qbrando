@@ -29,17 +29,27 @@
         </div>
     </div>
 
-    <div ng-view></div>
+    <div class="clearfix"></div>
+
+    <div class="content" ng-view></div>
+
+    <div class="clearfix"></div>
 
 </div>
 
 
 @if(App::environment() == 'production')
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
 @else
-<script src="{{ URL::asset('app/lib/angular/angular.js') }}"></script>
-<script src="{{ URL::asset('app/lib/ui-bootstrap-tpls-0.6.0.js') }}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script src="http://code.angularjs.org/1.2.0rc1/angular-resource.min.js"></script>
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>-->
+<!--<script type="text/javascript" src="http://code.angularjs.org/angular-resource-1.0.0rc4.min.js"></script>-->
+<script src="{{ URL::asset('app/lib/bootstrap/js/bootstrap.min.js') }}"></script>
 @endif
 
 <script src="{{ URL::asset('app/js/app.js') }}"></script>
