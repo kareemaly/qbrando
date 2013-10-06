@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.0.*",
+        "kareem3d/eloquent": "dev-master",
         "kareem3d/ecommerce": "dev-master"
 	},
 	"autoload": {
