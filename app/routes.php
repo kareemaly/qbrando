@@ -17,4 +17,5 @@ Route::resource('slider', 'SliderController');
 
 Route::get('/test', function()
 {
+    
 });
