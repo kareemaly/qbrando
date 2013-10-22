@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 9
+Color = BLACK
+Gender = UNISEX
+Price = 540
+Offer = 420

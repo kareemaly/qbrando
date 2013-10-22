@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 27
+Color = SILVER BLACK 
+Gender = UNISEX
+Price = 550
+OFFER = 350
+

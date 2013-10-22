@@ -7,7 +7,9 @@
 		"laravel/framework": "4.0.*",
         "kareem3d/eloquent": "dev-master",
         "kareem3d/ecommerce": "dev-master",
-        "moltin/cart": "dev-master"
+        "moltin/laravel-cart": "dev-master",
+        "kareem3d/images": "dev-master",
+        "intervention/image": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

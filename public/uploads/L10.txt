@@ -1,0 +1,6 @@
+Brand = LOUIS VUITTON
+Model = L10
+Color = GOLD BLACK
+Gender = UNISEX
+Price = 700
+Offer = 550 

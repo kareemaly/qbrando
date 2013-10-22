@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 30
+Color = BLACK BLUE 
+Gender = UNISEX
+Price = 640
+OFFER = 450
+

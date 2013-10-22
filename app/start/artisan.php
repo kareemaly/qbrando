@@ -11,3 +11,6 @@
 |
 */
 
+Artisan::add( new DropAllCommand() );
+
+Artisan::add( new WorkbenchMigrateCommand() );

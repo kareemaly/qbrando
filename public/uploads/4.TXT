@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 4
+Color = ORANGE
+Gender = UNISEX
+Price = 550
+OFFER = 400

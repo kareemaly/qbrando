@@ -1,0 +1,6 @@
+Brand = BURBERRY
+Model = B17
+Color = SILVER BLACK 
+Gender = UNISEX
+Price = 630
+Offer = 500

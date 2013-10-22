@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 26
+Color = BROWN 
+Gender = UNISEX
+Price = 550
+OFFER = 350
+

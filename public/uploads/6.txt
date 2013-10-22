@@ -1,0 +1,7 @@
+Brand = Rayban
+Model = 6
+Color = BLACK
+Gender = UNISEX
+Price = 580
+OFFER = 430
+

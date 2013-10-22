@@ -15,6 +15,11 @@ class Color extends Model {
     protected $guarded = array();
 
     /**
+     * @var array
+     */
+    protected static $dontDuplicate = array('name');
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function products()

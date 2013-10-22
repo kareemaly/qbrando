@@ -1,0 +1,6 @@
+Brand = HERMES
+Model = H14
+Color = GOLD BLACK 
+Gender = UNISEX
+Price = 760
+Offer = 550

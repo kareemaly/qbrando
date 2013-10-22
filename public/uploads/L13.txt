@@ -1,0 +1,6 @@
+Brand = LOUIS VUITTON
+Model = L13
+Color = GOLD BROWN
+Gender = UNISEX
+Price = 780
+Offer = 580

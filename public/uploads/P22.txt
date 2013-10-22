@@ -1,0 +1,7 @@
+Brand = PORSCHE
+Model = P22
+Color = GREY
+Gender = MEN
+Price = 680
+OFFER = 480
+

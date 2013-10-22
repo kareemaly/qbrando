@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 23
+Color = GREY
+Gender = UNISEX
+Price = 550
+OFFER = 350
+

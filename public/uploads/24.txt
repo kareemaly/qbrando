@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 24
+Color = WHITE 
+Gender = UNISEX
+Price = 600
+OFFER = 420
+

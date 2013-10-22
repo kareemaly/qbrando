@@ -114,6 +114,11 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        'Moltin\Cart\CartServiceProvider',
+
+        'Kareem3d\Eloquent\EloquentServiceProvider',
+        'Kareem3d\Images\ImagesServiceProvider',
+
 	),
 
 	/*
@@ -178,6 +183,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
+        'Cart' => 'Moltin\Cart\Facade',
 
 	),
 

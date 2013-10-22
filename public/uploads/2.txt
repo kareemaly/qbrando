@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 2
+Color = YELLOW
+Gender = UNISEX
+PRICE = 550
+OFFER = 400

@@ -1,0 +1,6 @@
+Brand = LOUIS VUITTON
+Model = L11
+Color = GOLD BLACK
+Gender = UNISEX
+Price = 730
+Offer = 600 

@@ -6315,6 +6315,7 @@ a:hover {
 .product {
   text-align: center;
   padding: 30px 20px;
+  height: 350px;
 }
 .product h2 {
   font-size: 15px;
@@ -6340,9 +6341,6 @@ a:hover {
 }
 .main-product {
   max-width: 400px;
-}
-.main-product img {
-  margin: 0px auto;
 }
 .main-product .info-row {
   margin-top: 5px;
@@ -6410,7 +6408,11 @@ a:hover {
 }
 .box .nav li:hover {
   text-decoration: underline;
-  color: #AAA;
+  color: #333;
+  background: #EEE;
+}
+.box .nav li a {
+  padding: 4px;
 }
 .footer {
   display: none;

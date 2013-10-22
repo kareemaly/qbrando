@@ -1,0 +1,6 @@
+Brand = TOMFORD
+Model = TO19
+Color = BLACK
+Gender = UNISEX
+Price = 400
+

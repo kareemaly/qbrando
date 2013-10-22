@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 7
+Color = BLACK
+Gender = UNISEX
+Price = 580
+OFFER = 430

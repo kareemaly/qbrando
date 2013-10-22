@@ -1,0 +1,6 @@
+Brand = BURBERRY
+Model = B16
+Color = GOLD BLACK
+Gender = UNISEX
+Price = 630
+Offer = 500

@@ -1,0 +1,6 @@
+Brand = OAKLEY
+Model = G21
+Color = BLACK
+Gender = UNISEX
+Price = 450
+

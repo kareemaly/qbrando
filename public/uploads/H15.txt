@@ -1,0 +1,6 @@
+Brand = HERMES
+Model = H15
+Color = GOLD BROWN 
+Gender = UNISEX
+Price = 600
+Offer = 500

@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 8
+Color = Deep Blue
+Gender = UNISEX
+Price = 540
+Offer = 420

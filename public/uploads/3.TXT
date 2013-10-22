@@ -1,0 +1,6 @@
+Brand = Rayban
+Model = 3
+Color = BLUE
+Gender = UNISEX
+Price = 550
+OFFER = 400

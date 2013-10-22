@@ -1,0 +1,6 @@
+Brand = CARTIER
+Model = CA18
+Color = GOLD BLACK 
+Gender = LADIES
+Price = 850
+Offer = 600

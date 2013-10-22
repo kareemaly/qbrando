@@ -1,0 +1,6 @@
+Brand = LOUIS VUITTON
+Model = L12
+Color = GOLD BLACK
+Gender = UNISEX
+Price = 780
+Offer = 580

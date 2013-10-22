@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 29
+Color = BLACK 
+Gender = UNISEX
+Price = 580
+OFFER = 430
+

@@ -1,0 +1,7 @@
+Brand = RAYBAN
+Model = 25
+Color = BLACK 
+Gender = UNISEX
+Price = 550
+OFFER = 350
+

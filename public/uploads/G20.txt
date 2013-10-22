@@ -1,0 +1,6 @@
+Brand = GUCCI
+Model = G20
+Color = BLACK
+Gender = UNISEX
+Price = 450
+
