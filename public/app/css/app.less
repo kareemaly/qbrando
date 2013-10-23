@@ -23,6 +23,8 @@ small{color:#999;}
 a{color:@primary-color-font}
 a:hover{color:@primary-color-font}
 
+.btn-link{color:@primary-color-font}
+
 .large-container{ text-align: left; background: url('../img/shine1.png') no-repeat; width:100%;
 
   background-position: -400px 0px;}
@@ -154,21 +156,45 @@ a:hover{color:@primary-color-font}
 
   padding:40px 0px 10px 0px;
 
+  .product-body{cursor: pointer}
+
+  .product-body:hover{
+    opacity: 0.8;
+  }
+
   .img{margin-bottom:10px; display: inline-block;}
   .prices{
-    .before-price{text-decoration: line-through; font-size:14px;}
+    .before-price{text-decoration: line-through; font-size:14px;display: block; color:#666;}
     .actual-price{font-size:17px;}
   }
 
-  h2.product-title{color:@primary-color-font; font-size:16px;}
-
   .buttons{
     margin-top:10px;
-    div{ padding:10px; color:@primary-color-font-bright; margin-left:5px; cursor: pointer;}
-    .add-to-cart{background: url('../img/add_to_cart_gradient.gif'); height:39px; display:inline-block;}
-    .add-to-cart:hover{background:#c0213a}
-    .details{background: url('../img/details_gradient.gif'); height:39px; display:inline-block;}
-    .details:hover{background:#333}
+  }
+
+  h2.product-title{color:@primary-color-font; font-size:16px;}
+}
+
+.my-btn{ padding:10px; color:@primary-color-font-bright; margin-left:5px; cursor: pointer; }
+.add-to-cart{background: url('../img/add_to_cart_gradient.gif'); height:39px; display:inline-block;}
+.add-to-cart:hover{background:#c0213a}
+.details{background: url('../img/details_gradient.gif'); height:39px; display:inline-block;}
+.details:hover{background:#333}
+
+.main-product{
+  .make-row();
+  .img{.make-md-column(5)}
+  .product-info{.make-md-column(7);
+
+    .row{
+      margin-top:10px;
+      .key{float:left; margin-right:5px; color:#333; font-weight: bold; font-size:14px;}
+      .value{float:left; color:#333; font-size:14px;}
+    }
+
+    .prices{font-size:16px; margin-top:10px; color:#000;
+      .before-price{font-size:12px; text-decoration: line-through; color:#666;}
+    }
   }
 }
 

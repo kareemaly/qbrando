@@ -9,9 +9,9 @@
             <div class="modal-body">
             </div>
             <div class="modal-footer">
-                <div class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</div>
-                <div class="btn btn-black">Add to cart</div>
-                <div class="btn btn-purple">Place order now</div>
+                <div class="btn btn-link" data-dismiss="modal" aria-hidden="true">Close</div>
+                <div class="my-btn add-to-cart">Add to cart</div>
+                <div class="my-btn details">Place order now</div>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

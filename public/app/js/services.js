@@ -19,8 +19,6 @@ angular.module('qbrando.services', []).
                 {
                     element.find('.modal-body').html(data);
                 });
-
-                return $resource('/product/:id').get({id:productId});
             }
         };
     })

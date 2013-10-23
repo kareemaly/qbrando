@@ -33,19 +33,19 @@ Route::get('/checkout.html', array('as' => 'checkout', 'uses' => 'CheckoutContro
 // Define cart resource
 Route::resource('cart', 'CartController');
 
-
-foreach($routes as $route)
+Route::get('/partials/product/{id}', function( $id )
 {
-    $route->where('id', '[0-9]+')->where('category', '[^./]+')->where('product', '[^./]+');
-}
+    $product = Product::findOrFail($id);
 
-
-Route::get('/testr', function()
-{
-    Category::create(array(
-        'title' => 'Kareem Mohamed'
-    ));
+    return View::make('partials.main_product', compact('product'));
 });
+
+
+
+
+
+
+foreach($routes as $route) $route->where('id', '[0-9]+')->where('category', '[^./]+')->where('product', '[^./]+');
 
 
 

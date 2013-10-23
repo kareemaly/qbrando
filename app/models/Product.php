@@ -35,6 +35,15 @@ class Product extends Kareem3dProduct implements SlugInterface {
     }
 
     /**
+     * @param $value
+     * @return string
+     */
+    public function getGenderAttribute( $value )
+    {
+        return $value ?: 'unisex';
+    }
+
+    /**
      * @param  string $value
      * @return string
      */
