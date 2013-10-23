@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
     <title>New design</title>
@@ -38,6 +38,21 @@
 
     </div>
 </div>
+
+
+@include('partials.modal')
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{ URL::asset('app/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.0rc1/angular-resource.min.js"></script>
+
+<script src="{{ URL::asset('app/js/app.js') }}"></script>
+<script src="{{ URL::asset('app/js/services.js') }}"></script>
+<script src="{{ URL::asset('app/js/controllers.js') }}"></script>
+<script src="{{ URL::asset('app/js/filters.js') }}"></script>
+<script src="{{ URL::asset('app/js/directives.js') }}"></script>
 
 </body>
 </html>
