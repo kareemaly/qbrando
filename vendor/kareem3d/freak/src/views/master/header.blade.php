@@ -70,6 +70,7 @@
                             <li class="dropdown-item-wrap">
                                 <ul>
                                     @foreach($messages as $message)
+                                    @if($message)
                                     @if($fromUser = $message->getFromUser())
                                     <li>
                                         <a href="{{ freakUrl('mail/show/'.$message->id) }}">
@@ -82,6 +83,7 @@
                                             </span>
                                         </a>
                                     </li>
+                                    @endif
                                     @endif
                                     @endforeach
                                 </ul>
