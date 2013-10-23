@@ -1,4 +1,4 @@
-<div class="main-title">Search</div>
+<div class="main-title"><span class="glyphicon glyphicon-search"></span>Search</div>
 
 <div class="box">
     <div class="form-group">
