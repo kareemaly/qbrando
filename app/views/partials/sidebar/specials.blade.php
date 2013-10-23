@@ -1,4 +1,4 @@
-<div class="main-title">Special</div>
+<div class="main-title"><span class="glyphicon glyphicon-tag"></span>Special</div>
 
 <div class="box">
 

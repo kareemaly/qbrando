@@ -1,4 +1,7 @@
-<div class="{{ isset($part->brightTitle) ? 'main-bright-title' : 'main-title' }}">{{ $part->productsTitle }}</div>
+<div class="{{ isset($part->brightTitle) ? 'main-bright-title' : 'main-title' }}">
+    <span class="glyphicon glyphicon-tasks"></span>
+    {{ $part->productsTitle }}
+</div>
 
 <div class="products">
 
