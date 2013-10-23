@@ -119,7 +119,10 @@ return array(
         'Kareem3d\Eloquent\EloquentServiceProvider',
         'Kareem3d\Images\ImagesServiceProvider',
 
-	),
+        'Kareem3d\Freak\FreakServiceProvider',
+        'Kareem3d\FreakImages\FreakImagesServiceProvider',
+
+    ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -180,11 +183,12 @@ return array(
 		'Seeder'          => 'Illuminate\Database\Seeder',
 		'Session'         => 'Illuminate\Support\Facades\Session',
 		'Str'             => 'Illuminate\Support\Str',
-		'URL'             => 'Illuminate\Support\Facades\URL',
+//		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
         'Cart' => 'Moltin\Cart\Facade',
+        'Asset' => 'Asset\Asset',
 
 	),
 

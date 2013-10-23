@@ -1,15 +1,19 @@
-<div class="header" ng-controller="HeaderController">
-    <div class="logo"></div>
-    <div class="offers">
-        <span class="offer-up">FREE DELIVERY TO YOUR DOOR STEPS</span>
-        <span class="offer-middle">DELIVERY WITHIN 24 Hours</span>
-        <span class="offer-down">PAY ON DELIVERY</span>
+<div class="header">
+    <a href="{{ URL::route('home') }}"><div class="logo"></div></a>
+
+    <div class="search">
+        <form action="">
+            <input type="text" class="search-input" />
+            <input type="submit" class="search-submit" value=""/>
+        </form>
     </div>
-    <div class="shopping-cart" ng-click="launchCart()">
-        <div class="cart-icon"></div>
+
+    <div class="cart">
+        <a href="{{ URL::route('shopping-cart') }}"><div class="cart-img"></div></a>
         <div class="cart-info">
-            <strong>Shopping cart:</strong><br />
-            <p>Now in your cart <span ng-bind="cart.totalProducts() + ' items'"></span></p>
+            <a href="{{ URL::route('shopping-cart') }}">
+                <span>Shopping Cart: </span>
+            </a><strong>0 items</strong>
         </div>
     </div>
 </div>

@@ -10,32 +10,34 @@ class CategoryController extends \BaseController {
     protected $categories;
 
     /**
-     * @param Category $categories
+     * @var ProductAlgorithm
      */
-    public function __construct( Category $categories )
+    protected $productsAlgorithm;
+
+    /**
+     * @param Category $categories
+     * @param ProductAlgorithm $productsAlgorithm
+     */
+    public function __construct( Category $categories, ProductAlgorithm $productsAlgorithm )
     {
         $this->categories = $categories;
+        $this->productsAlgorithm = $productsAlgorithm;
     }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        return $this->categories->all();
-	}
+    /**
+     * @param $category
+     * @param $id
+     * @return void
+     */
+    public function show( $category, $id )
+    {
+        $category = $this->categories->findOrFail($id);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-        return $this->categories->findOrFail($id);
-	}
+        $products = $this->productsAlgorithm->byCategory($category)->orderByDate()->paginate( self::PER_PAGE );
+
+        $productsTitle = "Showing $category->title sunglasses ";
+
+        $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
+    }
 
 }

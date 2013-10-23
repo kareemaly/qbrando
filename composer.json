@@ -5,11 +5,27 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.0.*",
+
+        "kareem3d/membership": "dev-master",
+
+        "kareem3d/messaging": "dev-master",
+        "kareem3d/notification": "dev-master",
+
+        "kareem3d/path-manager": "dev-master",
+        "kareem3d/asset": "dev-master",
+        "kareem3d/helper": "dev-master",
+
         "kareem3d/eloquent": "dev-master",
         "kareem3d/ecommerce": "dev-master",
-        "moltin/laravel-cart": "dev-master",
+
         "kareem3d/images": "dev-master",
-        "intervention/image": "dev-master"
+
+        "intervention/image":"dev-master",
+
+        "kareem3d/freak": "dev-master",
+        "kareem3d/freak-images": "dev-master",
+
+        "moltin/laravel-cart": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

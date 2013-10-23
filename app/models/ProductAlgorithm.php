@@ -6,6 +6,11 @@ use Kareem3d\Eloquent\Model;
 
 class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
 
+    public function related( Product $product )
+    {
+        return $this;
+    }
+
     /**
      * @return $this
      */
@@ -46,7 +51,7 @@ class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
     {
         $gender = strtolower($gender);
 
-        // If it's unisex then just do nothing
+        // If it's not unisex then choose the gender or the unisex glasses
         if($gender != 'unisex')
         {
             // Get either the given gender or unisex models...
@@ -73,6 +78,20 @@ class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
     }
 
     /**
+     * @param $model
+     * @return $this
+     */
+    public function byModel( $model )
+    {
+        $model = str_replace('model', '', strtolower($model));
+        $model = str_replace(' ', '', strtolower($model));
+
+        $this->getQuery()->where('product_specs.model', 'like', "%$model%");
+
+        return $this;
+    }
+
+    /**
      * @param $id
      * @return $this
      */
@@ -91,7 +110,7 @@ class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
      */
     protected  function getId( $id )
     {
-        return $id instanceof Model ? $id->getKey() : $id;
+        return is_object($id) ? $id->id : $id;
     }
 
     /**
@@ -99,6 +118,6 @@ class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
      */
     public function emptyQuery()
     {
-        return Product::query();
+        return Product::specsQuery();
     }
 }

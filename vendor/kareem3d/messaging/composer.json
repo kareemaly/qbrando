@@ -1,0 +1,21 @@
+{
+    "name": "kareem3d/messaging",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kareem Mohamed",
+            "email": "kareem3d.a@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "laravel/framework": "4.0.*",
+        "kareem3d/eloquent": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kareem3d\\Messaging": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

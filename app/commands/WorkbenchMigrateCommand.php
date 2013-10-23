@@ -39,7 +39,6 @@ class WorkbenchMigrateCommand extends Command {
 	{
         $bench = $this->argument('bench');
 
-
         if($bench)
         {
 
@@ -71,6 +70,8 @@ class WorkbenchMigrateCommand extends Command {
                 'bench' => 'kareem3d/[code,url,routing,marketing,membership,messaging,notification,images,interaction,freak,ecommerce]'
             ));
         }
+
+        $this->call('migrate');
 	}
 
     /**

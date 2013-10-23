@@ -1,0 +1,14 @@
+
+#dialog-modal{
+    width:500px;
+}
+#dialog-modal .step{
+    width:100%;
+    height:30px;
+}
+#dialog-modal .step_left{
+    float:left;
+}
+#dialog-modal .step_right{
+    float:right;
+}

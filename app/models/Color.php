@@ -17,7 +17,16 @@ class Color extends Model {
     /**
      * @var array
      */
-    protected static $dontDuplicate = array('name');
+    protected static $dontDuplicate = array('title');
+
+    /**
+     * @param $title
+     * @return mixed
+     */
+    public static function getByTitle( $title )
+    {
+        return static::where('title', $title)->first();
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -32,6 +41,6 @@ class Color extends Model {
      */
     public function __toString()
     {
-        return $this->name;
+        return $this->title;
     }
 }

@@ -31,5 +31,4 @@ class CreateOffersTable extends Migration {
 	{
 		Schema::drop('offers');
 	}
-
 }

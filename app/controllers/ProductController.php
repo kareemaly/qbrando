@@ -1,9 +1,11 @@
 <?php
 
-class ProductController extends \BaseController {
+use Kareem3d\Ecommerce\Category;
+
+class ProductController extends BaseController {
 
     /**
-     * @var Product
+     * @var Color
      */
     protected $products;
 
@@ -13,8 +15,7 @@ class ProductController extends \BaseController {
     protected $productsAlgorithm;
 
     /**
-     * @param Product $products
-     * @param ProductAlgorithm $productsAlgorithm
+     * Product $products
      */
     public function __construct( Product $products, ProductAlgorithm $productsAlgorithm )
     {
@@ -22,33 +23,22 @@ class ProductController extends \BaseController {
         $this->productsAlgorithm = $productsAlgorithm;
     }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        if($category_id = Input::get('category_id'))
+    /**
+     * @param $category
+     * @param $product
+     * @param $id
+     * @return void
+     */
+    public function show( $category, $product, $id )
+    {
+        $product = $this->products->findOrFail($id);
 
-            $this->productsAlgorithm->byCategory($category_id);
+        $products = $this->productsAlgorithm->related( $product )->paginate(self::PER_PAGE);
 
-        if($color_id = Input::get('color_id'))
+        $productsTitle = 'Related sunglasses';
 
-            $this->productsAlgorithm->byColor($color_id);
+        $brightTitle = true;
 
-        return $this->productsAlgorithm->get();
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-        return $this->products->find($id);
-	}
-
+        $this->layout->template->addPart('body', array('product', 'products'), compact('products', 'productsTitle', 'product', 'brightTitle'));
+    }
 }

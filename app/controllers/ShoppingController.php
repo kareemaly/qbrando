@@ -1,0 +1,34 @@
+<?php 
+
+class ShoppingController extends BaseController {
+
+    /**
+     * @var ProductAlgorithm
+     */
+    protected $productsAlgorithm;
+
+    /**
+     * @param ProductAlgorithm $productsAlgorithm
+     */
+    public function __construct( ProductAlgorithm $productsAlgorithm )
+    {
+        $this->productsAlgorithm = $productsAlgorithm;
+    }
+
+    /**
+     *
+     */
+    public function index()
+    {
+        $products = $this->productsAlgorithm->paginate(self::PER_PAGE);
+
+        $productsTitle = 'Related products';
+
+        $brightTitle = true;
+
+        $this->layout->template->addPart('body', array('cart', 'products'), compact('products', 'productsTitle', 'brightTitle'));
+
+//        $this->layout->template->setLocation('sidebar', 'right');
+    }
+
+}

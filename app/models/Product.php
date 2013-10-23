@@ -3,12 +3,36 @@
 use Kareem3d\Ecommerce\Category;
 use Kareem3d\Ecommerce\Product as Kareem3dProduct;
 
-class Product extends Kareem3dProduct {
+class Product extends Kareem3dProduct implements SlugInterface {
+
 
     /**
      * @var array
      */
-    protected $extensions = array('Images');
+    protected static $specs = array(
+        'title', 'model', 'gender'
+    );
+
+    /**
+     * @var string
+     */
+    protected $currency = 'Q.R';
+
+    /**
+     * @return array
+     */
+    public static function getGenders()
+    {
+        return array('male', 'female', 'unisex');
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return Str::slug(Str::words($this->title, 3, ''));
+    }
 
     /**
      * @param  string $value
@@ -16,33 +40,9 @@ class Product extends Kareem3dProduct {
      */
     public function getTitleAttribute( $value )
     {
-        return $value ?: 'Model ' . $this->model;
-    }
+        if($value) return $value;
 
-    /**
-     * @param $value
-     * @return string
-     */
-    public function getOfferPriceAttribute( $value )
-    {
-        return $value . ' QR';
-    }
-
-    /**
-     * @param $value
-     * @return string
-     */
-    public function getPriceAttribute( $value )
-    {
-        return $value . ' QR';
-    }
-
-    /**
-     * @param $value
-     */
-    public function setOfferAttribute( $value )
-    {
-        $this->attributes['offer_price'] = $value;
+        return $this->model ? 'Model ' .$this->model : '';
     }
 
     /**
@@ -50,7 +50,7 @@ class Product extends Kareem3dProduct {
      */
     public function setColorAttribute( $value )
     {
-        $color = Color::create(array('name' => $value));
+        $color = Color::create(array('title' => $value));
 
         $this->attributes['color_id'] = $color->id;
     }
@@ -60,7 +60,9 @@ class Product extends Kareem3dProduct {
      */
     public function setBrandAttribute( $value )
     {
-        $category = Category::create(array('name' => $value));
+        $category = new Category(array('title' => $value));
+
+        $category->save();
 
         $this->attributes['category_id'] = $category->id;
     }
@@ -70,7 +72,7 @@ class Product extends Kareem3dProduct {
      */
     public function getBrandAttribute()
     {
-        return $this->category ? $this->category->name : '';
+        return $this->category ? $this->category->title : '';
     }
 
     /**

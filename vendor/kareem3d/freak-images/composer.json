@@ -1,0 +1,22 @@
+{
+    "name": "kareem3d/freak-images",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kareem Mohamed",
+            "email": "kareem3d.a@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "kareem3d/freak":"dev-master",
+        "kareem3d/images": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kareem3d\\FreakImages": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

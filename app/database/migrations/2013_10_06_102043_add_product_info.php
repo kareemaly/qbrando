@@ -12,13 +12,16 @@ class AddProductInfo extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('products', function(Blueprint $table)
+        Schema::table('products', function(Blueprint $table)
+        {
+            $table->integer('color_id')->nullable()->unsigned();
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('CASCADE');
+        });
+
+		Schema::table('product_specs', function(Blueprint $table)
 		{
             $table->string('model');
             $table->enum('gender', array('male', 'female', 'unisex'));
-
-            $table->integer('color_id')->nullable()->unsigned();
-            $table->foreign('color_id')->references('id')->on('colors')->onDelete('CASCADE');
 		});
 	}
 
@@ -29,9 +32,14 @@ class AddProductInfo extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('products', function(Blueprint $table)
+        Schema::table('products', function(Blueprint $table)
+        {
+            $table->dropForeign('color_id');
+        });
+
+		Schema::table('product_specs', function(Blueprint $table)
 		{
-			//
+            $table->dropColumn('model', 'gender');
 		});
 	}
 

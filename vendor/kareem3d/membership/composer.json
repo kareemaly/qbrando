@@ -1,0 +1,25 @@
+{
+    "name": "kareem3d/membership",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kareem Mohamed",
+            "email": "kareem3d.a@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "laravel/framework": "4.0.*",
+        "kareem3d/eloquent": "dev-master",
+        "kareem3d/helper": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Kareem3d\\Membership": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

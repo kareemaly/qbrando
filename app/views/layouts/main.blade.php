@@ -1,45 +1,43 @@
 <!doctype html>
-<html ng-app="qbrando">
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-
-    <title>Branded sunglasses for you | QBrando</title>
-
-    <link href="{{ URL::asset('app/css/app.css') }}" rel="stylesheet">
-
+    <title>New design</title>
+    <link rel="stylesheet" href="{{ URL::asset('app/css/app.css') }}"/>
 </head>
 <body>
 
-<div class="container">
+<div class="large-container">
+    <div class="container">
 
-    @include('partials.header')
+        {{ $template->render('header') }}
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-    <div class="content">
+        {{ $template->render('lower_header') }}
 
-        @yield('content')
+        <div class="clearfix"></div>
+
+        <div class="content">
+
+            @if($template->getLocation('sidebar') == 'left')
+                {{ $template->render('sidebar') }}
+            @endif
+
+            {{ $template->render('body') }}
+
+            @if($template->getLocation('sidebar') == 'right')
+                {{ $template->render('sidebar') }}
+            @endif
+
+            <div class="clearfix"></div>
+
+            {{ $template->render('footer') }}
+        </div>
+
 
     </div>
-
-    <div class="clearfix"></div>
-
 </div>
 
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-<script src="//code.angularjs.org/1.2.0rc1/angular.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-<script src="//code.angularjs.org/1.2.0rc1/angular-resource.min.js"></script>
-
-<script src="{{ URL::asset('app/lib/bootstrap/js/bootstrap.min.js') }}"></script>
-
-<script src="{{ URL::asset('app/js/app.js') }}"></script>
-<script src="{{ URL::asset('app/js/services.js') }}"></script>
-<script src="{{ URL::asset('app/js/controllers.js') }}"></script>
-<script src="{{ URL::asset('app/js/filters.js') }}"></script>
-<script src="{{ URL::asset('app/js/directives.js') }}"></script>
 </body>
 </html>

@@ -2,7 +2,12 @@
 
 use Kareem3d\Ecommerce\Category;
 
-class SearchController extends BaseController {
+class SearchController extends BaseController
+{
+    /**
+     * @var Kareem3d\Ecommerce\Category
+     */
+    protected $categories;
 
     /**
      * @var ProductAlgorithm
@@ -10,73 +15,94 @@ class SearchController extends BaseController {
     protected $productsAlgorithm;
 
     /**
-     * @var Kareem3d\Ecommerce\Category
-     */
-    protected $categories;
-
-    /**
      * @var Color
      */
     protected $colors;
 
     /**
+     * @param Category $categories
      * @param ProductAlgorithm $productsAlgorithm
-     * @param Kareem3d\Ecommerce\Category $categories
      * @param Color $colors
      */
-    public function __construct( ProductAlgorithm $productsAlgorithm, Category $categories, Color $colors )
+    public function __construct( Category $categories, ProductAlgorithm $productsAlgorithm, Color $colors )
     {
-        $this->productsAlgorithm = $productsAlgorithm;
         $this->categories = $categories;
+        $this->productsAlgorithm = $productsAlgorithm;
         $this->colors = $colors;
     }
 
     /**
-     * @return mixed
+     *
      */
-    public function getIndex()
+    public function all()
     {
-        $productsTitle = 'Showing ';
-
-        if($category = $this->getCategory( Input::get('category') ))
-        {
-            $productsTitle .= $category->name . ', ';
-
-            $this->productsAlgorithm->byCategory( $category );
-        }
-
-        if($color = $this->getColor( Input::get('color') ))
-        {
-            $productsTitle .= $color->name;
-
-            $this->productsAlgorithm->byColor( $color );
-        }
-
-        $products = $this->productsAlgorithm->paginate( 12 );
-
-        $productsTitle = rtrim($productsTitle, ', ');
-        $productsTitle .= ' products';
-
-
-        return View::make('pages.home', compact('products', 'productsTitle'));
+        return Redirect::home();
+        return $this->layout->nest('content', 'pages.search');
     }
 
     /**
-     * @param $categoryName
+     * Search by category, color and model name
+     */
+    public function products()
+    {
+        if ($category = $this->getCategory(Input::get('brand')))
+        {
+            $this->productsAlgorithm->byCategory($category);
+        }
+
+        if ($color = $this->getColor(Input::get('color')))
+        {
+            $this->productsAlgorithm->byColor($color);
+        }
+
+        if($model = Input::get('model'))
+        {
+            $this->productsAlgorithm->byModel($model);
+        }
+
+        $productsTitle = $this->getProductsTitle( $category, $color );
+
+        $products = $this->productsAlgorithm->orderByDate()->paginate(12);
+
+        $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
+    }
+
+    /**
+     * @param null $category
+     * @param null $color
+     * @return string
+     */
+    protected function getProductsTitle( $category = null, $color = null )
+    {
+        if($category && $color)
+        {
+            return "Showing {$category->title} {$color->tilte} sunglasses";
+        }
+        elseif($category)
+        {
+            return "Showing {$category->title} sunglasses";
+        }
+        elseif($color)
+        {
+            return "Showing {$color->title} sunglasses";
+        }
+    }
+
+    /**
+     * @param $categoryTitle
      * @return Category
      */
-    public function getCategory( $categoryName )
+    protected function getCategory($categoryTitle)
     {
-        return $this->categories->where('name', $categoryName)->first();
+        return $this->categories->getByTitle($categoryTitle);
     }
 
     /**
-     * @param $colorName
+     * @param $colorTitle
      * @return Color
      */
-    public function getColor( $colorName )
+    protected function getColor($colorTitle)
     {
-        return $this->colors->where('name', $colorName)->first();
+        return $this->colors->getByTitle($colorTitle);
     }
-
 }

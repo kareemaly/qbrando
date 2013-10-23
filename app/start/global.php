@@ -17,8 +17,11 @@ ClassLoader::addDirectories(array(
 	app_path().'/controllers',
 	app_path().'/models',
 	app_path().'/database/seeds',
+    app_path().'/libraries'
 
 ));
+
+\PathManager\Path::init(URL::asset(''), public_path());
 
 /*
 |--------------------------------------------------------------------------
@@ -82,5 +85,8 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+require app_path().'/composers.php';
 
 require app_path().'/bindings.php';
+
+require app_path().'/freak/start.php';

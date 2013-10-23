@@ -18,13 +18,13 @@ class HomeController extends BaseController {
     /**
      * @return mixed
      */
-    public function getIndex()
+    public function index()
     {
-        $products = $this->productsAlgorithm->paginate( 12 );
+        $products = $this->productsAlgorithm->orderByDate()->paginate( 12 );
 
-        $productsTitle = 'Latest products';
+        $productsTitle = 'Latest sunglasses';
 
-        return View::make('pages.home', compact('products', 'productsTitle'));
+        $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
     }
 
 }

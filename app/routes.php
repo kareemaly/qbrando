@@ -6,20 +6,60 @@ use Kareem3d\Images\Version;
 
 use Intervention\Image\Image as II;
 
-Route::get('/', function(){ return Redirect::to('/home'); });
+// Home
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
-Route::controller('/home', 'HomeController');
+// Product
+$routes[] = Route::get('/{category}/{product}-{id}.html', array('as' => 'product', 'uses' => 'ProductController@show'));
 
-// Search controller
-Route::controller('/search.html', 'SearchController');
+// Category
+$routes[] = Route::get('/{category}-{id}.html', array('as' => 'category', 'uses' => 'CategoryController@show'));
 
-// Load partials
-Route::controller('/partials', 'PartialsController');
+// Shopping cart
+Route::get('/shopping-cart.html', array('as' => 'shopping-cart', 'uses' => 'ShoppingController@index'));
+
+// Search sunglasses
+Route::get('/search-sunglasses.html', array('as' => 'search-products', 'uses' => 'SearchController@products'));
+
+// Search the whole website
+Route::get('/search.html', array('as' => 'search', 'uses' => 'SearchController@all'));
+
+// Show checkout form
+Route::get('/checkout.html', array('as' => 'checkout', 'uses' => 'CheckoutController@index'));
+
+// Create order
+//Route::post('/checkout.html', 'CheckoutController@createOrder');
+
+// Define cart resource
+Route::resource('cart', 'CartController');
+
+
+foreach($routes as $route)
+{
+    $route->where('id', '[0-9]+')->where('category', '[^./]+')->where('product', '[^./]+');
+}
+
+
+Route::get('/testr', function()
+{
+    Category::create(array(
+        'title' => 'Kareem Mohamed'
+    ));
+});
+
+
+
+
+
+
+
+
 
 
 
 Route::get('kareem', function()
 {
+    exit();
     foreach(Image::all() as $image)
     {
         foreach($image->versions as $version)
@@ -49,7 +89,6 @@ Route::get('/add-offer', function()
 
 Route::get('/convert-images', function()
 {
-    exit();
     foreach(Product::all() as $product)
     {
         $url = $product->getImage('main')->getLargest()->url;
@@ -76,7 +115,7 @@ Route::get('/convert-images', function()
 
 Route::get('/upload', function()
 {
-    exit();
+    if(! \Kareem3d\Ecommerce\Product::all()->isEmpty()) return false;
     foreach(glob(public_path('uploads/*.txt')) as $file)
     {
         $pathInfo = pathinfo($file);
@@ -109,6 +148,8 @@ Route::get('/upload', function()
             $key = strtolower($key);
             $value = ucfirst(strtolower($value));
 
+            if($key == 'offer') $key = 'offer_price';
+
             $product->setAttribute($key, $value);
         }
 
@@ -130,40 +171,23 @@ Route::get('/upload', function()
 
 Route::get('/test', function()
 {
-    dd(Cart::find(7));
+    $offers = Offer::all();
+    foreach($offers as $offer) $offer->delete();
+//    dd(Cart::find(7));
 
-//    $image = \Kareem3d\Images\Image::create(array(
-//        'title' => 'Buy two get one for free!',
-//        'alt'   => 'Offer on shades.'
-//    ));
-//
-//    $image->add(new \Kareem3d\Images\Version(array(
-//        'url' => 'http://www.qbrando.loc/app/img/offer3.jpg'
-//    )));
-//
-//    Offer::create(array(
-//        'active' => true
-//    ))->addImage($image, 'main');
+    $image = \Kareem3d\Images\Image::create(array(
+        'title' => 'Buy two get one for free!',
+        'alt'   => 'Offer on shades.'
+    ));
 
-//    $offer->replaceImage(, 'main');
+    $image->add(new \Kareem3d\Images\Version(array(
+        'url' => 'http://www.qbrando.loc/app/img/offer.jpg'
+    )));
+
+    Offer::create(array(
+        'active' => true
+    ))->addImage($image, 'main');
+//
+//    $offer->replaceImage($image, 'main');
 });
 
-
-// Define resources
-Route::resource('category', 'CategoryController', array(
-    'only' => array('index', 'show')
-));
-
-Route::resource('offer', 'OfferController', array(
-    'only' => array('index', 'show')
-));
-
-Route::resource('product', 'ProductController', array(
-    'only' => array('index', 'show')
-));
-
-Route::resource('order', 'OrderController', array(
-    'only' => array('store')
-));
-
-Route::resource('cart', 'CartController');
