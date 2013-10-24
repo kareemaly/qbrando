@@ -10,17 +10,14 @@
             <ul class="thumbnails">
                 @foreach($orders as $order)
 
-                @if(($product = $order->products->first()) && ($userInfo = $order->userInfo))
+                @if($userInfo = $order->userInfo)
                 <li style="cursor: pointer;" onclick="window.location.href='{{ freakURL('element/order/show/' . $order->id) }}'">
-                    <div class="thumbnail">
-                        {{ $product->getImage('main')->html() }}
-                    </div>
-                    <div class="info">
+                    <div class="info span12">
 
-                        <span class="name">Product:
-                            <strong>
-                                <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->en('title') }}</a>
-                            </strong>
+                        <span class="name">Products:
+                        @foreach($order->products as $product)
+                        <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->title }}</a> ||||
+                        @endforeach
                         </span>
                         <span class="name">User name:   <strong>{{ $userInfo->name }}</strong></span>
                         <span class="name">User mobile: <strong>{{ $userInfo->contact_number }}</strong></span>
