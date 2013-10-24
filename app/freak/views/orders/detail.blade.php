@@ -30,6 +30,12 @@
                         @endforeach
                     </td>
                 </tr>
+
+                <tr>
+                    <th>Total price</th>
+                    <td><strong>{{ $total }} Q.R</strong></td>
+                </tr>
+
                 <tr>
                     <th>User name</th>
                     <td>{{ $user->name }}</td>
@@ -48,11 +54,6 @@
                     <td>{{ $user->contact_email }}</td>
                 </tr>
                 @endif
-
-                <tr>
-                    <th>Total price</th>
-                    <td><strong>{{ $total }} Q.R</strong></td>
-                </tr>
                 <tr>
                     <th>Created at</th>
                     <td>{{ date('d F, H:i', strtotime($order->created_at)) }}</td>
