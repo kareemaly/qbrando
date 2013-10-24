@@ -49,7 +49,7 @@ class CheckoutController extends BaseController {
         $product = $this->products->findOrFail($id);
 
         //
-        $this->cart->addProduct($product);
+        Cart::addProduct($product);
 
         // Show the checkout page
         return $this->index();
