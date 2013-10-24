@@ -64,6 +64,22 @@ class Part {
 
     /**
      * @param $name
+     */
+    public function removeChild($name)
+    {
+        foreach($this->children as $key => $child)
+        {
+            if($child->check("{$this->name}.$name"))
+            {
+                unset($this->children[$key]);
+
+                break;
+            }
+        }
+    }
+
+    /**
+     * @param $name
      * @param array $children
      * @param array $parameters
      * @return static

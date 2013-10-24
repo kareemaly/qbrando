@@ -86,6 +86,10 @@ class SearchController extends BaseController
         {
             return "Showing {$color->title} sunglasses";
         }
+        else
+        {
+            return "Sunglasses";
+        }
     }
 
     /**

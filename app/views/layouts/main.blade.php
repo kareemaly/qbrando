@@ -2,7 +2,7 @@
 <html lang="en" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
-    <title>New design</title>
+    <title>Qbrando | Online shop for luxury in Qatar</title>
     <link rel="stylesheet" href="{{ URL::asset('app/css/app.css') }}"/>
 </head>
 <body>
@@ -19,6 +19,7 @@
         <div class="clearfix"></div>
 
         <div class="content">
+
 
             @if($template->getLocation('sidebar') == 'left')
                 {{ $template->render('sidebar') }}

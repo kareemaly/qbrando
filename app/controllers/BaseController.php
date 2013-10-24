@@ -33,7 +33,7 @@ class BaseController extends Controller {
 
             'header',
 
-            'lower_header' => array('menu','offers'),
+            'lower_header' => array('menu'),
 
             'sidebar'      => array('search', 'specials'),
 

@@ -25,6 +25,22 @@ class HomeController extends BaseController {
         $productsTitle = 'Latest sunglasses';
 
         $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
+
+        $this->layout->template->findPart('lower_header')->addChild('offers');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function message()
+    {
+        $messageTitle = Session::get('title');
+
+        $messageBody = Session::get('message');
+
+        $this->layout->template->addPart('body', array('message'), compact('messageTitle', 'messageBody'));
+
+        if(! $messageTitle) return Redirect::route('home');
     }
 
 }

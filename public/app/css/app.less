@@ -89,7 +89,7 @@ a:hover{color:@primary-color-font}
       margin:0px;
 
       li{float:left; padding:0px; margin:0px;
-        a{ color:@primary-color-font-bright; padding:19px 30px; border-right:1px solid #333; display: block; font-size:16px;}
+        a{ color:@primary-color-font-bright; padding:19px 28px; border-right:1px solid #333; display: block; font-size:16px;}
         a:hover{background:url('../img/primary_gradient_dark.gif'); text-decoration: none;}
       }
     }
@@ -148,7 +148,10 @@ a:hover{color:@primary-color-font}
 
 }
 
-.box{margin-bottom:20px; border:1px solid #EEE; padding:0px 15px;}
+.box{margin-bottom:20px; border:1px solid #EEE; padding:0px 15px;
+
+  .padding-p{padding:20px 10px;}
+}
 
 
 .product{
@@ -175,11 +178,12 @@ a:hover{color:@primary-color-font}
   h2.product-title{color:@primary-color-font; font-size:16px;}
 }
 
-.my-btn{ padding:10px; color:@primary-color-font-bright; margin-left:5px; cursor: pointer; }
+.my-btn{ padding:10px; color:@primary-color-font-bright; margin-left:5px; cursor: pointer; border:0px;}
 .add-to-cart{background: url('../img/add_to_cart_gradient.gif'); height:39px; display:inline-block;}
-.add-to-cart:hover{background:#c0213a}
+.add-to-cart:hover{background:#c0213a; color:#FFF; text-decoration: none;}
 .details{background: url('../img/details_gradient.gif'); height:39px; display:inline-block;}
-.details:hover{background:#333}
+.details:hover{background:#333; color:#FFF; text-decoration: none;}
+.in-cart{background:#E9E9E9; color:#333; height:39px; display: inline-block;}
 
 .main-product{
   .make-row();
@@ -206,6 +210,7 @@ a:hover{color:@primary-color-font}
 
 
 .cart{
+  .quantity-txt{width:40px;}
   p{margin:10px;}
   b{float:right;}
   table{
@@ -220,10 +225,19 @@ a:hover{color:@primary-color-font}
     .txt{width:30px;}
 
     .product-info{
-      a{display:block; margin-bottom:10px;}
+      cursor: pointer;
+      span{ color:@primary-color-bright; display:block; margin-bottom:10px;}
     }
 
+    .glyphicon-remove{cursor: pointer;}
+
   }
+
+  .total{text-align:right;
+    span{font-size:18px; color:#666}
+    strong{ font-size:20px; color:@primary-color-bright; font-weight: normal;}
+  }
+  .text-right{margin-bottom:10px;}
 }
 
 

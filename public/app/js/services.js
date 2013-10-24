@@ -8,14 +8,24 @@
 angular.module('qbrando.services', []).
 
     factory('ModalProduct', function ($resource, $http) {
+
+        var currentProduct = null;
+
         return {
-            openModal: function ( productId, productTitle ) {
+
+            getProduct: function() {
+                return currentProduct;
+            },
+
+            open: function ( product ) {
+
+                currentProduct = product;
 
                 var element = $("#productModal");
 
-                element.find('.modal-title').html(productTitle);
+                element.find('.modal-title').html(product.title);
 
-                $http.get('partials/product/' + productId).success(function(data)
+                $http.get('/partials/product/' + product.id).success(function(data)
                 {
                     element.find('.modal-body').html(data);
                 });
@@ -25,11 +35,9 @@ angular.module('qbrando.services', []).
 
     .factory('Cart', function( $resource ) {
 
-        var cart = $resource('cart/:id');
+        var cart = $resource('/cart/:id');
 
         var products = cart.query();
-
-        var totalProducts = products.length;
 
         return {
             getProducts: function() {
@@ -37,15 +45,40 @@ angular.module('qbrando.services', []).
                 return products;
             },
 
-            addProduct: function( productId ) {
+            addProduct: function( product ) {
 
-                cart.save({productId: productId});
-                totalProducts ++;
+                cart.save({productId: product.id});
+
+                products.push(product);
+            },
+
+
+            has: function(product) {
+
+                if(product == null) return false;
+
+                for(var i = 0; i < products.length; i++)
+                {
+                    if(product.id == products[i].id) return true;
+                }
+
+                return false;
             },
 
             totalProducts: function() {
 
-                return totalProducts;
+                return products.length;
+            },
+
+            removeProduct: function(product) {
+
+                cart.remove({id: product.id});
+
+                for(var i = 0; i < products.length; i++)
+                {
+                    if(products[i].id == product.id)
+                        products.splice(i, 1);
+                }
             }
         };
     });

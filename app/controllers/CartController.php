@@ -8,6 +8,11 @@ class CartController extends \BaseController {
     protected $products;
 
     /**
+     * @var Cart
+     */
+    protected $cart;
+
+    /**
      * @param Product $products
      */
     public function __construct(Product $products)
@@ -22,7 +27,7 @@ class CartController extends \BaseController {
 	 */
 	public function index()
 	{
-        return Cart::contents();
+        return array_values(Cart::getProducts(true));
 	}
 
 	/**
@@ -32,14 +37,9 @@ class CartController extends \BaseController {
 	 */
 	public function store()
 	{
-        $product = $this->getProduct();
+        Cart::addProduct($this->getProduct());
 
-        Cart::insert(array(
-            'id'       => $product->id,
-            'name'     => $product->title,
-            'price'    => $product->price,
-            'quantity' => 1,
-        ));
+        return array('status' => 'success');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class CartController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        return $this->cart->item( $id );
+        return Cart::getProduct( $id );
 	}
 
 	/**
@@ -61,7 +61,7 @@ class CartController extends \BaseController {
 	 */
 	public function update($id)
 	{
-        $this->cart->update($id, Input::get('item'));
+        Cart::update($id, Input::get('item'));
 	}
 
 	/**
@@ -72,7 +72,7 @@ class CartController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-        $this->cart->item($id)->remove();
+        Cart::find($id)->remove();
 	}
 
     /**

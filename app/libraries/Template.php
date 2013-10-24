@@ -103,12 +103,19 @@ class Template {
     }
 
     /**
-     * @param $parts
-     * @param $arguments
+     * @param $name
      */
-    public function body( $parts, $arguments )
+    public function removePart($name)
     {
+        foreach($this->parts as $key => $part)
+        {
+            if($part->check($name))
+            {
+                unset($this->parts[$key]);
 
+                break;
+            }
+        }
     }
 
     /**

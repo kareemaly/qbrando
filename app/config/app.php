@@ -187,7 +187,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
-        'Cart' => 'Moltin\Cart\Facade',
         'Asset' => 'Asset\Asset',
 
 	),

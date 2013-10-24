@@ -43,7 +43,6 @@ class UserInfo extends Model {
      */
     protected $rules = array(
         'ip'       => 'required|ip',
-        'website'  => 'url'
     );
 
     /**
@@ -61,6 +60,9 @@ class UserInfo extends Model {
     {
         // Update user IP.
         $this->makeIP();
+
+        // Clean xss
+        $this->cleanXSS();
     }
 
     /**

@@ -9,14 +9,17 @@ use Intervention\Image\Image as II;
 // Home
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
+
+
+
 // Product
 $routes[] = Route::get('/{category}/{product}-{id}.html', array('as' => 'product', 'uses' => 'ProductController@show'));
 
 // Category
 $routes[] = Route::get('/{category}-{id}.html', array('as' => 'category', 'uses' => 'CategoryController@show'));
 
-// Shopping cart
-Route::get('/shopping-cart.html', array('as' => 'shopping-cart', 'uses' => 'ShoppingController@index'));
+
+
 
 // Search sunglasses
 Route::get('/search-sunglasses.html', array('as' => 'search-products', 'uses' => 'SearchController@products'));
@@ -24,11 +27,29 @@ Route::get('/search-sunglasses.html', array('as' => 'search-products', 'uses' =>
 // Search the whole website
 Route::get('/search.html', array('as' => 'search', 'uses' => 'SearchController@all'));
 
+
+
+// Shopping cart
+Route::get('/shopping-cart.html', array('as' => 'shopping-cart', 'uses' => 'ShoppingController@index'));
+
+
+
+
 // Show checkout form
 Route::get('/checkout.html', array('as' => 'checkout', 'uses' => 'CheckoutController@index'));
 
 // Create order
-//Route::post('/checkout.html', 'CheckoutController@createOrder');
+Route::post('/place-order', array('as' => 'place-order', 'uses' => 'CheckoutController@placeOrder'));
+
+// Place order with product
+Route::get('/place-order/{id}', 'CheckoutController@withProduct')->where('id', '[0-9]+');
+
+
+
+
+Route::get('/message-to-user.html', array('as' => 'message-to-user', 'uses' => 'HomeController@message'));
+
+
 
 // Define cart resource
 Route::resource('cart', 'CartController');
@@ -42,12 +63,7 @@ Route::get('/partials/product/{id}', function( $id )
 
 
 
-
-
-
 foreach($routes as $route) $route->where('id', '[0-9]+')->where('category', '[^./]+')->where('product', '[^./]+');
-
-
 
 
 

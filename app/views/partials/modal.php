@@ -10,8 +10,8 @@
             </div>
             <div class="modal-footer">
                 <div class="btn btn-link" data-dismiss="modal" aria-hidden="true">Close</div>
-                <div class="my-btn add-to-cart">Add to cart</div>
-                <div class="my-btn details">Place order now</div>
+                <button ng-class="cartBtn.class" ng-click="addToCart()" ng-bind="cartBtn.text">Add to Cart</button>
+                <a ng-href="/place-order/{{ product.id }}" class="my-btn details">Place order now</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

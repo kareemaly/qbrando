@@ -27,8 +27,6 @@ class ShoppingController extends BaseController {
         $brightTitle = true;
 
         $this->layout->template->addPart('body', array('cart', 'products'), compact('products', 'productsTitle', 'brightTitle'));
-
-//        $this->layout->template->setLocation('sidebar', 'right');
     }
 
 }

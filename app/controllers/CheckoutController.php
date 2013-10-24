@@ -1,7 +1,6 @@
 <?php
 
 use Kareem3d\Ecommerce\Order;
-use Kareem3d\Membership\UserInfo;
 
 class CheckoutController extends BaseController {
 
@@ -13,16 +12,23 @@ class CheckoutController extends BaseController {
     /**
      * @var UserInfo
      */
-    protected $userInfos;
+    protected $userInfo;
 
     /**
-     * @param Order $orders
-     * @param UserInfo $userInfos
+     * @var Product
      */
-    public function __construct(Order $orders, UserInfo $userInfos)
+    protected $products;
+
+    /**
+     * @param Product $products
+     * @param Order $orders
+     * @param UserInfo $userInfo
+     */
+    public function __construct(Product $products, Order $orders, UserInfo $userInfo)
     {
         $this->orders = $orders;
-        $this->userInfos = $userInfos;
+        $this->userInfo = $userInfo;
+        $this->products = $products;
     }
 
     /**
@@ -34,15 +40,62 @@ class CheckoutController extends BaseController {
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function withProduct( $id )
+    {
+        // First add product to cart then redirect to checkout
+        $product = $this->products->findOrFail($id);
+
+        //
+        $this->cart->addProduct($product);
+
+        // Show the checkout page
+        return $this->index();
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
-    public function createOrder()
+    public function placeOrder()
     {
-        $order = $this->orders->create(Input::get('order'));
+        // Create and validate user information
+        $userInfo = $this->userInfo->newInstance(Input::get('UserInfo'));
 
-        $order->setUserInfo( Input::get('UserInfo') );
+        if($userInfo->isValid())
+        {
+            $userInfo->save();
+
+            // New order with user info..
+            $order = $this->orders->newInstance();
+
+            // Set order user information
+            $order->setUserInfo( $userInfo );
+
+            // Add cart products to order
+            foreach(Cart::contents() as $item)
+            {
+                $product = $this->products->findOrFail($item->id);
+
+                $order->addProduct( $product, $item->quantity );
+            }
+
+
+            return Redirect::route('message-to-user')
+
+                ->with('title', 'Thanks '. ucfirst($userInfo->first_name) .'! We will contact you soon.')
+
+                ->with('message', 'Order has been placed successfully. Thank you for choosing QBrando <strong>online shop for luxury in Qatar</strong><br />
+                <a href='.URL::route('home').'>Go back home</a>');
+        }
+
+        else
+        {
+            return Redirect::back()->withErrors( $userInfo->getValidatorMessages() );
+        }
     }
 
 }

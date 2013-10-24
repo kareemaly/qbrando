@@ -6101,7 +6101,7 @@ a:hover {
 }
 .lower-header .menu ul li a {
   color: #ffffff;
-  padding: 19px 30px;
+  padding: 19px 28px;
   border-right: 1px solid #333;
   display: block;
   font-size: 16px;
@@ -6244,6 +6244,9 @@ a:hover {
   border: 1px solid #EEE;
   padding: 0px 15px;
 }
+.box .padding-p {
+  padding: 20px 10px;
+}
 .product {
   text-align: center;
   padding: 40px 0px 10px 0px;
@@ -6279,6 +6282,7 @@ a:hover {
   color: #ffffff;
   margin-left: 5px;
   cursor: pointer;
+  border: 0px;
 }
 .add-to-cart {
   background: url('../img/add_to_cart_gradient.gif');
@@ -6287,6 +6291,8 @@ a:hover {
 }
 .add-to-cart:hover {
   background: #c0213a;
+  color: #FFF;
+  text-decoration: none;
 }
 .details {
   background: url('../img/details_gradient.gif');
@@ -6294,7 +6300,15 @@ a:hover {
   display: inline-block;
 }
 .details:hover {
-  background: #333333;
+  background: #333;
+  color: #FFF;
+  text-decoration: none;
+}
+.in-cart {
+  background: #E9E9E9;
+  color: #333;
+  height: 39px;
+  display: inline-block;
 }
 .main-product {
   margin-left: -15px;
@@ -6380,6 +6394,9 @@ a:hover {
 .pagination .active span:hover {
   background: #c13d63;
 }
+.cart .quantity-txt {
+  width: 40px;
+}
 .cart p {
   margin: 10px;
 }
@@ -6412,8 +6429,30 @@ a:hover {
 .cart table .txt {
   width: 30px;
 }
-.cart table .product-info a {
+.cart table .product-info {
+  cursor: pointer;
+}
+.cart table .product-info span {
+  color: #c50676;
   display: block;
+  margin-bottom: 10px;
+}
+.cart table .glyphicon-remove {
+  cursor: pointer;
+}
+.cart .total {
+  text-align: right;
+}
+.cart .total span {
+  font-size: 18px;
+  color: #666666;
+}
+.cart .total strong {
+  font-size: 20px;
+  color: #c50676;
+  font-weight: normal;
+}
+.cart .text-right {
   margin-bottom: 10px;
 }
 .footer {
