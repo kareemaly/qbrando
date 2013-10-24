@@ -65,7 +65,7 @@ Route::get('kareem', function()
         {
             if(strpos($version->url, 'http://www.qbrando.loc') !== false)
             {
-                $version->url = str_replace('http://www.qbrando.loc', 'http://www.qbrando.com/public', $version->url);
+                $version->url = str_replace('http://www.qbrando.loc', 'http://www.qbrando.com', $version->url);
                 $version->save();
             }
         }
