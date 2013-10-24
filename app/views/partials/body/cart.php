@@ -1,6 +1,6 @@
 <div class="main-title"><span class="glyphicon glyphicon-shopping-cart"></span>Your shopping cart</div>
 <div class="box">
-    <div class="cart" ng-controller="CartController">
+    <div class="cart" ng-controller="CartController" ng-cloak>
 
         <p>Feel free to update your cart and checkout.</p>
 
@@ -14,11 +14,11 @@
                     <th>Remove</th>
                 </tr>
 
-                <tr ng-repeat="product in products" >
+                <tr ng-repeat="product in products">
                     <td><input type="number" min="1" max="30" class="quantity-txt" ng-model="product.quantity" required/></td>
                     <td data-toggle="modal" href="#productModal" ng-click="openProduct(product)">
                         <div class="product-info">
-                            <span>{{ product.name }}</span>
+                            <span ng-bind="product.name"></span>
                             <img ng-src="{{ product.image }}" alt=""/>
                         </div>
                     </td>

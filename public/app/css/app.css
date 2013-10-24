@@ -5906,6 +5906,11 @@ td.visible-print {
     display: none !important;
   }
 }
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none !important;
+}
 body {
   background: url('../img/bg-main.jpg') repeat-x #f7f7f7;
 }

@@ -13,7 +13,7 @@
         <div class="cart-info">
             <a href="{{ URL::route('shopping-cart') }}">
                 <span>Shopping Cart: </span>
-            </a><strong>0 items</strong>
+            </a><strong>{{ Cart::totalItems() }} items</strong>
         </div>
     </div>
 </div>

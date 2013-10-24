@@ -2,8 +2,6 @@
 
 use Illuminate\Support\MessageBag;
 
-View::share('cart', App::make('Cart'));
-
 try{ View::share('categories', App::make('Category')->all()); }catch(Exception $e){}
 
 View::share('success', new MessageBag((array) Session::get('success', array())));
