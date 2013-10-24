@@ -22,11 +22,12 @@
                                 <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->en('title') }}</a>
                             </strong>
                         </span>
-                        <span class="name">User email: <strong>{{ $userInfo->contact_email }}</strong></span>
+                        <span class="name">User name:   <strong>{{ $userInfo->name }}</strong></span>
+                        <span class="name">User mobile: <strong>{{ $userInfo->contact_number }}</strong></span>
                     </div>
                     <div class="actions">
                         <ul>
-                            <li><a href="{{ freakUrl('element/order/delete/' . $product->id) }}" rel="tooltip" data-original-title="Delete"><i class="icon-remove"></i></a></li>
+                            <li><a href="{{ freakUrl('element/order/delete/' . $order->id) }}" rel="tooltip" data-original-title="Delete"><i class="icon-remove"></i></a></li>
                         </ul>
                     </div>
                 </li>

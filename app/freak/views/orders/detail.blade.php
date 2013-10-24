@@ -34,12 +34,6 @@
                     <td>{{ $user->name }}</td>
                 </tr>
                 <tr>
-                    <th>User email</th>
-                    <td>
-                        {{ $user->contact_email }}
-                    </td>
-                </tr>
-                <tr>
                     <th>User number</th>
                     <td>{{ $user->contact_number }}</td>
                 </tr>
@@ -48,7 +42,7 @@
                     <td>{{ $user->delivery_location }}</td>
                 </tr>
                 <tr>
-                    <th>User delivery location</th>
+                    <th>User email</th>
                     <td>{{ $user->contact_email }}</td>
                 </tr>
                 <tr>
