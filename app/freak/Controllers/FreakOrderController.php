@@ -39,11 +39,18 @@ class FreakOrderController extends FreakController {
      */
     public function getShow($id)
     {
-        $order = $this->orders->find( $id );
+        $order = $this->orders->with('products')->find( $id );
+
+        $total = 0;
+
+        foreach($order->products as $product)
+        {
+            $total += $product->getActualPrice()->value() * $product->pivot->qty;
+        }
 
         $this->setPackagesData($order);
 
-        return View::make('panel::orders.detail', compact('order', 'id'));
+        return View::make('panel::orders.detail', compact('order', 'id', 'total'));
     }
 
     /**

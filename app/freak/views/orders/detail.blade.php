@@ -42,9 +42,16 @@
                     <th>User delivery location</th>
                     <td>{{ $user->delivery_location }}</td>
                 </tr>
+                @if($user->contact_email)
                 <tr>
                     <th>User email</th>
                     <td>{{ $user->contact_email }}</td>
+                </tr>
+                @endif
+
+                <tr>
+                    <th>Total price</th>
+                    <td><strong>{{ $total }} Q.R</strong></td>
                 </tr>
                 <tr>
                     <th>Created at</th>
