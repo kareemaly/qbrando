@@ -25,6 +25,7 @@
                     <th>Products</th>
                     <td>
                         @foreach($order->products as $product)
+                        <strong>{{ $product->pivot->qty }}</strong>&nbsp&nbsp&nbsp of &nbsp&nbsp&nbsp
                         <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->title }}</a><br/>
                         @endforeach
                     </td>

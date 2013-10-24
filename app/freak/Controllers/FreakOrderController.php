@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Kareem3d\Controllers\FreakController;
 use Kareem3d\Ecommerce\Order;
