@@ -84,6 +84,9 @@ class CheckoutController extends BaseController {
             }
 
 
+            // Order created successfully, now clear cart
+            Cart::destroy();
+
             return Redirect::route('message-to-user')
 
                 ->with('title', 'Thanks '. ucfirst($userInfo->first_name) .'! We will contact you soon.')
