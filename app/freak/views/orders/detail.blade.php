@@ -13,7 +13,7 @@
         </div>
         <div class="widget-content table-container">
 
-            @if(($product = $order->products->first()) && ($user = $order->userInfo))
+            @if($user = $order->userInfo)
             <table class="table table-striped table-detail-view">
                 <thead>
                 <tr>
@@ -22,9 +22,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th>Product</th>
+                    <th>Products</th>
                     <td>
-                        <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->en('title') }}</a>
+                        @foreach($order->products as $product)
+                        <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->title }}</a><br/>
+                        @endforeach
                     </td>
                 </tr>
                 <tr>
@@ -38,12 +40,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>User mobile</th>
-                    <td>{{ $user->mobile }}</td>
+                    <th>User number</th>
+                    <td>{{ $user->contact_number }}</td>
                 </tr>
                 <tr>
-                    <th>Message</th>
-                    <td>{{ $order->message }}</td>
+                    <th>User delivery location</th>
+                    <td>{{ $user->delivery_location }}</td>
+                </tr>
+                <tr>
+                    <th>User delivery location</th>
+                    <td>{{ $user->contact_email }}</td>
                 </tr>
                 <tr>
                     <th>Created at</th>
