@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
     <title>Qbrando | Online shop for luxury in Qatar</title>
     <link rel="stylesheet" href="{{ URL::asset('app/css/app.css') }}"/>
+
+    <script src="{{ URL::asset('app/lib/respond.min.js') }}"></script>
+
 </head>
 <body>
 

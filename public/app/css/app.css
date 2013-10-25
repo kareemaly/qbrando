@@ -6020,6 +6020,7 @@ a:hover {
   float: left;
 }
 .header .cart {
+  cursor: pointer;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -6146,6 +6147,22 @@ a:hover {
 .content:after {
   clear: both;
 }
+.content .main-primary-title {
+  background: url('../img/primary_title_gradient.gif');
+  color: #ffffff;
+  padding: 10px 20px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #EEE;
+}
+.content .main-primary-title b {
+  color: #c50676;
+  font-weight: normal;
+}
+.content .main-primary-title .glyphicon {
+  margin-right: 6px;
+}
 .content .main-title {
   background: url('../img/secondary_gradient.gif');
   height: 43px;
@@ -6162,6 +6179,9 @@ a:hover {
   color: #333;
   padding: 10px 20px;
   font-size: 16px;
+}
+.content .main-bright-title .glyphicon {
+  margin-right: 6px;
 }
 .content .big-body {
   position: relative;

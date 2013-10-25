@@ -111,17 +111,27 @@ class Part {
 
     /**
      * @param $child
+     * @param bool|int $position
      */
-    public function addChild( $child )
+    public function addChild( $child, $position = false )
     {
-        if($child instanceof Part)
+        if(! $child instanceof Part)
         {
-            $this->children[] = $child;
+            $child = static::factory($this->name . '.' .$child, array(), $this->parameters);
         }
+
+        if($position === false) $this->children[] = $child;
 
         else
         {
-            $this->children[] = static::factory($this->name . '.' .$child, array(), $this->parameters);
+            // First shift children
+            for($i = count($this->children) - 1; $i >= $position; $i--)
+            {
+                $this->children[$i + 1] = $this->children[$i];
+            }
+
+            // Now you can safely add it
+            $this->children[$position] = $child;
         }
     }
 

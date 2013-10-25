@@ -22,8 +22,8 @@ angular.module('qbrando.controllers', ['qbrando.services']).
         $scope.$watch('Cart.totalProducts()', function()
         {
             $scope.cartBtn = Cart.has($scope.product) ?
-            {text: "In cart", class: "my-btn in-cart"} :
-            {text:"Add to cart", class: "my-btn add-to-cart"};
+            {'text': "In cart", 'class': "my-btn in-cart"} :
+            {'text':"Add to cart", 'class': "my-btn add-to-cart"};
         });
 
         $scope.addToCart = function()
@@ -33,8 +33,6 @@ angular.module('qbrando.controllers', ['qbrando.services']).
                 $element.fadeTo(200, '0.2').delay(500).fadeTo(200, 1);
 
                 Cart.addProduct($scope.product);
-
-                $scope.cartBtn = {text: "In cart", class: "my-btn in-cart"};
             }
         };
     }])
@@ -50,8 +48,8 @@ angular.module('qbrando.controllers', ['qbrando.services']).
                 $scope.product = product;
 
                 $scope.cartBtn = Cart.has($scope.product) ?
-                {text: "In cart", class: "my-btn in-cart"} :
-                {text:"Add to cart", class: "my-btn add-to-cart"};
+                {'text': "In cart", 'class': "my-btn in-cart"} :
+                {'text':"Add to cart", 'class': "my-btn add-to-cart"};
             }
         });
 
@@ -62,7 +60,7 @@ angular.module('qbrando.controllers', ['qbrando.services']).
             {
                 Cart.addProduct($scope.product);
 
-                $scope.cartBtn = {text: "In cart", class: "my-btn in-cart"};
+                $scope.cartBtn = {'text': "In cart", 'class': "my-btn in-cart"};
             }
         };
 
