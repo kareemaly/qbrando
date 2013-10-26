@@ -34,7 +34,7 @@
         <div class="total">
             <span>Total: </span>
             <strong>
-                {{ cart.price.total() }} Q.R
+                {{ cart.price.total() | currency:currency }}
             </strong>
         </div>
 
