@@ -1,3 +1,12 @@
+
+
+<div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <p>
+        <strong>Nice timing!</strong> We currently giving free luxury item for each two items you buy, Try it!<br />
+    </p>
+</div>
+
 <div class="main-title"><span class="glyphicon glyphicon-shopping-cart"></span>Your shopping cart</div>
 <div class="box">
     <div class="cart" ng-controller="CartController" ng-cloak ng-show="cart.isReady()" ng-switch on="cart.isEmpty()">
@@ -7,13 +16,6 @@
         </div>
 
         <div ng-switch-default><Br/>
-
-            <div class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <p>
-                    <strong>Nice timing!</strong> We currently giving free luxury item for each two items you buy, Try it!<br />
-                </p>
-            </div>
 
             <div class="text-right">
                 <a href="<?php echo URL::route('home'); ?>" class="btn secondary-btn">Continue shopping</a>
