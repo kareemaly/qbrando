@@ -22,7 +22,7 @@
         </a>
         @endif
     </td>
-    <td>{{ $product->getActualPrice() }}</td>
+    <td>{{ $product->actualPrice->format() }}</td>
 
     @include('freak::elements.tools', array('id' => $product->id))
 </tr>

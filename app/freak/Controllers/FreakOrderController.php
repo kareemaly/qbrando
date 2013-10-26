@@ -45,7 +45,7 @@ class FreakOrderController extends FreakController {
 
         foreach($order->products as $product)
         {
-            $total += $product->getActualPrice()->value() * $product->pivot->qty;
+            $total += $product->actualPrice->value() * $product->pivot->qty;
         }
 
         $this->setPackagesData($order);
