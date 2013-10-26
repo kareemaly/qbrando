@@ -6513,8 +6513,8 @@ a:hover {
   text-align: center;
   opacity: 0.8;
   right: 0px;
+  cursor: pointer;
 }
-.bottom-notifier a {
-  color: #FFF;
-  text-decoration: underline;
+.bottom-notifier:hover {
+  background: #91065a;
 }

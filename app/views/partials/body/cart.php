@@ -22,6 +22,7 @@
                 <a href="<?php echo URL::route('checkout'); ?>" class="btn secondary-btn checkout-btn">Checkout <span class="glyphicon glyphicon-arrow-right"></span></a>
             </div>
 
+
             <div class="table-responsive">
 
                 <table class="table">
