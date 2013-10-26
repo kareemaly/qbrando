@@ -76,6 +76,7 @@ foreach($routes as $route) $route->where('id', '[0-9]+')->where('category', '[^.
 
 Route::get('kareem', function()
 {
+    exit();
     foreach(Image::all() as $image)
     {
         foreach($image->versions as $version)
@@ -105,6 +106,7 @@ Route::get('/add-offer', function()
 
 Route::get('/convert-images', function()
 {
+    exit();
     foreach(Product::all() as $product)
     {
         $url = $product->getImage('main')->getLargest()->url;
@@ -131,6 +133,7 @@ Route::get('/convert-images', function()
 
 Route::get('/upload', function()
 {
+    exit();
     if(! \Kareem3d\Ecommerce\Product::all()->isEmpty()) return false;
     foreach(glob(public_path('uploads/*.txt')) as $file)
     {
@@ -187,6 +190,7 @@ Route::get('/upload', function()
 
 Route::get('/test', function()
 {
+    exit();
     $offers = Offer::all();
     foreach($offers as $offer) $offer->delete();
 //    dd(Cart::find(7));
