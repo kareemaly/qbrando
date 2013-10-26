@@ -37,7 +37,7 @@ class BaseController extends Controller {
 
             'sidebar'      => array('search', 'specials'),
 
-            'footer'
+            'footer'       => array('copyright')
 
         ));
 

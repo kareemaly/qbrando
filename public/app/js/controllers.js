@@ -101,4 +101,23 @@ angular.module('qbrando.controllers', ['qbrando.services']).
 
     .controller('HeaderController', ['$scope', function ($scope) {
 
+    }])
+
+
+    .controller('BottomNotifierController', ['$scope', '$element', function($scope, $element) {
+
+        $element.hide();
+
+        $(window).scroll(function()
+        {
+            if($(this).scrollTop() > 400 && ! $scope.cart.isEmpty() && $scope.cart.isReady())
+            {
+                $element.slideDown('slow');
+            }
+            else
+            {
+                $element.slideUp('slow');
+            }
+        });
+
     }]);

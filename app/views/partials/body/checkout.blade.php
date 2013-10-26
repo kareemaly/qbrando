@@ -20,7 +20,7 @@
 </div>
 
 <div class="main-title">Checkout form</div>
-<div class="box">
+<div class="box checkout">
     <div class="box-body">
 
         <br />
@@ -67,12 +67,13 @@
             </div>
 
 
-            <div>
-            </div>
-
-
             <p class="text-left text-danger">
-                You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost: <strong ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
+                You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost:
+                <strong class="price" ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
+
+                <span ng-show="cart.price.hasOffer()">instead of
+                    <span class="before-price" ng-bind="cart.price.total() | currency:currency"></span>
+                </span>
             </p>
             <button type="submit" class="btn secondary-btn">Send order</button>
         </form>
