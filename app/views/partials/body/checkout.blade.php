@@ -26,6 +26,8 @@
                 And we will use the <strong>contact number</strong> you will provide below to confirm the order. Thanks.
             </p>
         </div>
+
+
         <form role="form" action="{{ URL::route('place-order') }}" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name*</label>
@@ -43,6 +45,14 @@
                 <label for="exampleInputPassword1">Email address <small>[Not required]</small></label>
                 <input type="text" class="form-control" name="UserInfo[contact_email]" placeholder="">
             </div>
+
+
+            <div>
+            </div>
+
+            <p class="text-left text-danger">
+                You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost: <strong ng-bind="cart.price.total() | currency:currency"></strong>
+            </p>
             <button type="submit" class="btn secondary-btn">Submit</button>
         </form>
     </div>
