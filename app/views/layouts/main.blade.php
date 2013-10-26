@@ -49,6 +49,7 @@
 
 @if(App::environment() == 'production')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
@@ -58,6 +59,7 @@
 <script src="{{ URL::asset('app/lib/zoom/zoomsl-3.0.min.js') }}"></script>
 @else
 <script src="{{ URL::asset('app/lib/jquery.min.js') }}"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="{{ URL::asset('app/lib/bootstrap/js/bootstrap.min.js') }}"></script>
 
 <script src="{{ URL::asset('app/lib/angular/angular.js') }}"></script>

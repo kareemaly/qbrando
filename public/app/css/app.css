@@ -5919,6 +5919,7 @@ small {
 }
 .secondary-btn {
   background: url('../img/secondary_gradient.gif');
+  background: #333;
   color: #ffffff;
   margin-bottom: 5px;
 }

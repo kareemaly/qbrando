@@ -72,8 +72,20 @@ angular.module('qbrando.controllers', ['qbrando.services']).
     }])
 
 
-    .controller('CartController', ['$scope', function ($scope) {
+    .controller('CartController', ['$scope', '$element', function ($scope, $element) {
 
+        var i = 0;
+        setInterval(function()
+        {
+            $element.find(".checkout-btn").each(function()
+            {
+                if(i%2 == 0) $( this ).animate({backgroundColor: "#AB066A"}, 1000 );
+
+                else $( this ).animate({backgroundColor: "#333"}, 1000 );
+            })
+            i++
+
+        }, 500);
     }])
 
 
