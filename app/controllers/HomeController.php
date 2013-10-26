@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 
         $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
 
-        $this->layout->template->findPart('lower_header')->addChild('offers');
+        $this->layout->template->findPart('lower_header')->addChild('flash_offers');
 
         $this->layout->template->findPart('sidebar')->addChild('cart', 0);
     }

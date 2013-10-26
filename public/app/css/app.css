@@ -5948,6 +5948,9 @@ a:hover {
     max-width: 1068px;
   }
 }
+#flashContent {
+  height: 335px;
+}
 .header {
   margin-left: -15px;
   margin-right: -15px;
