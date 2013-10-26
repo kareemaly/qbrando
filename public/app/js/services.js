@@ -114,8 +114,37 @@ angular.module('qbrando.services', []).
 
         var resource = $resource('/cart/:id');
 
+        var isReady = false;
+
         // Request cart products
-        var products = resource.query();
+        var products = resource.query(function()
+        {
+            isReady = true;
+        });
+
+        function getFullProductsWithoutQuantity()
+        {
+            var newProducts = [];
+
+            for(var i = 0;i < products.length; i++)
+            {
+                for(var j = 0; j < products[i].quantity; j++)
+                {
+                    newProducts.push(products[i]);
+                }
+            }
+
+            return newProducts;
+        }
+
+        function compareByPrice(a,b) {
+
+            if(a.price < b.price) return -1;
+
+            if(a.price > b.price) return 1;
+
+            return 0;
+        }
 
         // Everything is done locally but saved to server just before user leaves the page
         var cart = {
@@ -178,6 +207,16 @@ angular.module('qbrando.services', []).
                 cart.save();
             },
 
+            'isEmpty': function()
+            {
+                return products.length == 0;
+            },
+
+            'isReady': function()
+            {
+                return isReady;
+            },
+
             'price': {
                 'subTotal': function(product)
                 {
@@ -194,6 +233,34 @@ angular.module('qbrando.services', []).
                     }
 
                     return total;
+                },
+
+                'totalAfterOffer': function()
+                {
+                    var price = cart.price.total();
+
+                    var fullProducts = getFullProductsWithoutQuantity();
+
+                    fullProducts.sort(compareByPrice);
+
+                    var freeProducts = fullProducts.slice(0, cart.price.getNumberOfOfferItems());
+
+                    for(var i = 0; i < freeProducts.length; i++)
+                    {
+                        price -= freeProducts[i].price;
+                    }
+
+                    return price;
+                },
+
+                'hasOffer': function()
+                {
+                    return cart.price.getNumberOfOfferItems() > 0;
+                },
+
+                'getNumberOfOfferItems': function()
+                {
+                    return parseInt(((cart.total() - 1) / 2));
                 }
             }
 

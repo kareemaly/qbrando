@@ -51,7 +51,7 @@
             </div>
 
             <p class="text-left text-danger">
-                You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost: <strong ng-bind="cart.price.total() | currency:currency"></strong>
+                You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost: <strong ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
             </p>
             <button type="submit" class="btn secondary-btn">Submit</button>
         </form>
