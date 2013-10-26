@@ -3,7 +3,7 @@
 <div class="alert alert-success">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <p>
-        <strong>Nice timing!</strong> We currently giving free luxury item for each two items you buy, Try it!<br />
+        <strong>Nice timing!</strong> We currently giving free luxury item for each two items you buy, Try it and put three items in your cart, one of them will be totally free!!<br />
     </p>
 </div>
 
