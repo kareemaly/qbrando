@@ -122,9 +122,9 @@ class UserInfo extends Model {
     {
         $pieces = explode(' ', $name);
 
-        $this->first_name = $pieces[0];
+        $this->first_name = isset($pieces[0]) ? $pieces[0] : '';
 
-        $this->last_name = $pieces[1];
+        $this->last_name = isset($pieces[1]) ? $pieces[1] : '';
     }
 
     /**
