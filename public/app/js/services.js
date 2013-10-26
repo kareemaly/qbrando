@@ -260,7 +260,12 @@ angular.module('qbrando.services', []).
 
                 'getNumberOfOfferItems': function()
                 {
-                    return parseInt(((cart.total() - 1) / 2));
+                    return parseInt(((cart.total() - 1) / cart.price.offerItems()));
+                },
+
+                'offerItems': function()
+                {
+                    return 2;
                 }
             }
 

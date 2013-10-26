@@ -1,3 +1,21 @@
+<p class="alert alert-success" ng-show="cart.isReady() && cart.total() < cart.price.offerItems()">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>LIMITED OFFER!</strong> For every two items you put in your <a href="#">cart</a> you get to choose one for total free!!<Br />
+    You already have <strong ng-bind="cart.total() + ' items'"></strong> in your cart<br /><br/>
+
+    <a class="btn btn-success" href="{{ URL::route('shopping-cart') }}">Go to your shopping cart</a>
+    <a class="btn btn-success" href="{{ URL::route('home') }}">Continue shopping</a>
+</p>
+
+
+<p class="alert alert-success" ng-show="cart.isReady() && cart.total() == cart.price.offerItems()">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>FREE!</strong> You already have two items in your cart so you get to choose one for total free.<Br /><Br/>
+    Try it and put one more item in your cart!
+
+    <a class="btn btn-success" href="{{ URL::route('home') }}">Continue shopping</a>
+</p>
+
 <div class="main-title">Checkout form</div>
 <div class="box">
     <div class="box-body">
@@ -27,7 +45,6 @@
             </p>
         </div>
 
-
         <form role="form" action="{{ URL::route('place-order') }}" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name*</label>
@@ -50,10 +67,11 @@
             <div>
             </div>
 
+
             <p class="text-left text-danger">
                 You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost: <strong ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
             </p>
-            <button type="submit" class="btn secondary-btn">Submit</button>
+            <button type="submit" class="btn secondary-btn">Send order</button>
         </form>
     </div>
 </div>
