@@ -1,51 +1,87 @@
-<?php 
+<?php
+
+use Illuminate\Support\Collection;
 
 class Cart extends Moltin\Cart\Facade {
 
-    public static function getProduct( $id )
+    /**
+     * @param Product $product
+     * @param int $quantity
+     */
+    public static function addProduct( Product $product, $quantity = 1 )
     {
-        return static::modify(Cart::find(28)->toArray());
+        static::insert(array(
+            'id' => $product->id,
+            'name' => $product->title,
+            'image' => $product->getImage('main')->getSmallest()->url,
+            'price' => (string) $product->actualPrice,
+            'quantity' => $quantity
+        ));
     }
 
     /**
      * @param $array
      */
-    protected static function modify( $array )
+    public static function insert( $array )
     {
-        $array['title'] = $array['name'];
+        if(isset($array['title'])) {
 
-        return $array;
+            $array['name'] = $array['title'];
+
+            unset($array['title']);
+        }
+
+        return parent::insert($array);
     }
 
     /**
-     * @return array
+     * Update all local products..
      */
-    public static function getProducts()
+    public static function setFromLocal()
     {
-        $items = static::contents(true);
-
-        foreach($items as $key => $item)
+        if(isset($_COOKIE['products']))
         {
-            $items[$key] = static::modify($item);
+            static::destroy();
+
+            $products = json_decode($_COOKIE['products']);
+
+            foreach($products as $product)
+            {
+                try{
+
+                    static::addProduct(Product::find($product->id), $product->quantity);
+
+                }catch(Exception $e){}
+            }
+
+            setcookie("products", "", time()-3600);
+        }
+    }
+
+    /**
+     * @param bool $array
+     */
+    public static function contents( $array = false )
+    {
+        $items = parent::contents($array);
+
+        // Modify name to title
+        foreach($items as &$item)
+        {
+            if($array)
+            {
+                $item['title'] = $item['name'];
+
+                unset($item['name']);
+            }
+            else
+            {
+                $item->title = $item->name;
+                unset($item->title);
+            }
         }
 
         return $items;
-    }
-
-    /**
-     * @param Product $product
-     * @param int $quantity
-     * @return mixed
-     */
-    public static function addProduct( Product $product, $quantity = 1 )
-    {
-        return static::insert(array(
-            'id'       => $product->id,
-            'name'     => $product->title,
-            'price'    => $product->getActualPrice()->value(),
-            'image'    => $product->getImage('main')->getSmallest()->url,
-            'quantity' => $quantity,
-        ));
     }
 
 }

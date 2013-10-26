@@ -35,7 +35,7 @@ class Price {
      */
     public function format()
     {
-        return  (string) $this . ' ' .$this->currency;
+        return $this->currency. ' ' .number_format($this->value, 2);
     }
 
     /**
@@ -43,6 +43,6 @@ class Price {
      */
     public function __toString()
     {
-        return number_format($this->value, 2);
+        return (string) $this->value();
     }
 }

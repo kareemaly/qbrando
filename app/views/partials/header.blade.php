@@ -13,7 +13,7 @@
         <div class="cart-info">
             <a href="{{ URL::route('shopping-cart') }}">
                 <span>Shopping Cart: </span>
-            </a><strong>{{ Cart::totalItems() }} items</strong>
+            </a><strong ng-bind="cart.total()"></strong> <strong>items</strong>
         </div>
     </div>
 </div>

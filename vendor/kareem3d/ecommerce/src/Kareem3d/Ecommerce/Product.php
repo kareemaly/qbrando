@@ -71,17 +71,17 @@ class Product extends Model {
     /**
      * @return Price
      */
-    public function getActualPrice()
+    public function getBeforePriceAttribute()
     {
-        return $this->hasOfferPrice() ? $this->offer_price : $this->price;
+        return $this->hasOfferPrice() ? $this->price : $this->offer_price;
     }
 
     /**
      * @return Price
      */
-    public function getBeforePrice()
+    public function getActualPriceAttribute()
     {
-        return $this->price;
+        return $this->hasOfferPrice() ? $this->offer_price : $this->price;
     }
 
     /**

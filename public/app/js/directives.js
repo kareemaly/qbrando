@@ -3,9 +3,11 @@
 /* Directives */
 
 
-angular.module('qbrando.directives', []);
-//  directive('appVersion', ['version', function(version) {
-//    return function(scope, elm, attrs) {
-//      elm.text(version);
-//    };
-//  }]);
+angular.module('qbrando.directives', [])
+    .directive('myCartBtn', [function () {
+        return {
+            'restrict': 'E',
+            'product': '=product',
+            'templateUrl': '/partials/add_to_cart_btn.html'
+        }
+    }]);

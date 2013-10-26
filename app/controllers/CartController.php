@@ -27,19 +27,7 @@ class CartController extends \BaseController {
 	 */
 	public function index()
 	{
-        return array_values(Cart::getProducts(true));
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-        Cart::addProduct($this->getProduct());
-
-        return array('status' => 'success');
+        return array_values(Cart::contents(true));
 	}
 
 	/**
@@ -50,37 +38,7 @@ class CartController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        return Cart::getProduct( $id );
+        return Cart::find( $id );
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-        Cart::update($id, Input::get('item'));
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-        Cart::find($id)->remove();
-	}
-
-    /**
-     * @return Product
-     */
-    protected function getProduct()
-    {
-        return $this->products->find(Input::get('productId'));
-    }
 
 }

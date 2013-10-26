@@ -1,25 +1,27 @@
 @if($product)
-<div class="product" ng-controller="ProductController" ng-init="product={id: {{ $product->id }}, title:'{{ $product->title }}'}" >
+<div class="product" ng-controller="ProductController">
 
-    <div class="product-body" data-toggle="modal" href="#productModal" ng-click="openProduct()">
+    <div class="product-body" ng-click="openProduct(product)">
+
+        <input type="hidden" ng-bind="product.id" value="{{ $product->id }}"/>
 
         <div class="img">
-            <img class="img-responsive" src="{{ $product->getImage('main')->getSmallest()->url }}" alt=""/>
+            <img class="img-responsive" ng-bind="product.image" data-large="{{ $product->getImage('main')->getLargest()->url }}" src="{{ $product->getImage('main')->getSmallest()->url }}" alt=""/>
         </div>
 
         <div class="prices">
             @if($product->hasOfferPrice() and isset($showOfferPrice))
-            <span class="before-price">{{ $product->getBeforePrice()->format() }}</span>
+            <span class="before-price">{{ $product->beforePrice->format() }}</span>
             @endif
-            <span class="actual-price">{{ $product->getActualPrice()->format() }}</span>
+            <span ng-bind="product.price | currency:currency" class="actual-price">{{ $product->price->format() }}</span>
         </div>
 
         <h2 class="product-title"><a ng-bind="product.title" href="{{ URL::product($product) }}">{{ $product->title }}</a></h2>
     </div>
 
     <div class="buttons">
-        <div ng-class="cartBtn.class" ng-click="addToCart()" ng-bind="cartBtn.text">Add to Cart</div>
-        <div class="my-btn details" data-toggle="modal" href="#productModal" ng-click="openProduct()">Details</div>
+        <my-cart-btn product="{{ angular('product') }}"></my-cart-btn>
+        <div class="my-btn details" ng-click="openProduct(product)">Details</div>
     </div>
 </div>
 @endif

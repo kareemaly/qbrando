@@ -4,113 +4,89 @@
 
 angular.module('qbrando.controllers', ['qbrando.services']).
 
-    controller('HomeController', ['$scope', function ($scope) {
 
-    }])
+    controller('MainController', ['$scope', 'Cart', 'ModalProduct', 'Products', function ($scope, Cart, ModalProduct, Products) {
 
+        $scope.currency = 'QAR ';
 
-    .controller('ProductController', ['$scope', '$element', 'ModalProduct', 'Cart', function ($scope, $element, ModalProduct, Cart) {
+        $scope.cart = Cart;
 
-        $scope.Cart = Cart;
-
-        $scope.openProduct = function()
-        {
-            ModalProduct.open($scope.product);
-        };
-
-        // Watch cart total products
-        $scope.$watch('Cart.totalProducts()', function()
-        {
-            $scope.cartBtn = Cart.has($scope.product) ?
-            {'text': "In cart", 'class': "my-btn in-cart"} :
-            {'text':"Add to cart", 'class': "my-btn add-to-cart"};
-        });
-
-        $scope.addToCart = function()
-        {
-            if(! Cart.has($scope.product))
-            {
-                $element.fadeTo(200, '0.2').delay(500).fadeTo(200, 1);
-
-                Cart.addProduct($scope.product);
-            }
-        };
-    }])
-
-    .controller('ModalController', ['$scope', 'ModalProduct', 'Cart', '$element', function ($scope, ModalProduct, Cart) {
-
-        $scope.ModalProduct = ModalProduct;
-
-        $scope.$watch('ModalProduct.getProduct()', function(product)
-        {
-            if(product !== null)
-            {
-                $scope.product = product;
-
-                $scope.cartBtn = Cart.has($scope.product) ?
-                {'text': "In cart", 'class': "my-btn in-cart"} :
-                {'text':"Add to cart", 'class': "my-btn add-to-cart"};
-            }
-        });
-
-
-        $scope.addToCart = function()
-        {
-            if(! Cart.has($scope.product))
-            {
-                Cart.addProduct($scope.product);
-
-                $scope.cartBtn = {'text': "In cart", 'class': "my-btn in-cart"};
-            }
-        };
-
-    }])
-
-
-    .controller('CartController', ['$scope', 'Cart', 'ModalProduct', function ($scope, Cart, ModalProduct) {
-
-        $scope.products = Cart.getProducts();
-
-        $scope.getSubTotal = function(product)
-        {
-            return product.price * product.quantity;
-        };
-
-        $scope.getTotal = function()
-        {
-            var total = 0;
-
-            for(var i = 0; i < $scope.products.length; i++)
-            {
-                total += $scope.getSubTotal($scope.products[i]);
-            }
-
-            return total;
-        }
-
+        // We choose how to open the product
         $scope.openProduct = function(product)
         {
-            ModalProduct.open(product);
+            // Initialize partial information
+            ModalProduct.setProduct( product );
+
+            // Open modal
+            ModalProduct.open();
+
+            // We will use modal service to show our product
+            Products.getFullInfo(product.id, function(p)
+            {
+                ModalProduct.setProduct(p);
+            });
+        }
+    }])
+
+
+    .controller('ModalController', ['$scope', 'ModalProduct', '$element', function ($scope, ModalProduct, $element) {
+
+        $scope.modal = ModalProduct;
+
+        $scope.$watch('modal.product', function(product)
+        {
+            $scope.product = product;
+        });
+
+
+    }])
+
+
+
+    .controller('ProductController', ['$scope', '$element', 'Products', function ($scope, $element, Products) {
+
+        // Set product scope
+        $scope.product = {
+            'id'   : $element.find('[ng-bind="product.id"]').val(),
+            'title': $element.find('[ng-bind="product.title"]').html(),
+            'image': $element.find('[ng-bind="product.image"]').attr('src'),
+            'price': $element.find('[ng-bind="product.price | currency:currency"]').html()
         };
 
-        $scope.removeProduct = function(product)
+        $element.find('[ng-bind="product.title"]').attr('href', 'javascript:void(0)');
+
+        $element.find('img').imagezoomsl({
+
+            zoomrange: [3, 3],
+            magnifiersize: [500, 200],
+            magnifierborder: "1px solid #CCC"
+        });
+
+        if($scope.product.price !== undefined)
         {
-            Cart.removeProduct(product);
-        };
+            $scope.product.price = $scope.product.price.replace('QAR ', '');
+        }
+
+        // Add these information to partial information..
+        Products.addPartialInfo($scope.product);
     }])
+
+
+    .controller('CartController', ['$scope', function ($scope) {
+
+    }])
+
 
     .controller('CheckoutController', ['$scope', function ($scope) {
 
     }])
+
+
     .controller('ProductsController', ['$scope', function ($scope) {
 
     }])
-    .controller('HeaderController', ['$scope', 'Cart', function ($scope, Cart) {
-        $scope.cart = Cart;
 
-        $scope.launchCart = function()
-        {
-            window.location.href = '/cart';
-        }
+
+    .controller('HeaderController', ['$scope', function ($scope) {
 
     }]);

@@ -16,7 +16,7 @@ class Product extends Kareem3dProduct implements SlugInterface {
     /**
      * @var string
      */
-    protected $currency = 'Q.R';
+    protected $currency = 'QAR';
 
     /**
      * @return array
@@ -98,5 +98,38 @@ class Product extends Kareem3dProduct implements SlugInterface {
     public function color()
     {
         return $this->belongsTo(Color::getClass());
+    }
+
+    /**
+     * @return string|void
+     */
+    public function allAttributes()
+    {
+        $attributes = $this->toArray();
+
+        $newAttributes = array();
+
+        // Get attributes
+        foreach($attributes as $key => $attribute)
+        {
+            $newAttributes[ $key ] = (string) $attribute;
+        }
+
+        // Load specification attributes
+        foreach(static::$specs as $attr)
+        {
+            $newAttributes[$attr] = $this->$attr;
+        }
+
+        $newAttributes['beforePrice'] = (string) $this->beforePrice;
+        $newAttributes['actualPrice'] = (string) $this->actualPrice;
+
+        $newAttributes['brand'] = $this->brand;
+
+        // Load image
+        $newAttributes['image'] = $this->getImage('main')->getSmallest()->url;
+        $newAttributes['largeImage'] = $this->getImage('main')->getLargest()->url;
+
+        return $newAttributes;
     }
 }

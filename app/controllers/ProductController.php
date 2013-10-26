@@ -1,7 +1,5 @@
 <?php
 
-use Kareem3d\Ecommerce\Category;
-
 class ProductController extends BaseController {
 
     /**

@@ -51,15 +51,16 @@ Route::get('/message-to-user.html', array('as' => 'message-to-user', 'uses' => '
 
 
 
+// Load partials
+Route::get('/partials/{view}.html', function($view)
+{
+    return View::make('partials.' . $view);
+});
+
 // Define cart resource
 Route::resource('cart', 'CartController');
+Route::resource('product', 'ProductsController');
 
-Route::get('/partials/product/{id}', function( $id )
-{
-    $product = Product::findOrFail($id);
-
-    return View::make('partials.main_product', compact('product'));
-});
 
 
 

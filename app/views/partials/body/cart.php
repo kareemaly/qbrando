@@ -14,17 +14,17 @@
                     <th>Remove</th>
                 </tr>
 
-                <tr ng-repeat="product in products">
-                    <td><input type="number" min="1" max="30" class="quantity-txt" ng-model="product.quantity" required/></td>
-                    <td data-toggle="modal" href="#productModal" ng-click="openProduct(product)">
+                <tr ng-repeat="product in cart.get()">
+                    <td><input type="number" min="1" max="30" class="quantity-txt" ng-model="product.quantity" ng-change="cart.save()" required/></td>
+                    <td ng-click="openProduct(product)">
                         <div class="product-info">
-                            <span ng-bind="product.name"></span>
+                            <span ng-bind="product.title"></span>
                             <img ng-src="{{ product.image }}" alt=""/>
                         </div>
                     </td>
-                    <td><strong>{{ product.price }} Q.R</strong></td>
-                    <td><strong>{{ getSubTotal(product) }} Q.R</strong></td>
-                    <td><span ng-click="removeProduct(product)" class="glyphicon glyphicon-remove"></span></td>
+                    <td><strong>{{ product.price | currency:currency }}</strong></td>
+                    <td><strong>{{ cart.price.subTotal(product) | currency:currency }}</strong></td>
+                    <td><span ng-click="cart.remove(product)" class="glyphicon glyphicon-remove"></span></td>
                 </tr>
 
 
@@ -34,7 +34,7 @@
         <div class="total">
             <span>Total: </span>
             <strong>
-                {{ getTotal() }} Q.R
+                {{ cart.price.total() }} Q.R
             </strong>
         </div>
 
