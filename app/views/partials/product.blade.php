@@ -13,7 +13,7 @@
             @if($product->hasOfferPrice() and isset($showOfferPrice))
             <span class="before-price">{{ $product->beforePrice->format() }}</span>
             @endif
-            <span ng-bind="product.price | currency:currency" class="actual-price">{{ $product->price->format() }}</span>
+            <span ng-bind="product.price | currency:currency" class="actual-price">{{ $product->actualPrice->format() }}</span>
         </div>
 
         <h2 class="product-title"><a ng-bind="product.title" href="{{ URL::product($product) }}">{{ $product->title }}</a></h2>

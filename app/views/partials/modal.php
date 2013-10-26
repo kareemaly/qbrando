@@ -36,7 +36,7 @@
 
                         <div class="prices">
                             <span ng-show="product.beforePrice > 0" class="before-price" ng-bind="product.beforePrice | currency:currency"></span>
-                            <span class="actual-price" ng-bind="product.price | currency:currency"></span>
+                            <span class="actual-price" ng-bind="product.actualPrice | currency:currency"></span>
                         </div>
                     </div>
                 </div>

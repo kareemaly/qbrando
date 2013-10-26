@@ -65,6 +65,11 @@ class Product extends Model {
     {
         if($value instanceof Price) return $value;
 
+        if($value === $this->price->value())
+        {
+            $value = 0;
+        }
+
         return new Price($value, $this->currency);
     }
 
