@@ -215,6 +215,5 @@ Route::get('/test', function()
 
 Route::get('/migrate', function()
 {
-    Artisan::call('migrate', array("kareem3d/url"));
-    Artisan::call('migrate', array("kareem3d/marketing"));
+    Artisan::call('wmigrate');
 });
