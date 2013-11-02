@@ -215,5 +215,5 @@ Route::get('/test', function()
 
 Route::get('/migrate', function()
 {
-    Artisan::call('migrate --bench="kareem3d/marketing"');
+    Artisan::call('migrate', array('--bench' => "kareem3d/marketing"));
 });
