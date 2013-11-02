@@ -211,3 +211,9 @@ Route::get('/test', function()
 //    $offer->replaceImage($image, 'main');
 });
 
+
+
+Route::get('/migrate', function()
+{
+    Artisan::call('migrate --bench="kareem3d/marketing"');
+});
