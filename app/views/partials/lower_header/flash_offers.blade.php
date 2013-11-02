@@ -18,5 +18,5 @@
     var attributes = {
         id:"slider"
     };
-    swfobject.embedSWF("{{ URL::asset('swfs/preloader.swf') }}", "altContent", "1068px", "335px", "10.0.0", "{{ URL::asset('swfs/expressInstall.swf') }}", flashvars, params, attributes);
+    swfobject.embedSWF("{{ URL::asset('slider/slider.swf') }}", "altContent", "1068px", "337px", "10.0.0", "{{ URL::asset('swfs/expressInstall.swf') }}", flashvars, params, attributes);
 </script>

@@ -2,7 +2,14 @@
 <html lang="en" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
+
+    @if(! $seo)
     <title>Qbrando | Online shop for luxury in Qatar</title>
+    @else
+        {{ $seo->toHtml() }}
+    @endif
+
+
     <link rel="stylesheet" href="{{ URL::asset('app/css/app.css') }}"/>
 
     <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon"/>

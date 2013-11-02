@@ -1,5 +1,7 @@
 <?php
 
+use Kareem3d\Marketing\SEO;
+
 class BaseController extends Controller {
 
     const PER_PAGE = 12;
@@ -19,6 +21,8 @@ class BaseController extends Controller {
 		if ( ! is_null($this->layout))
 		{
             $this->layout = View::make($this->layout);
+
+            $this->layout->seo = SEO::getCurrent();
 
             $this->useDefaultTemplate();
 		}
