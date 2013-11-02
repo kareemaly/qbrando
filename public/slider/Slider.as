@@ -79,7 +79,8 @@
 			var loader:XMLLoader = new XMLLoader(xml, {
 										onComplete:allCompleteHandler,
 										onChildProgress:onProgress,
-										onChildComplete:childCompleteHandler
+										onChildComplete:childCompleteHandler,
+										maxConnections: 1
 									});
 			
 			loader.load();
