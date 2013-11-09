@@ -1,0 +1,52 @@
+app_id=577875652285919
+app_secret=84727ebc3a01c100cc3e6f90190958ea
+
+
+https://www.facebook.com/dialog/oauth?client_id=577875652285919&redirect_uri=http://www.qbrando.com/&scope=manage_pages,publish_stream
+
+code=AQAC8XWbEO3TsAAdwfv3TNbi2B5kXOvkB_g9dArYoWbw7ZA1wxnAnrotENbln8AsGZFz2XlG5wad6PizLA4INIl3WWXq2-NPBokwREwbW9ZSRU6HYt1CnE2Z6tiRYTkM33mF0J0xR-CJDtmFAh_S7yADScfMLSqF8zXSrteOWqtU8Ac2AdJyi0cgA0NTJb1D-nmrUe_bT6ugocWd5f8VXo5u6NBBESivKohHqgQTR4tslSFd6CK3VstOHV2ceQ8TLgxHcSxzqRYIZhvtwuWHLl0efrEiK19zS-wV8ALqH18J0EtFNRbN-5pvInXArJDv4e4
+
+https://graph.facebook.com/oauth/access_token?client_id=577875652285919&redirect_uri=http://www.qbrando.com/&client_secret=84727ebc3a01c100cc3e6f90190958ea&code=AQAC8XWbEO3TsAAdwfv3TNbi2B5kXOvkB_g9dArYoWbw7ZA1wxnAnrotENbln8AsGZFz2XlG5wad6PizLA4INIl3WWXq2-NPBokwREwbW9ZSRU6HYt1CnE2Z6tiRYTkM33mF0J0xR-CJDtmFAh_S7yADScfMLSqF8zXSrteOWqtU8Ac2AdJyi0cgA0NTJb1D-nmrUe_bT6ugocWd5f8VXo5u6NBBESivKohHqgQTR4tslSFd6CK3VstOHV2ceQ8TLgxHcSxzqRYIZhvtwuWHLl0efrEiK19zS-wV8ALqH18J0EtFNRbN-5pvInXArJDv4e4
+
+access_token=CAAINkyj6ld8BABnixZCagZBwZBF4mGEfs9BJZAGDn28KudWVWVIjZBAbI1u97YsYwAab5uNQqJZA9oFFD7WtfGYkc1jPAM2huHYnlpaqAWzMBIRCrmriEmueZCZCXnH1IZATkUOpZBSPFF0gMzVprMKZB2ZAKsxZCd6TStCpZCv5NCFoEbQovJ5pTn402J&expires=5183445
+
+https://graph.facebook.com/me/accounts?access_token=CAAINkyj6ld8BABnixZCagZBwZBF4mGEfs9BJZAGDn28KudWVWVIjZBAbI1u97YsYwAab5uNQqJZA9oFFD7WtfGYkc1jPAM2huHYnlpaqAWzMBIRCrmriEmueZCZCXnH1IZATkUOpZBSPFF0gMzVprMKZB2ZAKsxZCd6TStCpZCv5NCFoEbQovJ5pTn402J
+
+
+
+
+{
+   "data": [
+      {
+         "category": "Clothing",
+         "name": "Branded SunGlasses Doha , Qatar",
+         "access_token": "CAAINkyj6ld8BAAYoUHrftkrY1ZBZAuvLvObrDDPR0fHVaodw1RBc3HZAfZCK2b6FLB1dnEBWejZCyZBZAGkZBlE6j8hO33ej5dCgBcSKeXgo1YkMMvShTqeuelPvKZA1Tp2pHlgGmRY0EozMAd2tDdixYPDhJk67ROiC7ayr7dtv1fJYTxe0rZAofx",
+         "perms": [
+            "ADMINISTER",
+            "EDIT_PROFILE",
+            "CREATE_CONTENT",
+            "MODERATE_CONTENT",
+            "CREATE_ADS",
+            "BASIC_ADMIN"
+         ],
+         "id": "459791720731702"
+      },
+      {
+         "category": "Community",
+         "name": "Kareem PHP",
+         "access_token": "CAAINkyj6ld8BAL9fHxdj2zSI32CwuSQZChZAAOnfbVB7KbHDctcizRZCW2bCjZBGZAX4BLZCkzgwlNKMZAxxhfAypgsqa7d0fZAw9iaMYVhm4zsp6nGAZBO9ChJPIVmkE96WIuW1kD8LXovFHLlkICtxRGEwovygRlYxocV5E5QaGpqQy10m5qQZBT",
+         "perms": [
+            "ADMINISTER",
+            "EDIT_PROFILE",
+            "CREATE_CONTENT",
+            "MODERATE_CONTENT",
+            "CREATE_ADS",
+            "BASIC_ADMIN"
+         ],
+         "id": "420391658064864"
+      }
+   ],
+   "paging": {
+      "next": "https://graph.facebook.com/100004215991605/accounts?access_token=CAAINkyj6ld8BABnixZCagZBwZBF4mGEfs9BJZAGDn28KudWVWVIjZBAbI1u97YsYwAab5uNQqJZA9oFFD7WtfGYkc1jPAM2huHYnlpaqAWzMBIRCrmriEmueZCZCXnH1IZATkUOpZBSPFF0gMzVprMKZB2ZAKsxZCd6TStCpZCv5NCFoEbQovJ5pTn402J&limit=5000&offset=5000&__after_id=420391658064864"
+   }
+}

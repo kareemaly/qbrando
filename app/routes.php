@@ -214,53 +214,40 @@ Route::get('/test', function()
 
 Route::get('/facebook', function()
 {
-    // app_id=577875652285919
-    // app_secret=84727ebc3a01c100cc3e6f90190958ea
-
-
-    //https://www.facebook.com/dialog/oauth?client_id=577875652285919&redirect_uri=http://www.qbrando.com/&scope=manage_pages,publish_stream
-
-    //code=AQDUneG0u3Ceu3utJUp-oujh_PVeKlx_4f__gW0ye2nVaxkkstj1ULBYavlgv_33bryzi5hJXS4fAHCsOG7OkKSGHGZX5yxF7C-iBdcdzVW0KhN0ATvKjSLSy3SEawrTk9eZUp5XQ99Q7z24TMhBwvZBnLcYLAUsmlppWPv47Le-CA_P1xLyyW3d2g1xjonvcyaLW0aV_UhH7xwj5jnDEhFIC0LUpe7n0QMyTjTBN4-in2b3JBVox0NdFZyWYYsQPMiONfKabkH3CyF39qXOWE-cmCcJld-QSMMfcgCahOt-sJQA3Ymuc74AQOrRAxoCvK0
-
-    //https://graph.facebook.com/oauth/access_token?client_id=577875652285919&redirect_uri=http://www.qbrando.com/facebook/&client_secret=84727ebc3a01c100cc3e6f90190958ea&code=AQDUneG0u3Ceu3utJUp-oujh_PVeKlx_4f__gW0ye2nVaxkkstj1ULBYavlgv_33bryzi5hJXS4fAHCsOG7OkKSGHGZX5yxF7C-iBdcdzVW0KhN0ATvKjSLSy3SEawrTk9eZUp5XQ99Q7z24TMhBwvZBnLcYLAUsmlppWPv47Le-CA_P1xLyyW3d2g1xjonvcyaLW0aV_UhH7xwj5jnDEhFIC0LUpe7n0QMyTjTBN4-in2b3JBVox0NdFZyWYYsQPMiONfKabkH3CyF39qXOWE-cmCcJld-QSMMfcgCahOt-sJQA3Ymuc74AQOrRAxoCvK0
-
-    //access_token=CAAVBsGhtWGcBAEs8H69doWBopUZAZC5z99JxMc81i0fki2VlWQjgFkXuWfrCdfJ9S29tEh0SO1R5KFvZBSKQsbOHXiCkN4H6u8ZCN7Uxch4yYckZArwDum4MZA8QXlNRhEX09AjP9LAHt1EJKXedyHHKZAYuSeHTq7xjqCGFuvEgmvr3zD9du4H&expires=5183900
-
-    //https://graph.facebook.com/me/accounts?access_token=CAAVBsGhtWGcBAEs8H69doWBopUZAZC5z99JxMc81i0fki2VlWQjgFkXuWfrCdfJ9S29tEh0SO1R5KFvZBSKQsbOHXiCkN4H6u8ZCN7Uxch4yYckZArwDum4MZA8QXlNRhEX09AjP9LAHt1EJKXedyHHKZAYuSeHTq7xjqCGFuvEgmvr3zD9du4H
 
     //page_access_token=CAAVBsGhtWGcBAGFp88EWZA0RdT4p8fPr1PZC34bZBMYhCDzNl7EW3BhZAV4tuAfopPqZAKY4hZBfhPWjZBHgaA85HHkQ9L2R1avas3foQ5cCeecyYK8p5sYOr4xa0gCmnMbjx8cMh28qSmqWQMqUBSeT1YQXH6oCbmN0xaC1ZChj5l6aKSgBHieb
     //page_id=277738978965645
 
-    dd($_GET);
+//    dd($_GET);
 });
 
 
 Route::get('/post-to-facebook', function()
 {
-//    $config = array();
-//    $config['appId'] = '1479600805599335';
-//    $config['secret'] = 'aa0ba0e9ec5dbdda354ff31075998fc0';
-//    $config['fileUpload'] = false; // optional
-//    $fb = new Facebook($config);
-//
-//    $params = array(
-//        // this is the access token for Fan Page
-//        "access_token" => "CAAVBsGhtWGcBAGFp88EWZA0RdT4p8fPr1PZC34bZBMYhCDzNl7EW3BhZAV4tuAfopPqZAKY4hZBfhPWjZBHgaA85HHkQ9L2R1avas3foQ5cCeecyYK8p5sYOr4xa0gCmnMbjx8cMh28qSmqWQMqUBSeT1YQXH6oCbmN0xaC1ZChj5l6aKSgBHieb",
-//        "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
-//        "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
-//        "picture" => "http://i.imgur.com/lHkOsiH.png",
-//        "name" => "How to Auto Post on Facebook with PHP",
-//        "caption" => "www.pontikis.net",
-//        "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
-//    );
-//
-//    try {
-//        // 466400200079875 is Facebook id of Fan page https://www.facebook.com/pontikis.net
-//        $ret = $fb->api('/277738978965645/feed', 'POST', $params);
-//        echo 'Successfully posted to Facebook Fan Page';
-//    } catch(Exception $e) {
-//        echo $e->getMessage();
-//    }
+    $config = array();
+    $config['appId'] = '577875652285919';
+    $config['secret'] = '84727ebc3a01c100cc3e6f90190958ea';
+    $config['fileUpload'] = false; // optional
+    $fb = new Facebook($config);
+
+    $params = array(
+        // this is the access token for Fan Page
+        "access_token" => "CAAINkyj6ld8BAL9fHxdj2zSI32CwuSQZChZAAOnfbVB7KbHDctcizRZCW2bCjZBGZAX4BLZCkzgwlNKMZAxxhfAypgsqa7d0fZAw9iaMYVhm4zsp6nGAZBO9ChJPIVmkE96WIuW1kD8LXovFHLlkICtxRGEwovygRlYxocV5E5QaGpqQy10m5qQZBT",
+        "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
+        "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
+        "picture" => "http://i.imgur.com/lHkOsiH.png",
+        "name" => "How to Auto Post on Facebook with PHP",
+        "caption" => "www.pontikis.net",
+        "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
+    );
+
+    try {
+        // 466400200079875 is Facebook id of Fan page https://www.facebook.com/pontikis.net
+        $ret = $fb->api('/420391658064864/feed', 'POST', $params);
+        echo 'Successfully posted to Facebook Fan Page';
+    } catch(Exception $e) {
+        echo $e->getMessage();
+    }
 });
 
 
