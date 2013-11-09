@@ -114,9 +114,9 @@ class FreakProductController extends FreakController {
         // Find or get new instance of the product
         $product = $this->products->findOrNew(Input::get('insert_id'))->fill(Input::get('Product'));
 
-        $this->setImageSEO( $product );
+        $this->setImageSEO($product);
 
-        return $this->jsonValidateResponse( $product );
+        return $this->jsonValidateResponse($product);
     }
 
     /**
@@ -159,10 +159,12 @@ class FreakProductController extends FreakController {
     }
 
     /**
-     * @param Product $product
+     * @internal param \Product $product
      */
-    protected function postToFacebook(Product $product)
+    public function postFacebook($id)
     {
+        $product = $this->products->findOrFail($id);
+
         if(! $facebookTitle = Input::get('facebook_title'))
         {
             $facebookTitle = $product->title . PHP_EOL;
@@ -184,13 +186,20 @@ class FreakProductController extends FreakController {
             "access_token" => Config::get('facebook.access_token'),
             "message" => $facebookTitle,
             "link" => URL::product($product),
-            "picture" => $product->getImage('main')->getLargest()->url,
         );
+
+        if($image = $product->getImage('main')->getLargest())
+        {
+            $params["picture"] = $image->url;
+        }
 
         try {
             $ret = $fb->api('/'.Config::get('facebook.page_id').'/feed', 'POST', $params);
 
-            echo 'Successfully posted to Facebook Fan Page';
-        } catch(Exception $e) {}
+            return Redirect::back()->with('success', 'Product has been posted to facebook successfully.');
+        } catch(Exception $e) {
+
+            dd('Eb3tly elmsg de yhoby: ' . $e->getMessage());
+        }
     }
 }

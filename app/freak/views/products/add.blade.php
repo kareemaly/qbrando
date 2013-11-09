@@ -10,18 +10,6 @@
         <div class="widget-content form-container">
             <form class="form-horizontal form-editor" method="POST">
 
-                @if(! $product->exists)
-                <div class="control-group">
-                    <label class="control-label">
-                        Facebook title <br />
-                        <small>You can leave empty</small>
-                    </label>
-                    <div class="controls">
-                        <input type="text" name="facebook_title"/>
-                    </div>
-                </div>
-                @endif
-
                 <div class="control-group">
                     <label class="control-label">Model</label>
                     <div class="controls">
@@ -93,7 +81,28 @@
                     </div>
                 </div>
 
+
+
             </form>
+
+
+
+            @if($product->exists)
+            <form class="form-horizontal form-editor" method="POST" action="{{ freakUrl('element/product/facebook/' . $product->id) }}">
+                <div class="control-group">
+                    <label class="control-label">
+                        Facebook title <br />
+                        <small>You can leave empty</small>
+                    </label>
+                    <div class="controls">
+                        <input type="text" name="facebook_title" class="span12"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Post to facebook</button>
+                </div>
+            </form>
+            @endif
 
         </div>
     </div>
