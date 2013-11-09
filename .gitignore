@@ -4,6 +4,8 @@ composer.lock
 .DS_Store
 .idea
 
+/public/albums
+
 !vendor/
 
 vendor/*
