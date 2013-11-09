@@ -10,6 +10,18 @@
         <div class="widget-content form-container">
             <form class="form-horizontal form-editor" method="POST">
 
+                @if(! $product->exists)
+                <div class="control-group">
+                    <label class="control-label">
+                        Facebook title <br />
+                        <small>You can leave empty</small>
+                    </label>
+                    <div class="controls">
+                        <input type="text" name="facebook_title"/>
+                    </div>
+                </div>
+                @endif
+
                 <div class="control-group">
                     <label class="control-label">Model</label>
                     <div class="controls">
@@ -63,7 +75,8 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label" for="input05">Title</label>
+                    <label class="control-label" for="input05">Title <br />
+                        <small>You can leave empty</small></label>
                     <div class="controls">
                         <input type="text" name="Product[title]" id="input05" class="span12" value="{{ $product->title }}" required>
                     </div>

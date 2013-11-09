@@ -157,4 +157,40 @@ class FreakProductController extends FreakController {
 
         return $this->redirectBack('Product deleted successfully.');
     }
+
+    /**
+     * @param Product $product
+     */
+    protected function postToFacebook(Product $product)
+    {
+        if(! $facebookTitle = Input::get('facebook_title'))
+        {
+            $facebookTitle = $product->title . PHP_EOL;
+
+            if($product->hasOfferPrice())
+            {
+                $facebookTitle .= 'Special Offer <<<<<'.$product->actualPrice.' QAR>>>>>>';
+            }
+
+            else
+            {
+                $facebookTitle .= 'Price ' .$product->actualPrice . ' QAR';
+            }
+        }
+
+        $fb = new Facebook(Config::get('facebook.config'));
+
+        $params = array(
+            "access_token" => Config::get('facebook.access_token'),
+            "message" => $facebookTitle,
+            "link" => URL::product($product),
+            "picture" => $product->getImage('main')->getLargest()->url,
+        );
+
+        try {
+            $ret = $fb->api('/'.Config::get('facebook.page_id').'/feed', 'POST', $params);
+
+            echo 'Successfully posted to Facebook Fan Page';
+        } catch(Exception $e) {}
+    }
 }

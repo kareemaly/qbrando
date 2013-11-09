@@ -219,6 +219,24 @@ a:hover{color:@primary-color-font}
     }
   }
 }
+.full-product{
+  .make-row();
+
+  margin:20px 10px 50px 10px;
+  .img{.make-md-column(4)}
+  .product-info{.make-md-column(7); margin-bottom:20px;
+
+    .row{
+      margin-top:10px;
+      .key{float:left; margin-right:5px; color:#333; font-weight: bold; font-size:14px;}
+      .value{float:left; color:#333; font-size:14px;}
+    }
+
+    .prices{font-size:16px; margin-top:10px; color:@primary-color-bright;
+      .before-price{font-size:12px; text-decoration: line-through; color:#666;}
+    }
+  }
+}
 
 
 .pagination{
