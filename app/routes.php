@@ -212,6 +212,58 @@ Route::get('/test', function()
 });
 
 
+Route::get('/facebook', function()
+{
+    // app_id=577875652285919
+    // app_secret=84727ebc3a01c100cc3e6f90190958ea
+
+
+    //https://www.facebook.com/dialog/oauth?client_id=577875652285919&redirect_uri=http://www.qbrando.com/&scope=manage_pages,publish_stream
+
+    //code=AQABUxuoKiH_Ka0XyQcvxq7rCIBiqU41DfhJUnbxtsZmIFR38E3jJw4q57cgEsFBf34178wxl72trrkLwDtuY5yI4nk9_bLMavb57XOzP7u4QstrXOW8T76AgMlgln2PiCiJB7v9N0CGNa_u5PLDnsrSXrzjqD-XzbU1DweyQMOEsZVg-qAYgJ2_CDZ4OBfuVVDpmGRAwhCVt9Fp-QHJiI8bk_0R5kBVBHcL5TXxHdRnLEpwJh5tDcH6uksq29LK_RYqG3_ou3nX7tGslH8MDM7D3O74sX9Brw2FWFAyNNPMfa7laRctdP5pu6i64oJ7238#_=_
+
+    //https://graph.facebook.com/oauth/access_token?client_id=577875652285919&redirect_uri=http://www.qbrando.com/facebook/&client_secret=84727ebc3a01c100cc3e6f90190958ea&code=AQABUxuoKiH_Ka0XyQcvxq7rCIBiqU41DfhJUnbxtsZmIFR38E3jJw4q57cgEsFBf34178wxl72trrkLwDtuY5yI4nk9_bLMavb57XOzP7u4QstrXOW8T76AgMlgln2PiCiJB7v9N0CGNa_u5PLDnsrSXrzjqD-XzbU1DweyQMOEsZVg-qAYgJ2_CDZ4OBfuVVDpmGRAwhCVt9Fp-QHJiI8bk_0R5kBVBHcL5TXxHdRnLEpwJh5tDcH6uksq29LK_RYqG3_ou3nX7tGslH8MDM7D3O74sX9Brw2FWFAyNNPMfa7laRctdP5pu6i64oJ7238#_=_
+
+    //access_token=CAAVBsGhtWGcBAEs8H69doWBopUZAZC5z99JxMc81i0fki2VlWQjgFkXuWfrCdfJ9S29tEh0SO1R5KFvZBSKQsbOHXiCkN4H6u8ZCN7Uxch4yYckZArwDum4MZA8QXlNRhEX09AjP9LAHt1EJKXedyHHKZAYuSeHTq7xjqCGFuvEgmvr3zD9du4H&expires=5183900
+
+    //https://graph.facebook.com/me/accounts?access_token=CAAVBsGhtWGcBAEs8H69doWBopUZAZC5z99JxMc81i0fki2VlWQjgFkXuWfrCdfJ9S29tEh0SO1R5KFvZBSKQsbOHXiCkN4H6u8ZCN7Uxch4yYckZArwDum4MZA8QXlNRhEX09AjP9LAHt1EJKXedyHHKZAYuSeHTq7xjqCGFuvEgmvr3zD9du4H
+
+    //page_access_token=CAAVBsGhtWGcBAGFp88EWZA0RdT4p8fPr1PZC34bZBMYhCDzNl7EW3BhZAV4tuAfopPqZAKY4hZBfhPWjZBHgaA85HHkQ9L2R1avas3foQ5cCeecyYK8p5sYOr4xa0gCmnMbjx8cMh28qSmqWQMqUBSeT1YQXH6oCbmN0xaC1ZChj5l6aKSgBHieb
+    //page_id=277738978965645
+
+    dd($_GET);
+});
+
+
+Route::get('/post-to-facebook', function()
+{
+//    $config = array();
+//    $config['appId'] = '1479600805599335';
+//    $config['secret'] = 'aa0ba0e9ec5dbdda354ff31075998fc0';
+//    $config['fileUpload'] = false; // optional
+//    $fb = new Facebook($config);
+//
+//    $params = array(
+//        // this is the access token for Fan Page
+//        "access_token" => "CAAVBsGhtWGcBAGFp88EWZA0RdT4p8fPr1PZC34bZBMYhCDzNl7EW3BhZAV4tuAfopPqZAKY4hZBfhPWjZBHgaA85HHkQ9L2R1avas3foQ5cCeecyYK8p5sYOr4xa0gCmnMbjx8cMh28qSmqWQMqUBSeT1YQXH6oCbmN0xaC1ZChj5l6aKSgBHieb",
+//        "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
+//        "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
+//        "picture" => "http://i.imgur.com/lHkOsiH.png",
+//        "name" => "How to Auto Post on Facebook with PHP",
+//        "caption" => "www.pontikis.net",
+//        "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
+//    );
+//
+//    try {
+//        // 466400200079875 is Facebook id of Fan page https://www.facebook.com/pontikis.net
+//        $ret = $fb->api('/277738978965645/feed', 'POST', $params);
+//        echo 'Successfully posted to Facebook Fan Page';
+//    } catch(Exception $e) {
+//        echo $e->getMessage();
+//    }
+});
+
+
 
 Route::get('/migrate', function()
 {

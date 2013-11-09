@@ -29,7 +29,9 @@
 
         "kareem3d/freak-seo": "dev-master",
 
-        "moltin/laravel-cart": "dev-master"
+        "moltin/laravel-cart": "dev-master",
+
+        "facebook/php-sdk": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
