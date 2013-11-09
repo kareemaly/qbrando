@@ -224,8 +224,6 @@ Route::get('/facebook', function()
 
 Route::get('/post-to-facebook', function()
 {
-    Config::set('app.debug', true);
-
     $config = array();
     $config['appId'] = '577875652285919';
     $config['secret'] = '84727ebc3a01c100cc3e6f90190958ea';
