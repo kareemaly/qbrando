@@ -97,5 +97,3 @@
 
 </body>
 </html>
-
-{{ var_dump($_GET) }}
