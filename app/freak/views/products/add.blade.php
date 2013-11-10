@@ -95,7 +95,7 @@
                         <small>You can leave empty</small>
                     </label>
                     <div class="controls">
-                        <input type="text" name="facebook_title" class="span12"/>
+                        <textarea name="facebook_title" cols="5" class="span12"></textarea>
                     </div>
                 </div>
                 <div class="form-actions">
