@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
@@ -54,6 +56,12 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+});
+
+
+App::error(function(ModelNotFoundException $e)
+{
+    return Redirect::route('home');
 });
 
 /*
