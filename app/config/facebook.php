@@ -8,7 +8,7 @@ return array(
         'fileUpload' => false
     ),
 
-    'access_token' => 'CAAINkyj6ld8BAL9fHxdj2zSI32CwuSQZChZAAOnfbVB7KbHDctcizRZCW2bCjZBGZAX4BLZCkzgwlNKMZAxxhfAypgsqa7d0fZAw9iaMYVhm4zsp6nGAZBO9ChJPIVmkE96WIuW1kD8LXovFHLlkICtxRGEwovygRlYxocV5E5QaGpqQy10m5qQZBT',
+    'access_token' => 'CAAINkyj6ld8BAAYoUHrftkrY1ZBZAuvLvObrDDPR0fHVaodw1RBc3HZAfZCK2b6FLB1dnEBWejZCyZBZAGkZBlE6j8hO33ej5dCgBcSKeXgo1YkMMvShTqeuelPvKZA1Tp2pHlgGmRY0EozMAd2tDdixYPDhJk67ROiC7ayr7dtv1fJYTxe0rZAofx',
 
     'page_id' => '459791720731702'
 
