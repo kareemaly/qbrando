@@ -21,7 +21,7 @@
 
     <div class="buttons">
         <my-cart-btn product="{{ angular('product') }}"></my-cart-btn>
-        <div class="my-btn details" ng-click="openProduct(product)">Details</div>
+        <a class="my-btn details" href="{{ URL::product($product) }}">Details</a>
     </div>
 </div>
 @endif

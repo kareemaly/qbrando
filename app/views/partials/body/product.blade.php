@@ -37,5 +37,6 @@
 
     <div class="buttons">
         <my-cart-btn product="{{ angular('product') }}"></my-cart-btn>
+        <a href="/place-order/{{ $part->product->id }}" class="my-btn details">Place order now</a>
     </div>
 </div>
