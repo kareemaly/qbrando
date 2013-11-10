@@ -59,7 +59,8 @@ angular.module('qbrando.controllers', ['qbrando.services']).
 
             zoomrange: [3, 3],
             magnifiersize: [500, 200],
-            magnifierborder: "1px solid #CCC"
+            magnifierborder: "1px solid #CCC",
+            disablewheel: false
         });
 
         if($scope.product.price !== undefined)
