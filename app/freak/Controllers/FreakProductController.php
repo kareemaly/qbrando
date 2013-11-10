@@ -185,7 +185,9 @@ class FreakProductController extends FreakController {
         $params = array(
             "access_token" => Config::get('facebook.access_token'),
             "message" => $facebookTitle,
-            "source" => "@". $product->getImage('main')->getLargest()->getServerPath(),
+            'description' => $facebookTitle,
+            "source" => $product->getImage('main')->getLargest()->url,
+            "link" => URL::product($product)
         );
 
         try {
