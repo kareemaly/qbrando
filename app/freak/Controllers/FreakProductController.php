@@ -185,16 +185,12 @@ class FreakProductController extends FreakController {
         $params = array(
             "access_token" => Config::get('facebook.access_token'),
             "message" => $facebookTitle,
+            "source" => $product->getImage('main')->getLargest()->url,
             "link" => URL::product($product),
         );
 
-        if($image = $product->getImage('main')->getLargest())
-        {
-            $params["picture"] = $image->url;
-        }
-
         try {
-            $ret = $fb->api('/'.Config::get('facebook.page_id').'/feed', 'POST', $params);
+            $fb->api('/'.Config::get('facebook.page_id').'/feed', 'POST', $params);
 
             return Redirect::back()->with('success', 'Product has been posted to facebook successfully.');
         } catch(Exception $e) {

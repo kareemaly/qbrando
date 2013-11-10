@@ -1,7 +1,9 @@
 @if($product)
 <div class="main-product">
     <div class="img">
-        <img class="img-responsive" src="{{ $product->getImage('main')->getSmallest()->url }}" alt=""/>
+        @if($image = $product->getImage('main')->getSmallest())
+        <img class="img-responsive" src="{{ $image->url }}" alt=""/>
+        @endif
     </div>
 
     <div class="product-info">

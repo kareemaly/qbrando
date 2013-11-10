@@ -99,12 +99,19 @@ class Version extends Model {
     public function delete()
     {
         try{
-            $path = Path::make($this->url);
+            $this->getServerPath()->delete();
 
-            $path->delete();
         }catch(PathException $e){}
 
         return parent::delete();
+    }
+
+    /**
+     * @return Path
+     */
+    public function getServerPath()
+    {
+        return Path::make($this->url);
     }
 
     /**
