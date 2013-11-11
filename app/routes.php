@@ -112,6 +112,7 @@ Route::get('/convert-images', function()
         $url = $product->getImage('main')->getLargest()->url;
 
         $url = str_replace('http://www.qbrando.com', public_path(), $url);
+        $url = str_replace('http://qbrando.com', public_path(), $url);
 
         $img = II::make($url);
 
