@@ -1,0 +1,8 @@
+Model = 38
+Brand = Gucci
+Color = Brown
+Price = 1250
+Offer Price = 450
+
+
+

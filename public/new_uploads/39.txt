@@ -1,0 +1,8 @@
+Model = 39
+Brand = rayban
+Color = Yellow
+Price = 1100
+Offer Price = 400
+
+
+

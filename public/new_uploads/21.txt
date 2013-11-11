@@ -1,0 +1,6 @@
+Model = 21
+Brand = Rayban  
+Color = Black
+Price = 900
+Offer Price = 400
+

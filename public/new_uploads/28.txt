@@ -1,0 +1,8 @@
+Model = 28
+Brand = Tiffany
+Color = Brown
+Price = 1200
+Offer Price = 450
+ 
+
+

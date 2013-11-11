@@ -1,0 +1,8 @@
+Model = 40
+Brand = Cartier 
+Color = White 
+Price = 1500
+Offer Price = 500
+
+
+

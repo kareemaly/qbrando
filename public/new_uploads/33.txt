@@ -1,0 +1,7 @@
+Model = 33
+Brand = Gucci
+Color = Grey
+Price = 1200
+Offer Price = 450
+
+

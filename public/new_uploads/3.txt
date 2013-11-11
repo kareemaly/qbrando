@@ -1,0 +1,5 @@
+Model = 3
+Brand = Chanel
+Color = Red
+Price = 1050
+Offer Price = 450

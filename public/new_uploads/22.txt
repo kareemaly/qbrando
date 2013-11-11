@@ -1,0 +1,6 @@
+Model = 22
+Brand = Louis Vuitton  
+Color = Black Gold
+Price = 1700
+Offer Price = 600
+

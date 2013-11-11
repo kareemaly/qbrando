@@ -1,0 +1,8 @@
+Model = 27
+Brand = Rayban 
+Color = Gold
+Price = 900
+Offer Price = 400
+ 
+
+

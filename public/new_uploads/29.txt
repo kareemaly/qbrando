@@ -1,0 +1,8 @@
+Model = 29
+Brand = Burrbery
+Color = Black
+Price = 1400
+Offer Price = 500
+ 
+
+

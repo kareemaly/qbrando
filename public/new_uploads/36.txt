@@ -1,0 +1,8 @@
+Model = 36
+Brand = D&G
+Color = Brown
+Price = 1200
+Offer Price = 450
+Gender = Female
+
+

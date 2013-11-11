@@ -1,0 +1,7 @@
+Model = 35
+Brand = Gucci
+Color = Black
+Price = 1200
+Offer Price = 450
+
+

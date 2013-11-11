@@ -1,0 +1,5 @@
+Model = 6
+Brand = Swarovski
+Color = White
+Price = 1800
+Offer Price = 650

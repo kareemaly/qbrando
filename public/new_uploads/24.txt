@@ -1,0 +1,7 @@
+Model = 24
+Brand = louis Vuitton
+Color = Brown
+Price = 1400
+Offer Price = 500
+
+

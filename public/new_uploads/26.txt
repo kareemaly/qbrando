@@ -1,0 +1,8 @@
+Model = 26
+Brand = Cartier 
+Color = Gold
+Price = 1550
+Offer Price = 500
+Female 
+
+

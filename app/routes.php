@@ -105,14 +105,13 @@ Route::get('/add-offer', function()
 
 Route::get('/convert-images', function()
 {
-    exit();
+//    exit();
     foreach(Product::all() as $product)
     {
+//        dd($product->getImage('main')->getLargest()->url);
         $url = $product->getImage('main')->getLargest()->url;
 
-        $url = str_replace('http://www.qbrando.loc', public_path(), $url);
-
-        $thumbnail = '200x150';
+        $url = str_replace('http://www.qbrando.com', public_path(), $url);
 
         $img = II::make($url);
 
@@ -123,7 +122,7 @@ Route::get('/convert-images', function()
         $img->save(public_path($imagePath));
 
         $product->getImage('main')->add(new Version(array(
-            'url' => 'http://www.qbrando.loc' . $imagePath,
+            'url' => 'http://www.qbrando.com' . $imagePath,
             'width' => 200,
             'height' => 150
         )));
@@ -132,9 +131,9 @@ Route::get('/convert-images', function()
 
 Route::get('/upload', function()
 {
-    exit();
     if(! \Kareem3d\Ecommerce\Product::all()->isEmpty()) return false;
-    foreach(glob(public_path('uploads/*.txt')) as $file)
+
+    foreach(glob(public_path('new_uploads/*.txt')) as $file)
     {
         $pathInfo = pathinfo($file);
 
@@ -143,7 +142,7 @@ Route::get('/upload', function()
         $imageName = '';
         $image = null;
 
-        foreach(glob(public_path('uploads/'. $fileName .'*.jpg')) as $image)
+        foreach(glob(public_path('new_uploads/'. $fileName .'*.jpg')) as $image)
         {
             $imageName = pathinfo($image);
 
@@ -158,21 +157,29 @@ Route::get('/upload', function()
 
         foreach($infoLines as $line)
         {
-            $pieces = explode('=', $line);
+            if(strpos($line, '=') !== false)
+            {
+                $pieces = explode('=', $line);
+            }
+            elseif(strpos($line, ':') !== false)
+            {
+                $pieces = explode(':', $line);
+            }
 
-            $key = trim($pieces[0]);
-            $value = trim($pieces[1]);
+            try{
+                $key = trim($pieces[0]);
+                $value = trim($pieces[1]);
+            }catch(Exception $e){dd($e->getMessage(), $pieces);}
 
             $key = strtolower($key);
             $value = ucfirst(strtolower($value));
 
-            if($key == 'offer') $key = 'offer_price';
+            if(strpos($key, 'offer price') !== false) $key = 'offer_price';
 
             $product->setAttribute($key, $value);
         }
 
         $product->save();
-
 
         // Upload image
         $image = Image::create(array(
@@ -180,7 +187,7 @@ Route::get('/upload', function()
         ));
 
         $image->add(Version::generate(
-            URL::to('uploads/' . $imageName)
+            URL::to('new_uploads/' . $imageName)
         ));
 
         $product->replaceImage($image, 'main');

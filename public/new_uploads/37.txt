@@ -1,0 +1,8 @@
+Model = 37
+Brand = Louis Vuitton
+Color = Brown
+Price = 1450
+Offer Price = 500
+
+
+

@@ -1,0 +1,8 @@
+Model = 41
+Brand = Porsche 
+Color = Black
+Price = 1350
+Offer Price = 450
+
+
+

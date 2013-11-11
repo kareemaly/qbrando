@@ -1,0 +1,5 @@
+Model = 2
+Brand = Rayban 
+Color = Brown 
+Price = 700
+Offer Price = 400

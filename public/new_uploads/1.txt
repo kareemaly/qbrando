@@ -1,0 +1,5 @@
+Model = 1
+Brand = Police
+Color = Black 
+Price = 800
+Offer Price = 450

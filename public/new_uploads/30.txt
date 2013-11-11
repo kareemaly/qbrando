@@ -1,0 +1,8 @@
+Model = 30
+Brand = D&G
+Color = White
+Price = 1400
+Offer Price = 450
+ Gender = Female
+
+

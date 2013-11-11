@@ -1,0 +1,6 @@
+Model = 16
+Brand = Cartier 
+Color = Black  
+Price = 1550
+Offer Price = 550
+Gender : Female

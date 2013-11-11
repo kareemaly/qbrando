@@ -1,0 +1,6 @@
+Model = 20
+Brand = Cartier  
+Color = Brown
+Price = 1600
+Offer Price = 600
+Gender : Female

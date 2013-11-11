@@ -1,0 +1,7 @@
+Model = 32
+Brand = Rayban
+Color = Black Orange
+Price = 1100
+Offer Price = 400
+
+

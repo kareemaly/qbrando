@@ -1,0 +1,7 @@
+Model = 31
+Brand = louis Vuitton
+Color = Black 
+Price = 1400
+Offer Price = 500
+
+

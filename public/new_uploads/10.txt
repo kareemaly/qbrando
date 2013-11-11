@@ -1,0 +1,5 @@
+Model = 10
+Brand = Cartier 
+Color = Black
+Price = 1500
+Offer Price = 550
