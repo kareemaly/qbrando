@@ -105,7 +105,7 @@ Route::get('/add-offer', function()
 
 Route::get('/convert-images', function()
 {
-//    exit();
+    exit();
     foreach(Product::all() as $product)
     {
 //        dd($product->getImage('main')->getLargest()->url);
