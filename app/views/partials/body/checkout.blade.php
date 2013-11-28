@@ -79,3 +79,6 @@
         </form>
     </div>
 </div>
+
+@section('before_closing_head')
+@stop

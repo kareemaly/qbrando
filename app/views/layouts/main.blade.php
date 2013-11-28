@@ -27,6 +27,9 @@
         ga('send', 'pageview');
 
     </script>
+
+    {{ $template->render('head') }}
+
 </head>
 <body ng-controller="MainController">
 

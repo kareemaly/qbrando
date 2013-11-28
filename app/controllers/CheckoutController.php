@@ -37,6 +37,8 @@ class CheckoutController extends BaseController {
     public function index()
     {
         $this->layout->template->addPart('body', array('checkout'));
+
+        $this->layout->template->addPart('head', array('facebook_conversation_pixel'));
     }
 
     /**

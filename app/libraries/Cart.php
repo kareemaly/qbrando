@@ -4,6 +4,53 @@ use Illuminate\Support\Collection;
 
 class Cart extends Moltin\Cart\Facade {
 
+
+    public static function totalWithOffer()
+    {
+        $total = static::total();
+
+        $items = static::sortedContents();
+
+        $numberOfOfferItems = static::getNumberOfOfferItems();
+
+        foreach($items as $item)
+        {
+            for($j = 0; $j < $item->quantity; $j++)
+            {
+                $total -= $items[$j]->price;
+
+                $numberOfOfferItems--;
+
+                if($numberOfOfferItems == 0) break 2;
+            }
+        }
+
+        return $total;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getNumberOfOfferItems()
+    {
+        return (int)((static::totalItems() - 1) / 2);
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function sortedContents()
+    {
+        $contents = static::contents();
+
+        usort($contents, function( $a, $b )
+        {
+            return $a->price > $b->price;
+        });
+
+        return $contents;
+    }
+
     /**
      * @param Product $product
      * @param int $quantity
