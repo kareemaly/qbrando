@@ -45,7 +45,7 @@ class FreakOrderController extends FreakController {
 
         else
         {
-            $orders = $this->orders->get();
+            $orders = $this->orders->orderBy('created_at', 'DESC')->get();
         }
 
         return View::make('panel::orders.wow', compact('orders'));

@@ -14,7 +14,7 @@ class Order extends Kareem3dOrder{
      */
     public static function byDateRange($from, $to)
     {
-        return static::where('created_at', '>=', $from)->where('created_at', '<=', $to)->get();
+        return static::where('created_at', '>=', $from)->where('created_at', '<=', $to)->orderBy('created_at', 'DESC')->get();
     }
 
     /**
