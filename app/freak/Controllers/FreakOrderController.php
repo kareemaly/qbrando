@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\View;
 use Kareem3d\Controllers\FreakController;
-use Kareem3d\Ecommerce\Order;
 
 class FreakOrderController extends FreakController {
 
@@ -29,6 +28,44 @@ class FreakOrderController extends FreakController {
         $orders = $this->orders->get();
 
         return View::make('panel::orders.data', compact('orders'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWow()
+    {
+        if(Input::get('from_date') && Input::get('to_date'))
+        {
+            $from = date('Y-m-d H:i:s', strtotime(Input::get('from_date')));
+            $to   = date('Y-m-d H:i:s', strtotime(Input::get('to_date')));
+
+            $orders = $this->orders->byDateRange($from, $to);
+        }
+
+        else
+        {
+            $orders = $this->orders->get();
+        }
+
+        return View::make('panel::orders.wow', compact('orders'));
+    }
+
+    /**
+     * @return void
+     */
+    public function postWow()
+    {
+        $inputs = Input::all();
+
+        foreach($inputs as $input)
+        {
+            if(! $order = $this->orders->find($input['id'])) return false;
+
+            $order->status = $input['status'];
+
+            $order->save();
+        }
     }
 
     /**
