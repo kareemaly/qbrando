@@ -1,6 +1,9 @@
 @extends('freak::master.layout1')
 
 @section('content')
+
+<button onclick="window.location.href='{{ freakUrl('element/order/wow') }}'" class="btn btn-danger">Dos hna 3shan tshof esho8l elgded</button><Br /><br />
+
 <div class="row-fluid">
     <div class="span12 widget">
         <div class="widget-header">
