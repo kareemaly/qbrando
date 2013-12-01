@@ -6308,6 +6308,16 @@ a:hover {
     padding-right: 15px;
   }
 }
+@media (max-width: 992px) {
+  .special-title {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .special-box {
+    display: none;
+  }
+}
 .box {
   margin-bottom: 20px;
   border: 1px solid #EEE;
