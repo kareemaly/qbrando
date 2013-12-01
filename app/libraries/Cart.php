@@ -17,11 +17,14 @@ class Cart extends Moltin\Cart\Facade {
         {
             for($j = 0; $j < $item->quantity; $j++)
             {
-                $total -= $items[$j]->price;
+                if(isset($items[$j]))
+                {
+                    $total -= $items[$j]->price;
 
-                $numberOfOfferItems--;
+                    $numberOfOfferItems--;
 
-                if($numberOfOfferItems == 0) break 2;
+                    if($numberOfOfferItems == 0) break 2;
+                }
             }
         }
 
