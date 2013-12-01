@@ -55,6 +55,7 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
+    dd('asdfasf');
     $data = array(
         'errorTitle' => $exception->getMessage(),
         'errorDescription' => 'In file:' . $exception->getFile() . ', In line:'.$exception->getLine(),
@@ -71,6 +72,12 @@ App::error(function(Exception $exception, $code)
 App::error(function(ModelNotFoundException $e)
 {
     return Redirect::route('home');
+});
+
+
+App::missing(function($exception)
+{
+    return 'Sorry the page you are looking for not found. go to <a href="'.URL::to('').'">Qbrando home page</a>';
 });
 
 /*
