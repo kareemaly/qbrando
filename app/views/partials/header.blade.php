@@ -16,7 +16,7 @@
         <div class="cart-img"></div>
         <div class="cart-info">
             <a href="{{ URL::route('shopping-cart') }}">
-                <span>{{ Cart::totalWithOffer() }} Shopping Cart: </span>
+                <span>Shopping Cart: </span>
             </a><strong ng-bind="cart.total()" ng-show="cart.isReady()"></strong> <strong>items</strong>
         </div>
     </div>
