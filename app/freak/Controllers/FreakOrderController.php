@@ -100,6 +100,6 @@ class FreakOrderController extends FreakController {
     {
         $this->orders->find($id)->delete();
 
-        return $this->redirectBack('Order deleted successfully.');
+        return Redirect::to(freakUrl('element/order/'))->with('success', 'Order deleted successfully');
     }
 }
