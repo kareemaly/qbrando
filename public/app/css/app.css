@@ -5911,6 +5911,9 @@ td.visible-print {
 .ng-cloak {
   display: none !important;
 }
+.modal {
+  z-index: 1000;
+}
 body {
   background: url('../img/bg-main.jpg') repeat-x #f7f7f7;
 }
