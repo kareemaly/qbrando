@@ -5912,7 +5912,7 @@ td.visible-print {
   display: none !important;
 }
 .modal {
-  z-index: 1000;
+  z-index: 1000000;
 }
 body {
   background: url('../img/bg-main.jpg') repeat-x #f7f7f7;
