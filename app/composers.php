@@ -2,7 +2,7 @@
 
 use Illuminate\Support\MessageBag;
 
-try{ View::share('categories', App::make('Category')->all()); }catch(Exception $e){}
+try{ View::share('categories', App::make('Category')->getNotEmpty()); }catch(Exception $e){}
 
 View::share('success', new MessageBag((array) Session::get('success', array())));
 

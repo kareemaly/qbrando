@@ -56,7 +56,7 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 App::error(function(Exception $exception, $code)
 {
     $data = array(
-        'errorTitle' => $exception->getMessage(),
+        'errorTitle' => get_class($exception) . ' <br />' . $exception->getMessage(),
         'errorDescription' => 'In file:' . $exception->getFile() . ', In line:'.$exception->getLine(),
         'errorPage' => Request::url()
     );
