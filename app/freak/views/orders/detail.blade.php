@@ -25,17 +25,28 @@
                     <th>Products</th>
                     <td>
                         @foreach($order->products as $product)
-                        <strong>{{ $product->pivot->qty }}</strong>&nbsp&nbsp&nbsp of &nbsp&nbsp&nbsp
+                        <strong>{{ $product->pivot->qty }}</strong>&nbsp&nbsp&nbsp * &nbsp&nbsp&nbsp
                         <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->title }}</a><br/>
                         @endforeach
                     </td>
                 </tr>
 
                 <tr>
-                    <th>Total price</th>
-                    <td><strong>{{ $total }} Q.R</strong></td>
+                    <th>Price after offer</th>
+                    <td><strong>{{ $order->getOfferPrice() }} Q.R</strong></td>
                 </tr>
-
+                <tr>
+                    <th>Actual total price</th>
+                    <td><strong style="text-decoration: line-through">{{ $order->getTotal() }} Q.R</strong></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped table-detail-view">
+                <thead>
+                <tr>
+                    <th colspan="2"><li class="icol-doc-text-image"></li> User information</th>
+                </tr>
+                </thead>
                 <tr>
                     <th>User name</th>
                     <td>{{ $user->name }}</td>

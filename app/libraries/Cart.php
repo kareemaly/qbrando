@@ -33,7 +33,7 @@ class Cart extends Moltin\Cart\Facade {
      */
     public static function getNumberOfOfferItems()
     {
-        return (int)((static::totalItems() - 1) / 2);
+        return (int)(static::totalItems() / 3);
     }
 
     /**

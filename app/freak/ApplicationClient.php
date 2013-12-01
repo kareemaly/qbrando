@@ -47,7 +47,8 @@ class ApplicationClient extends Client {
             $element->setMenuItem(Item::make(
                 $element->getName(), $element->getUri(), Icon::make('icon-archive')
             )->addChildren(array(
-                    Item::make('Display all ' . Str::plural($element->getName()), $element->getUri(), Icon::make('icol-inbox'))
+                    Item::make('Display all ' . Str::plural($element->getName()), $element->getUri(), Icon::make('icol-inbox')),
+                    Item::make('New design ' . Str::plural($element->getName()), $element->getUri('wow'), Icon::make('icol-award-star-gold'))
                 )));
         });
     }

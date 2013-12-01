@@ -27,7 +27,7 @@ class FreakOrderController extends FreakController {
     {
         $orders = $this->orders->orderBy('created_at', 'DESC')->get();
 
-        return View::make('panel::orders.data', compact('orders'));
+        return View::make('panel::orders.new_data', compact('orders'));
     }
 
     /**

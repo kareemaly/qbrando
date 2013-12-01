@@ -118,27 +118,29 @@ Showing orders from : <b>{{ date('F j, Y, g:i a', strtotime(Input::get('from_dat
                 Order id {{ $order->id }}
             </header>
 
-            <div class="row">
-                <span class="key">Products:</span>
+            <div class="li-body" onclick="window.open('{{ freakUrl($element->getUri('show/'.$order->id)) }}','_blank');">
+                <div class="row">
+                    <span class="key">Products:</span>
 
-                <span class="value">
-                @foreach($order->products as $product)
-                <a href="{{ freakUrl('element/product/show/' . $product->id) }}">{{ $product->title }}</a> ||||
-                @endforeach
-                </span>
-            </div>
+                    <span class="value">
+                    @foreach($order->products as $product)
+                    {{ $product->title }} ||||
+                    @endforeach
+                    </span>
+                </div>
 
-            @if($userInfo = $order->userInfo)
-            <div class="row">
-                <span class="key">User name:</span>
-                <span class="value">{{ $userInfo->name }}</span>
-            </div>
+                @if($userInfo = $order->userInfo)
+                <div class="row">
+                    <span class="key">User name:</span>
+                    <span class="value">{{ $userInfo->name }}</span>
+                </div>
 
-            <div class="row">
-                <span class="key">User mobile:</span>
-                <span class="value">{{ $userInfo->contact_number }}</span>
+                <div class="row">
+                    <span class="key">User mobile:</span>
+                    <span class="value">{{ $userInfo->contact_number }}</span>
+                </div>
+                @endif
             </div>
-            @endif
 
         </li>
 
@@ -207,6 +209,8 @@ Showing orders from : <b>{{ date('F j, Y, g:i a', strtotime(Input::get('from_dat
     .gridster ul {
         background:#222;
     }
+
+    .li-body:hover{background:#EEE;}
 
 </style>
 </body>
