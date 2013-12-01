@@ -1,5 +1,9 @@
 <div class="header">
-    <a href="{{ URL::route('home') }}"><div class="logo"></div></a>
+    <a href="{{ URL::route('home') }}">
+        <div class="logo">
+            <img src="{{ URL::asset('app/img/logo.png') }}" class="img-responsive"/>
+        </div>
+    </a>
 
     <div class="search">
         <form action="">

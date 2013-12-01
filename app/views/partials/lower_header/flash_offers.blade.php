@@ -1,7 +1,11 @@
-<div id="flashContent">
+<div id="flashContent" class="large-devices-offers">
     <div id="altContent">
         @include('partials.lower_header.offers')
     </div>
+</div>
+
+<div class="small-devices-offers">
+    @include('partials.lower_header.offers')
 </div>
 
 <script src="{{ URL::asset('swfs/js/swfobject.js') }}" type="text/javascript"></script>
