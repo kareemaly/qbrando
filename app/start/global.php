@@ -55,7 +55,6 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-    dd('asdfasf');
     $data = array(
         'errorTitle' => $exception->getMessage(),
         'errorDescription' => 'In file:' . $exception->getFile() . ', In line:'.$exception->getLine(),
