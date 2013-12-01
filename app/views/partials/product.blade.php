@@ -16,7 +16,7 @@
             <span ng-bind="product.price | currency:currency" class="actual-price">{{ $product->actualPrice->format() }}</span>
         </div>
 
-        <h2 class="product-title"><a ng-bind="product.title" href="{{ URL::product($product) }}">{{ $product->title }}</a></h2>
+        <h2 class="product-title"><a href="{{ URL::product($product) }}" ng-bind="product.title">{{ $product->title }}</a></h2>
     </div>
 
     <div class="buttons">

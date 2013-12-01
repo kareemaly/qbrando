@@ -45,10 +45,14 @@ angular.module('qbrando.controllers', ['qbrando.services']).
 
     .controller('ProductController', ['$scope', '$element', 'Products', function ($scope, $element, Products) {
 
+        var elementTitle = $element.find('[ng-bind="product.title"]').html();
+
+        if(elementTitle) elementTitle = elementTitle.replace('<!--IE fix-->', '');
+
         // Set product scope
         $scope.product = {
             'id'   : $element.find('[ng-bind="product.id"]').val(),
-            'title': $element.find('[ng-bind="product.title"]').html(),
+            'title': elementTitle,
             'image': $element.find('[ng-bind="product.image"]').attr('src'),
             'price': $element.find('[ng-bind="product.price | currency:currency"]').html()
         };

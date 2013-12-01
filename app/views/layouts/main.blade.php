@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" ng-app="qbrando">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
 
@@ -16,6 +16,16 @@
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon"/>
 
     <script src="{{ URL::asset('app/lib/respond.min.js') }}"></script>
+
+    <!--[if lte IE 8]>
+    <script src="{{ URL::asset('app/lib/json/json2.js') }}"></script>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <script>
+        document.createElement('my-cart-btn');
+    </script>
+    <![endif]-->
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
