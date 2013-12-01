@@ -25,7 +25,7 @@ class FreakOrderController extends FreakController {
      */
     public function getIndex()
     {
-        $orders = $this->orders->get();
+        $orders = $this->orders->orderBy('created_at', 'DESC')->get();
 
         return View::make('panel::orders.data', compact('orders'));
     }

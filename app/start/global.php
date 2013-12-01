@@ -55,7 +55,16 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    $data = array(
+        'errorTitle' => $exception->getMessage(),
+        'errorDescription' => 'In file:' . $exception->getFile() . ', In line:'.$exception->getLine(),
+        'errorPage' => Request::url()
+    );
+
+    Mail::send('emails.error', $data, function($message)
+    {
+        $message->to('kareem3d.a@gmail.com', 'Kareem Mohamed')->subject('Error from arrabah');
+    });
 });
 
 
