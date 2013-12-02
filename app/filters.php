@@ -18,7 +18,10 @@ App::before(function($request)
 
     if(strpos(Request::url(), 'arrabah.net') !== false)
     {
-        return Redirect::to('http://www.qbrando.com/rayban/model-57-92.html');
+        header("HTTP/1.1 301 Moved Permanently");
+        header("Location: http://www.qbrando.com/" . Request::path());
+
+        return Redirect::to('http://www.qbrando.com/' . Request::path());
     }
 });
 
