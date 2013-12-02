@@ -18,7 +18,7 @@ App::before(function($request)
 
     if(strpos(Request::url(), 'arrabah.net') !== false)
     {
-        dd(Request::path());
+        return Redirect::to('http://www.qbrando.com/rayban/model-57-92.html');
     }
 });
 
