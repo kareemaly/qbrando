@@ -8,6 +8,7 @@ use Intervention\Image\Image as II;
 
 
 
+
 // Home
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
