@@ -17,7 +17,7 @@
             <table class="table table-striped table-detail-view">
                 <thead>
                 <tr>
-                    <th colspan="2"><li class="icol-doc-text-image"></li> Order information</th>
+                    <th colspan="2"><li class="icol-clipboard-text"></li> Order information</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,10 +30,11 @@
                         @endforeach
                     </td>
                 </tr>
-
                 <tr>
-                    <th>Price after offer</th>
-                    <td><strong>{{ $order->getOfferPrice() }} Q.R</strong></td>
+                    <th><span class="icol-medal-bronze-1"></span> Price after offer</th>
+                    <td>
+                        <strong>{{ $order->getOfferPrice() }} Q.R</strong>
+                    </td>
                 </tr>
                 <tr>
                     <th>Actual total price</th>

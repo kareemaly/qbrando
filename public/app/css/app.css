@@ -6389,6 +6389,9 @@ a:hover {
   height: 39px;
   display: inline-block;
 }
+.in-cart:hover {
+  text-decoration: underline;
+}
 .main-product {
   margin-left: -15px;
   margin-right: -15px;

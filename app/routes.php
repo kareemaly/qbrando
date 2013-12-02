@@ -67,7 +67,10 @@ foreach($routes as $route) $route->where('id', '[0-9]+')->where('category', '[^.
 
 
 
-
+Route::get('/whaat', function()
+{
+    throw new Exception('Testing mail');
+});
 
 
 

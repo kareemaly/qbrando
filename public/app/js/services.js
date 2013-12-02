@@ -183,6 +183,19 @@ angular.module('qbrando.services', []).
                 cart.save();
             },
 
+
+            'addOrGoToCart': function(product, quantity)
+            {
+                if(! cart.has(product))
+                {
+                    cart.add(product, quantity);
+                }
+                else
+                {
+                    window.location.href = '/shopping-cart.html';
+                }
+            },
+
             // Check if cart has product
             'has': function(product) {
 

@@ -15,11 +15,13 @@ class Order extends Kareem3dOrder{
     protected $currency = 'QAR';
 
     /**
-     * @return Collection
+     * @return \Illuminate\Support\Collection
      */
     public function getSortedProducts()
     {
-        return $this->products->sort(function($a, $b)
+        // Dont remove products()->get() .. It prevents cloning issues
+
+        return $this->products()->get()->sort(function($a, $b)
         {
             return $a->price > $b->price;
         });
@@ -53,25 +55,57 @@ class Order extends Kareem3dOrder{
      */
     public function getOfferPrice()
     {
-        $total = $this->getTotal();
+        $total = 0;
 
-        $items = $this->getSortedProducts();
+        $products = $this->getProductsAfterOffer();
 
-        $numberOfOfferItems = $this->getNumberOfOfferItems();
-
-        foreach($items as $item)
+        foreach($products as $product)
         {
-            for($j = 0; $j < $item->pivot->qty; $j++)
-            {
-                if($numberOfOfferItems <= 0) break 2;
-
-                $total -= $item->price->value();
-
-                $numberOfOfferItems--;
-            }
+            $total += $product->pivot->qty * $product->actualPrice->value();
         }
 
         return $total;
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getProductsAfterOffer()
+    {
+        $products = $this->getSortedProducts();
+
+        $numberOfOfferItems = $this->getNumberOfOfferItems();
+
+        for($i = 0; $i < count($products); $i++)
+        {
+            $qty = $products[$i]->pivot->qty;
+
+            for($j = 0; $j < $qty; $j++)
+            {
+                if($numberOfOfferItems <= 0) break 2;
+
+                $numberOfOfferItems--;
+
+                $products[$i]->pivot->qty --;
+
+                if($products[$i]->pivot->qty <= 0)
+                {
+                    $products->forget($i);
+
+                    break;
+                }
+            }
+        }
+
+        return $products;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasOffer()
+    {
+        return $this->getNumberOfOfferItems() > 0;
     }
 
     /**

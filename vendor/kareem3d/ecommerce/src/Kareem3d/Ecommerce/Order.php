@@ -25,7 +25,7 @@ class Order extends Model {
 
         foreach($this->products as $product)
         {
-            $total +=  ((int)$product->pivot->qty) * ((float)$product->price->value());
+            $total +=  ((int)$product->pivot->qty) * ((float)$product->actualPrice->value());
         }
 
         return $total;
@@ -40,7 +40,7 @@ class Order extends Model {
 
         foreach($this->products as $product)
         {
-            $total +=  ((int)$product->qty) * ((float)$product->price);
+            $total +=  ((int)$product->qty) * ((float)$product->price->value());
         }
 
         return $total;
