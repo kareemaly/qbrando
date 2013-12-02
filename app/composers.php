@@ -14,7 +14,7 @@ View::composer('partials.lower_header.offers', function( $view )
 
 View::composer('partials.sidebar.search', function( $view )
 {
-    $view->colors = App::make('Color')->get();
+    $view->colors = App::make('Color')->getNotEmpty();
 });
 
 View::composer('partials.sidebar.specials', function( $view )

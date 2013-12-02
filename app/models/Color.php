@@ -20,6 +20,23 @@ class Color extends Model {
     protected static $dontDuplicate = array('title');
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public static function getNotEmpty()
+    {
+        return static::whereIn('id', function( $query )
+        {
+            $query->from('products');
+
+            $query->distinct();
+
+            $query->select('color_id');
+
+            return $query;
+        })->get();
+    }
+
+    /**
      * @param $title
      * @return mixed
      */
