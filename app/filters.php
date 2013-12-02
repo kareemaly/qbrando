@@ -14,6 +14,12 @@
 App::before(function($request)
 {
     Cart::setFromLocal();
+
+
+    if(strpos(Request::url(), 'arrabah.net') !== false)
+    {
+        dd(Request::path());
+    }
 });
 
 
