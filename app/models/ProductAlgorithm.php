@@ -6,6 +6,45 @@ use Kareem3d\Eloquent\Model;
 
 class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
 
+    /**
+     * @param $keyword
+     * @return $this
+     */
+    public function searchByKeyword($keyword)
+    {
+        $pieces = explode(' ', $keyword);
+
+        $this->getQuery()
+            ->join('category_specs', 'category_specs.category_id', '=', 'products.category_id')
+            ->select(array('products.*'));
+
+        // First search for models
+        $this->getQuery()->where(function($query) use ($pieces)
+        {
+            foreach($pieces as $piece)
+            {
+                $model = str_replace('model', '', strtolower($piece));
+
+                if($model) $query->orWhere('product_specs.model', 'like', "%$model%");
+            }
+        });
+
+        // Now search for categories
+        $this->getQuery()->orWhere(function($query) use ($pieces)
+        {
+            foreach($pieces as $piece)
+            {
+                if($piece) $query->orWhere('category_specs.title', 'like', "%$piece%");
+            }
+        });
+
+        return $this;
+    }
+
+    /**
+     * @param Product $product
+     * @return $this
+     */
     public function related( Product $product )
     {
         return $this;

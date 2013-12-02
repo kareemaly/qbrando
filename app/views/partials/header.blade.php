@@ -6,8 +6,8 @@
     </a>
 
     <div class="search">
-        <form action="">
-            <input type="text" class="search-input" />
+        <form action="{{ URL::route('search') }}">
+            <input type="text" name="keyword" class="search-input" value="{{ Input::get('keyword') }}" />
             <input type="submit" class="search-submit" value=""/>
         </form>
     </div>

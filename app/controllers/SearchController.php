@@ -36,8 +36,11 @@ class SearchController extends BaseController
      */
     public function all()
     {
-        return Redirect::home();
-        return $this->layout->nest('content', 'pages.search');
+        $products = $this->productsAlgorithm->searchByKeyword( Input::get('keyword') )->paginate(self::PER_PAGE);
+
+        $productsTitle = 'Searching our products for: ' . Input::get('keyword');
+
+        $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
     }
 
     /**
