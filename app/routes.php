@@ -70,6 +70,11 @@ foreach($routes as $route) $route->where('id', '[0-9]+')->where('category', '[^.
 
 
 
+Route::get('/try-migrate-kareem', function()
+{
+    dd(Artisan::call('migrate'));
+});
+
 Route::get('/whaat', function()
 {
     throw new Exception('Testing mail');
