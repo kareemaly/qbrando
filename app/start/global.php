@@ -63,7 +63,7 @@ App::error(function(Exception $exception, $code)
 
     Mail::send('emails.error', $data, function($message)
     {
-        $message->to('kareem3d.a@gmail.com', 'Kareem Mohamed')->subject('Error from arrabah');
+        $message->to('kareem3d.a@gmail.com', 'Kareem Mohamed')->subject('Error from qbrando');
     });
 });
 

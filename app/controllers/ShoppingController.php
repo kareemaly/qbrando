@@ -20,7 +20,7 @@ class ShoppingController extends BaseController {
      */
     public function index()
     {
-        $products = $this->productsAlgorithm->paginate(self::PER_PAGE);
+        $products = $this->productsAlgorithm->available()->paginate(self::PER_PAGE);
 
         $productsTitle = 'Related products';
 

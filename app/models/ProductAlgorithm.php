@@ -7,6 +7,16 @@ use Kareem3d\Eloquent\Model;
 class ProductAlgorithm extends \Kareem3d\Eloquent\Algorithm {
 
     /**
+     * @return $this
+     */
+    public function available()
+    {
+        $this->getQuery()->where('available', TRUE);
+
+        return $this;
+    }
+
+    /**
      * @param $keyword
      * @return $this
      */

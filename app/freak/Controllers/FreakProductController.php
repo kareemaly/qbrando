@@ -51,6 +51,9 @@ class FreakProductController extends FreakController {
      */
     public function getIndex()
     {
+        Asset::addPlugin('datatables');
+        Asset::addPlugin('ibutton');
+
         $products = $this->products->get();
 
         return View::make('panel::products.data', compact('products'));
@@ -69,6 +72,44 @@ class FreakProductController extends FreakController {
         $this->setPackagesData($product);
 
         return View::make('panel::products.detail', compact('product', 'id'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function postAvailableMany()
+    {
+        $available = Input::get('Product.available');
+
+        foreach(Input::get('Product.available_ids', array()) as $productId)
+        {
+            if(in_array($productId, $available))
+            {
+                $this->products->find($productId)->update(array(
+                    'available' => true
+                ));
+            }
+            else
+            {
+                $this->products->find($productId)->update(array(
+                    'available' => false
+                ));
+            }
+        }
+
+        return Redirect::back()->with('success', 'Products availability updated successfully');
+    }
+
+    /**
+     * @param $id
+     */
+    public function postAvailableOne($id)
+    {
+        $this->products->find($id)->update(array(
+            'available' => Input::has('Product.available')
+        ));
+
+        return Redirect::back()->with('success', 'Product availability updated successfully');
     }
 
     /**

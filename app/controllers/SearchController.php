@@ -36,7 +36,7 @@ class SearchController extends BaseController
      */
     public function all()
     {
-        $products = $this->productsAlgorithm->searchByKeyword( Input::get('keyword') )->paginate(self::PER_PAGE);
+        $products = $this->productsAlgorithm->available()->searchByKeyword( Input::get('keyword') )->paginate(self::PER_PAGE);
 
         $productsTitle = 'Searching our products for: ' . Input::get('keyword');
 
@@ -65,7 +65,7 @@ class SearchController extends BaseController
 
         $productsTitle = $this->getProductsTitle( $category, $color );
 
-        $products = $this->productsAlgorithm->orderByDate()->paginate(12);
+        $products = $this->productsAlgorithm->available()->orderByDate()->paginate(12);
 
         $this->layout->template->addPart('body', array('products'), compact('products', 'productsTitle'));
     }

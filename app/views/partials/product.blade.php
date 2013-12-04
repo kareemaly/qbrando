@@ -19,9 +19,11 @@
         <h2 class="product-title"><a href="{{ URL::product($product) }}" ng-bind="product.title">{{ $product->title }}</a></h2>
     </div>
 
+    @if($product->isAvailable())
     <div class="buttons">
         <my-cart-btn product="{{ angular('product') }}"></my-cart-btn>
         <a class="my-btn details" href="{{ URL::product($product) }}">Details</a>
     </div>
+    @endif
 </div>
 @endif

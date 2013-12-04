@@ -27,6 +27,22 @@ class Product extends Kareem3dProduct implements SlugInterface {
     }
 
     /**
+     * @return bool
+     */
+    public function notAvailable()
+    {
+        return ! $this->isAvailable();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAvailable()
+    {
+        return (bool) $this->available;
+    }
+
+    /**
      * @return string
      */
     public function getSlug()

@@ -33,7 +33,7 @@ class CategoryController extends \BaseController {
     {
         $category = $this->categories->findOrFail($id);
 
-        $products = $this->productsAlgorithm->byCategory($category)->orderByDate()->paginate( self::PER_PAGE );
+        $products = $this->productsAlgorithm->available()->byCategory($category)->orderByDate()->paginate( self::PER_PAGE );
 
         $productsTitle = "Showing $category->title sunglasses ";
 

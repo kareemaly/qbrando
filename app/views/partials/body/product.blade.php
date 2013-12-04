@@ -27,6 +27,12 @@
             <div class="value">{{ $part->product->gender }}</div>
         </div>
 
+        @if($part->product->notAvailable())
+        <div class="row">
+            <div class="key" style="color:#F00; font-weight:bold; font-size:16px">NOT AVAILABLE FOR NOW</div>
+        </div>
+        @endif
+
         <div class="prices">
             @if($part->product->hasOfferPrice())
             <span class="before-price">{{ $part->product->beforePrice->format() }}</span>
@@ -35,8 +41,10 @@
         </div>
     </div>
 
+    @if($part->product->isAvailable())
     <div class="buttons">
         <my-cart-btn product="{{ angular('product') }}"></my-cart-btn>
         <a href="/place-order/{{ $part->product->id }}" class="my-btn details">Place order now</a>
     </div>
+    @endif
 </div>

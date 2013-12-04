@@ -20,7 +20,7 @@ class HomeController extends BaseController {
      */
     public function index()
     {
-        $products = $this->productsAlgorithm->orderByDate()->paginate( 12 );
+        $products = $this->productsAlgorithm->available()->orderByDate()->paginate( 12 );
 
         $productsTitle = 'Latest sunglasses';
 
