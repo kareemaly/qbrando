@@ -1,4 +1,5 @@
 @foreach($order->paypalPayments as $payment)
+@if($payment->hasReceived())
 <table class="table table-striped table-detail-view">
     <thead>
     <tr>
@@ -37,4 +38,5 @@
     </tr>
     </tbody>
 </table>
+@endif
 @endforeach
