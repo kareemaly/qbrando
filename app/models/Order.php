@@ -3,7 +3,7 @@
 use Kareem3d\Ecommerce\Order as Kareem3dOrder;
 use Kareem3d\Ecommerce\Price;
 
-class Order extends Kareem3dOrder{
+class Order extends Kareem3dOrder {
 
     const WAITING = 0;
     const DELIVERED = 1;
@@ -15,15 +15,23 @@ class Order extends Kareem3dOrder{
     protected $currency = 'QAR';
 
     /**
+     * @return mixed
+     */
+    public function isEmpty()
+    {
+        return $this->userInfo == null;
+    }
+
+    /**
      * @return \Illuminate\Support\Collection
      */
     public function getSortedProducts()
     {
         // Dont remove products()->get() .. It prevents cloning issues
 
-        return $this->products()->get()->sort(function($a, $b)
+        return $this->products()->get()->sortBy(function($a)
         {
-            return $a->price > $b->price;
+            return $a->actualPrice->value();
         });
     }
 
@@ -76,9 +84,9 @@ class Order extends Kareem3dOrder{
 
         $numberOfOfferItems = $this->getNumberOfOfferItems();
 
-        for($i = 0; $i < count($products); $i++)
+        foreach($products as $key => $product)
         {
-            $qty = $products[$i]->pivot->qty;
+            $qty = $product->pivot->qty;
 
             for($j = 0; $j < $qty; $j++)
             {
@@ -86,11 +94,11 @@ class Order extends Kareem3dOrder{
 
                 $numberOfOfferItems--;
 
-                $products[$i]->pivot->qty --;
+                $product->pivot->qty --;
 
-                if($products[$i]->pivot->qty <= 0)
+                if($product->pivot->qty <= 0)
                 {
-                    $products->forget($i);
+                    $products->forget($key);
 
                     break;
                 }
@@ -141,4 +149,19 @@ class Order extends Kareem3dOrder{
         return $this->status == self::NOT_DELIVERED;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function deliveryLocation()
+    {
+        return $this->belongsTo(Location::getClass(), 'location_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paypalPayments()
+    {
+        return $this->hasMany(PaypalPayment::getClass());
+    }
 }

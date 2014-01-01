@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Collection;
-
 class Cart extends Moltin\Cart\Facade {
 
-
+    /**
+     * @return mixed
+     */
     public static function totalWithOffer()
     {
         $total = static::total();

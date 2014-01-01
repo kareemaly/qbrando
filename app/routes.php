@@ -37,8 +37,61 @@ Route::get('/shopping-cart.html', array('as' => 'shopping-cart', 'uses' => 'Shop
 
 
 
-// Show checkout form
+/**
+ * Show checkout method along with the necessary information.
+ */
 Route::get('/checkout.html', array('as' => 'checkout', 'uses' => 'CheckoutController@index'));
+/**
+ * Will create new order and fill its information and decide whether to redirect to paypal or show success message
+ * depending on the payment method.
+ */
+Route::post('/checkout', array('as' => 'checkout.post', 'uses' => 'CheckoutController@postCreateOrder'));
+/**
+ * Checkout with paypal will create an empty order and redirect user to paypal.
+ * After he is back with success the empty order will be filled.
+ */
+Route::get('/checkout-with-paypal.html', array('as' => 'checkout.paypal', 'uses' => 'CheckoutController@checkoutWithPaypal'));
+/**
+ * Paypal has redirected back with success. Here we will ask the user to enter the rest of information we don't know from paypal (if any)
+ * and click on Pay now to confirm paypal paying and update order information.
+ */
+Route::get('/paypal-succeed.html', array('as' => 'paypal.succeed', 'uses' => 'CheckoutController@paypalBackSucceed'));
+/**
+ * Ask for rest of not entered information (if any) and ask him the payment method again.
+ */
+Route::get('/paypal-canceled.html', array('as' => 'paypal.canceled', 'uses' => 'CheckoutController@paypalBackCanceled'));
+/**
+ * Confirm paypal order and save rest of information to the specified order.
+ */
+Route::post('/fill-and-confirm-paypal-payment.html', array('as' => 'checkout.fill_and_confirm_paypal', 'uses' => 'CheckoutController@postFillAndConfirmPaypalPayment'));
+/**
+ * Confirm paypal order and save rest of information to the specified order.
+ */
+Route::post('/confirm-paypal-payment.html', array('as' => 'checkout.confirm_paypal', 'uses' => 'CheckoutController@postConfirmPaypalPayment'));
+
+
+/**
+ * Scenario1:
+     * checkout -> checkout.post(Payment=paypal) -> create full information order and redirect to paypal
+     * if(paypalback is success)
+     *      checkout.paypal_succeed -> checkout.paypal_confirm
+     * else
+     *      checkout.paypal_canceled -> checkout.post AND LOOP AGAIN
+ *
+ * Scenario2:
+     * checkout -> checkout.post(Payment=delivery) -> create full information order -> SUCCESS
+ *
+ * Scenario3:
+     * checkout.paypal -> create empty order and redirect to paypal
+     * if(paypalback is success)
+     *      checkout.paypal_succeed -> checkout.paypal_confirm
+     * else
+     *      checkout.paypal_canceled -> checkout.post AND LOOP AGAIN
+ */
+
+
+
+
 
 // Create order
 Route::post('/place-order', array('as' => 'place-order', 'uses' => 'CheckoutController@placeOrder'));
@@ -230,5 +283,24 @@ Route::get('/test', function()
 
 Route::get('/migrate', function()
 {
-    Artisan::call('wmigrate');
+//    Artisan::call('wmigrate');
+});
+
+
+Route::get('/seed-municipalities', function()
+{
+    if(Municipality::all()->count() > 0) return 'Already seeded';
+    $municipalities = 'al^doha al^rayyan al^khor al^wakrah al^shamal umm^salal al^daayen';
+
+    foreach(explode(' ', $municipalities) as $municipality)
+    {
+        if(strpos($municipality, '^') !== false)
+        {
+            $municipality = ucwords(str_replace('^', ' ', $municipality));
+        }
+
+        Municipality::create(array(
+            'name' => $municipality
+        ));
+    }
 });

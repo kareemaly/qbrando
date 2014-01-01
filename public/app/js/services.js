@@ -139,11 +139,7 @@ angular.module('qbrando.services', []).
 
         function compareByPrice(a,b) {
 
-            if(a.price < b.price) return -1;
-
-            if(a.price > b.price) return 1;
-
-            return 0;
+            return a.price - b.price;
         }
 
         // Everything is done locally but saved to server just before user leaves the page
@@ -246,6 +242,13 @@ angular.module('qbrando.services', []).
                     }
 
                     return total;
+                },
+
+                'totalInUSD': function(rate)
+                {
+                    var total = rate * cart.price.totalAfterOffer();
+
+                    return Math.round(total * 100) / 100;
                 },
 
                 'totalAfterOffer': function()

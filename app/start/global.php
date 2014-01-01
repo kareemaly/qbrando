@@ -53,7 +53,8 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 |
 */
 
-App::error(function(Exception $exception, $code)
+
+$sendMailWithException = function(Exception $exception, $code)
 {
     $data = array(
         'errorTitle' => get_class($exception) . ' <br />' . $exception->getMessage(),
@@ -65,14 +66,28 @@ App::error(function(Exception $exception, $code)
     {
         $message->to('kareem3d.a@gmail.com', 'Kareem Mohamed')->subject('Error from qbrando');
     });
+};
+
+App::error($sendMailWithException);
+
+
+App::error(function(PaypalException $e, $code) use($sendMailWithException)
+{
+    call_user_func_array($sendMailWithException, array($e, $code));
+
+    return Redirect::route('message-to-user')
+        ->with('title', 'Something went wrong while trying to pay with Paypal')
+
+        ->with('message', 'Please try again. If this error occurred again try to choose pay on delivery.');
 });
+
+
 
 
 App::error(function(ModelNotFoundException $e)
 {
     return Redirect::route('home');
 });
-
 
 App::missing(function($exception)
 {
@@ -92,7 +107,7 @@ App::missing(function($exception)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::make("Site is being updated, We will be right back in 10 minutes.", 503);
 });
 
 /*

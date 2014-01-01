@@ -89,8 +89,6 @@ class Order extends Model {
     public function setUserInfo( UserInfo $userInfo )
     {
         $this->userInfo()->associate($userInfo);
-
-        if(! $this->exists) $this->save();
     }
 
     /**

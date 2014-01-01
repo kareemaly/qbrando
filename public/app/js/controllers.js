@@ -96,6 +96,7 @@ angular.module('qbrando.controllers', ['qbrando.services']).
 
     .controller('CheckoutController', ['$scope', function ($scope) {
 
+        $scope.payment = {method: 'paypal'};
     }])
 
 

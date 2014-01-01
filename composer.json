@@ -31,7 +31,9 @@
 
         "moltin/laravel-cart": "dev-master",
 
-        "facebook/php-sdk": "dev-master"
+        "facebook/php-sdk": "dev-master",
+
+        "paypal/merchant-sdk-php":"v3.6.106"
 	},
 	"autoload": {
 		"classmap": [

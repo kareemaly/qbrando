@@ -1,6 +1,7 @@
 @extends('freak::master.layout1')
 
 @section('content')
+@if($order = $payment->order)
 <div class="row-fluid">
     <div class="span12 widget">
         <div class="widget-header">
@@ -19,4 +20,5 @@
         </div>
     </div>
 </div>
+@endif
 @stop

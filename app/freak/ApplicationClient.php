@@ -18,6 +18,7 @@ class ApplicationClient extends Client {
             Element::withDefaults('product', new Product()),
             Element::withDefaults('category', new Category()),
             Element::withDefaults('order', new Order()),
+            Element::withDefaults('payment', new Order()),
         );
     }
 
@@ -40,6 +41,18 @@ class ApplicationClient extends Client {
         $freak->modifyElement('category', function(Element $element)
         {
             $element->setController('FreakCategoryController');
+        });
+
+        $freak->modifyElement('payment', function(Element $element)
+        {
+            $element->setController('FreakPaypalPaymentController');
+
+            $element->setMenuItem(Item::make(
+                $element->getName(), $element->getUri(), Icon::make('icon-archive')
+            )->addChildren(array(
+                    Item::make('Display all paypal payments', $element->getUri(), Icon::make('icol-inbox')),
+//                    Item::make('New design ' . Str::plural($element->getName()), $element->getUri('wow'), Icon::make('icol-award-star-gold'))
+                )));
         });
 
         $freak->modifyElement('order', function(Element $element)

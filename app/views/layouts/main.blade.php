@@ -108,5 +108,9 @@
 <script src="{{ URL::asset('app/js/filters.js') }}"></script>
 <script src="{{ URL::asset('app/js/directives.js') }}"></script>
 
+
+
+{{ $template->render('scripts') }}
+
 </body>
 </html>

@@ -24,6 +24,15 @@ small{color:#999;}
 .secondary-btn{background:url('../img/secondary_gradient.gif'); background:#333; color:@secondary-color-font-bright; margin-bottom:5px;}
 .secondary-btn:hover{color:@secondary-color-font-bright; background:#666;}
 
+.confirm-btn{background:#d30d82; color:#FFF; border:0px; border-radius: 3px; padding:6px 13px 6px 10px;
+            font-size:14px; margin-top:20px;
+            img{position: relative; bottom:2px;}}
+.confirm-btn:hover{background:#f0068f}
+
+.paypal-btn{background:#FEDC9A; border:1px solid #FFA926; color:#003366; font-weight: bold;
+  font-family: Verdana; span{color:#336699}}
+.paypal-btn:hover{ background:#fadca3; color:#336699; span{color:#003366} font-weight: bold;}
+
 a{color:@primary-color-font}
 a:hover{color:@primary-color-font}
 
@@ -326,11 +335,57 @@ a:hover{color:@primary-color-font}
     strong{ font-size:20px; color:@primary-color-bright; font-weight: normal;}
     .before-price{font-size:16px; text-decoration: line-through; color:#333;}
   }
-  .text-right{margin-bottom:10px;}
+  .text-right{margin-bottom:10px;
+
+    div, a{float:right; margin-left:10px;}
+
+    .or-separator{margin-top:5px; font-weight: bold;}
+  }
 }
 
 .checkout{
-  .before-price{font-size:12px; color:#666; text-decoration: line-through;}
+
+  @checkout-primary-color: #860551;
+
+
+  .main-title{color:#333; font-size:13px; padding:10px 10px; background:#EEE; border-bottom:0px; position: relative; top:1px;}
+
+  .box{margin-bottom:0px; background:#FAFAFA; border:1px solid #DDD}
+
+  .main-extra-bright-title{background:#EEE; display: block; border:0px; border-left:10px solid @checkout-primary-color; border-right:1px solid @checkout-primary-color;}
+  .main-extra-bright-title:hover{text-decoration: none;}
+
+  .box-body{margin-top:10px;}
+
+  .radio-group{
+    margin-top:10px;
+    label{float:left;
+      span{ font-size:11px; font-family: Arial, Verdana;}
+    }
+    input{float:left; margin:0px 10px;}
+  }
+
+  .submit-box{
+    .before-price{font-size:12px; color:#666; text-decoration: line-through;}
+
+    padding:10px;
+  }
+
+  .paypal-advantages{font-size:12px; color:#4c950c;}
+
+  .btn{float:right; margin-right:20px;}
+}
+
+
+.key-value-pair{
+  .title{padding:10px 10px; margin:20px 0px; background:#EEE; a{color:#333; font-weight:bold;}}
+  .row{margin:10px 30px;}
+  .key{float:left; margin-right:5px; font-weight: bold; font-size:12px;}
+  .value{float:left;
+    ul{list-style: none;
+      li{margin-bottom:5px;}
+    }
+  }
 }
 
 

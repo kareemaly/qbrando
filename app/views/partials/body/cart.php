@@ -18,8 +18,13 @@
         <div ng-switch-default><Br/>
 
             <div class="text-right">
-                <a href="<?php echo URL::route('home'); ?>" class="btn secondary-btn">Continue shopping</a>
                 <a href="<?php echo URL::route('checkout'); ?>" class="btn secondary-btn checkout-btn">Checkout <span class="glyphicon glyphicon-arrow-right"></span></a>
+
+<!--                <div class="or-separator">OR</div>-->
+<!---->
+<!--                <a href="--><?php //echo URL::route('checkout.paypal') ?><!--">-->
+<!--                    <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif">-->
+<!--                </a>-->
             </div>
 
 
@@ -67,9 +72,16 @@
             <hr />
 
             <div class="text-right">
-                <a href="<?php echo URL::route('home'); ?>" class="btn secondary-btn">Continue shopping</a>
                 <a href="<?php echo URL::route('checkout'); ?>" class="btn secondary-btn checkout-btn">Checkout <span class="glyphicon glyphicon-arrow-right"></span></a>
+
+<!--                <div class="or-separator">OR</div>-->
+<!---->
+<!--                <a href="--><?php //echo URL::route('checkout.paypal') ?><!--">-->
+<!--                    <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif">-->
+<!--                </a>-->
             </div>
+
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>

@@ -19,5 +19,5 @@ View::composer('partials.sidebar.search', function( $view )
 
 View::composer('partials.sidebar.specials', function( $view )
 {
-    $view->special = App::make('ProductAlgorithm')->specials()->first();
+    $view->special = App::make('ProductAlgorithm')->specials()->available()->first();
 });
