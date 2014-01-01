@@ -38,5 +38,26 @@
     </tr>
     </tbody>
 </table>
+@else
+<table class="table table-striped table-detail-view">
+    <thead>
+    <tr>
+        <th colspan="2"><li class="icol-money-euro"></li> Paypal Payment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Payment status</th>
+
+        @if($payment->hasReceived())
+        <td><span class="label label-success">RECEIVED</span></td>
+        @elseif($payment->isAwaiting())
+        <td><span class="label label-warning">AWAITING</span></td>
+        @else
+        <td><span class="label label-important">CANCELED</span></td>
+        @endif
+    </tr>
+    </tbody>
+</table>
 @endif
 @endforeach
