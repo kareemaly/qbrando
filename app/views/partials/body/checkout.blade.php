@@ -59,10 +59,10 @@
                     <div class="clearfix"></div>
 
                     <div class="paypal-advantages" ng-show="payment.method == 'paypal'">
-                        <ol>
-                            <li>Get a free gift costs QAR 100 for 1 item and costs QAR 200 or above for more.</li>
-                            <li>Faster delivery.</li>
-                        </ol>
+                        <ul>
+                            <li>Get a <strong>FREE</strong> gift costs QAR 100 for 1 item and costs QAR 200 or above for more.</li>
+<!--                            <li>Faster delivery.</li>-->
+                        </ul>
                     </div>
 
                     <div class="clearfix"></div>
