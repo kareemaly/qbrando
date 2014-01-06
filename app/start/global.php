@@ -58,7 +58,7 @@ $sendMailWithException = function(Exception $exception, $code)
 {
     $inputsMessage = '';
 
-    foreach(Input::all() as $key => $value) $inputsMessage .= $key .'=' . $value.'<br />';
+    foreach(Input::all() as $key => $value) $inputsMessage .= $key .'=' . $value . '<br />';
 
     $data = array(
         'errorTitle' => get_class($exception) . ' <br />' . $exception->getMessage(),
