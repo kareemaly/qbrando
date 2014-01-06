@@ -59,7 +59,7 @@ $sendMailWithException = function(Exception $exception, $code)
     $data = array(
         'errorTitle' => get_class($exception) . ' <br />' . $exception->getMessage(),
         'errorDescription' => 'In file:' . $exception->getFile() . ', In line:'.$exception->getLine() . '',
-        'errorPage' => Request::url() . ' : ' . Request::getMethod() . ' : ' . implode(',', Input::all())
+        'errorPage' => Request::url() . ' : ' . Request::getMethod() . '<br /><br />INPUTS ARE: ' . print_r(Input::all())
      );
 
     Mail::send('emails.error', $data, function($message)
