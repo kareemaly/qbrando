@@ -9,6 +9,8 @@
 <div>
     {{ $errorDescription }}
 
+    <br /><br />
+
     {{ $errorPage }}
 </div>
 </body>
