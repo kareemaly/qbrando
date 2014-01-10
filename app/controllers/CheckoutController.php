@@ -640,8 +640,15 @@ class CheckoutController extends BaseController {
      */
     protected function conversionRate($from, $to)
     {
-        $object = json_decode(file_get_contents('http://rate-exchange.appspot.com/currency?from='.$from.'&to='.$to));
+        try{
+            $object = json_decode(file_get_contents('http://rate-exchange.appspot.com/currency?from='.$from.'&to='.$to));
 
-        return $object->rate;
+            return $object->rate;
+        }catch(Exception $e){
+
+            // Return default rate
+            return 0.27463500000000002;
+        }
+
     }
 }
