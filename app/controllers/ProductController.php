@@ -31,7 +31,7 @@ class ProductController extends BaseController {
     {
         $product = $this->products->findOrFail($id);
 
-        $products = $this->productsAlgorithm->related( $product )->paginate(self::PER_PAGE);
+        $products = $this->productsAlgorithm->related( $product )->available()->paginate(self::PER_PAGE);
 
         $productsTitle = 'Related sunglasses';
 
