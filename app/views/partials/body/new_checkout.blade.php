@@ -42,9 +42,11 @@
 
 <div style="height:20px;"></div>
 
-<div class="checkout" ng-cloak>
+<div class="checkout">
     <form name="checkoutForm" id="checkoutForm" role="form" action="{{ URL::route('checkout.post') }}" method="POST" ng-controller="CheckoutController">
-        <div>
+
+        <div ng-hide="order" style="text-align: center; color:#666;">Please wait...</div>
+        <div ng-cloak>
             <div class="step-titles">
                 <div class="step-title" ng-class="{'active': isCurrentStep($index)}" ng-click="scrollTo($index)" ng-repeat="step in steps">
                     <h4>Step{{ angular('$index + 1') }}</h4>
@@ -145,13 +147,13 @@
                     You will be redirected to Paypal to pay an equivalent amount: <strong>USD <span ng-bind="cart.price.totalInUSD({{ $part->conversionRate }})"></span></strong>
                 </p>
             </div>
-        </div>
-        <div class="navigation">
-            <button type="submit" class="btn submit-btn" ng-show="isLastStep()">
-                Submit
-                <span class="glyphicon glyphicon-arrow-right"></span></button>
-            <button type="button" ng-click="stepNext()" class="btn" ng-hide="isLastStep()">Next</button>
-            <button type="button" ng-click="stepBack()" class="btn" ng-class="{disabled: isFirstStep()}">Back</button>
+            <div class="navigation">
+                <button type="submit" class="btn submit-btn" ng-show="isLastStep()">
+                    Submit
+                    <span class="glyphicon glyphicon-arrow-right"></span></button>
+                <button type="button" ng-click="stepNext()" class="btn" ng-hide="isLastStep()">Next</button>
+                <button type="button" ng-click="stepBack()" class="btn" ng-class="{disabled: isFirstStep()}">Back</button>
+            </div>
         </div>
     </form>
 
