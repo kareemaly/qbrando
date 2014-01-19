@@ -283,7 +283,7 @@ class CheckoutController extends BaseController {
         $paypalPayment->canceled();
         $paypalPayment->save();
 
-        return $this->index();
+        return Redirect::route('checkout');
     }
 
     /**
@@ -299,7 +299,7 @@ class CheckoutController extends BaseController {
         Cart::addProduct($product);
 
         // Show the checkout page
-        return $this->index();
+        return Redirect::route('checkout');
     }
 
     /**
