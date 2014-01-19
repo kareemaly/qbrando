@@ -289,4 +289,136 @@ angular.module('qbrando.services', []).
 
 
         return cart;
-    }]);
+    }])
+
+
+    .factory('Stepify', function() {
+
+        var steps, currentStepIndex, stepClass, form,
+            required = [], __idPrefix = 'stepify', validatedStepIndex = -1;
+
+        return {
+            start: function(_steps, _class, _form) {
+                steps = _steps;
+                stepClass = _class;
+                form = _form;
+
+                this.setIds();
+                this.hideAll();
+                this.scrollTo(0, false);
+            },
+
+            getElementsSelector: function() {
+                return $("." + stepClass);
+            },
+
+            getElementSelector: function(index) {
+                return $("#" + __idPrefix + index);
+            },
+
+            setIds: function() {
+                var i =0;
+                this.getElementsSelector().each(function() {
+
+                    $(this).attr('id', __idPrefix + (i ++));
+                });
+            },
+
+            hideAll: function() {
+                // Hide all steps first
+                this.getElementsSelector().hide();
+            },
+
+            stepNext: function() {
+                // Do nothing if it's the last step
+                if(currentStepIndex == steps.length - 1) return;
+
+                this.scrollTo(currentStepIndex + 1, true);
+            },
+
+            stepBack: function() {
+                // Do nothing if it's the first step
+                if(currentStepIndex == 0) return;
+
+                this.scrollTo(currentStepIndex - 1, true);
+            },
+
+            isLastStep: function() {
+                return currentStepIndex == steps.length - 1;
+            },
+
+            isFirstStep: function() {
+                return currentStepIndex == 0;
+            },
+
+            isCurrentStep: function(index) {
+                return index == currentStepIndex;
+            },
+
+            scrollTo: function(index, validate) {
+
+                // If it's a previous step
+                // OR
+                // If it's not the current step and is valid and it's index is less than or
+                // equal to the validated step + 1
+                if((index < currentStepIndex)
+                    ||
+                    ((index != currentStepIndex)
+                    &&
+                    (!validate || this.validate(currentStepIndex))
+                    &&
+                    (index <= validatedStepIndex + 1)))
+                {
+
+                    currentStepIndex = index;
+
+                    this.getElementsSelector().slideUp('slow');
+                    this.getElementSelector(index).slideDown('slow');
+                }
+            },
+
+            validate: function(index) {
+
+                var required = this.calculateRequired(index);
+
+                $("[required]").removeClass('required-input');
+
+                // Style the border of all required
+                for(var i = 0; i < required.length; i ++) {
+
+                    $("[name='" + required[i] + "']").addClass('required-input');
+                }
+
+                // If is valid then set the validated step index to this.
+                if(required.length == 0) {
+
+                    validatedStepIndex = index > validatedStepIndex ? index : validatedStepIndex;
+                    return true;
+                }
+                else
+                {
+                    validatedStepIndex = index - 1;
+                    return false;
+                }
+
+            },
+
+            calculateRequired: function(index) {
+
+                var required = [], inputName;
+
+                for(var j = 0; j < form.$error.required.length; j++) {
+
+                    inputName = form.$error.required[j].$name;
+
+                    if(this.getElementSelector(index).find("[name='" +inputName + "']").length > 0) {
+
+                        required.push(inputName);
+                    }
+                }
+
+                return required;
+            }
+        }
+
+    });

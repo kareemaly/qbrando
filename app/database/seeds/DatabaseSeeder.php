@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
 //        $this->call('EcommerceSeeder');
 //
 //        $this->call('UserTableSeeder');
-
-        $this->call('ControlPanelSeeder');
-
-        $this->call('ImageSeeder');
+//
+//        $this->call('ControlPanelSeeder');
+//
+//        $this->call('ImageSeeder');
     }
 }

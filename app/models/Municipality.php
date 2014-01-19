@@ -33,4 +33,12 @@ class Municipality extends \Kareem3d\Eloquent\Model {
         return $this->hasMany(DeliveryLocation::getClass());
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::getClass());
+    }
+
 }

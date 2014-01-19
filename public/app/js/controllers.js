@@ -94,9 +94,37 @@ angular.module('qbrando.controllers', ['qbrando.services']).
     }])
 
 
-    .controller('CheckoutController', ['$scope', function ($scope) {
+    .controller('CheckoutController', ['$scope', 'Stepify', function ($scope, Stepify) {
 
-        $scope.payment = {method: 'paypal'};
+        $scope.order   = {
+            contact: {},
+            payment: {method: 'paypal'}
+        };
+
+        $scope.steps = ['Contact Information', 'Shipping Address', 'Payment Method'];
+
+        $scope.defaultCity = function() {
+            $scope.city = $scope.country[0];
+        }
+
+        $scope.$watch('country', function(country) {
+
+            console.log(country);
+        });
+
+        // Start stepify when the checkout form is ready
+        $scope.$watch('checkoutForm', function(checkoutForm) {
+
+            Stepify.start($scope.steps, 'step', checkoutForm);
+        });
+
+        $scope.isCurrentStep = function(i) { return Stepify.isCurrentStep(i); }
+        $scope.scrollTo      = function(i) { return Stepify.scrollTo(i, true); }
+        $scope.stepNext      = function()  { return Stepify.stepNext(); }
+        $scope.stepBack      = function()  { return Stepify.stepBack(); }
+        $scope.isFirstStep   = function()  { return Stepify.isFirstStep(); }
+        $scope.isLastStep    = function()  { return Stepify.isLastStep(); }
+
     }])
 
 

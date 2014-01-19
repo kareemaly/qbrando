@@ -35,8 +35,6 @@ Route::get('/search.html', array('as' => 'search', 'uses' => 'SearchController@a
 Route::get('/shopping-cart.html', array('as' => 'shopping-cart', 'uses' => 'ShoppingController@index'));
 
 
-
-
 /**
  * Show checkout method along with the necessary information.
  */
@@ -88,8 +86,6 @@ Route::post('/confirm-paypal-payment.html', array('as' => 'checkout.confirm_payp
      * else
      *      checkout.paypal_canceled -> checkout.post AND LOOP AGAIN
  */
-
-
 
 
 

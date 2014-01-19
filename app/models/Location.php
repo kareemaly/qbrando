@@ -11,8 +11,7 @@ class Location extends \Kareem3d\Eloquent\Model {
      * @var array
      */
     protected $rules = array(
-        'latitude' => 'required|numeric',
-        'longitude' => 'required|numeric',
+        'address1' => 'required',
         'municipality_id' => 'required|exists:municipalities,id',
     );
 

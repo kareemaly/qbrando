@@ -31,9 +31,9 @@ class CheckoutController extends BaseController {
     protected $products;
 
     /**
-     * @var Municipality
+     * @var Country
      */
-    protected $municipalities;
+    protected $countries;
 
     /**
      * @var Location
@@ -59,19 +59,19 @@ class CheckoutController extends BaseController {
      * @param Product $products
      * @param Order $orders
      * @param UserInfo $userInfo
-     * @param Municipality $municipalities
+     * @param Country $countries
      * @param Location $locations
      * @param PaypalPayment $paypalPayments
      * @param PriceAmount $amounts
      */
     public function __construct(Product $products, Order $orders, UserInfo $userInfo,
-                                Municipality $municipalities, Location $locations, PaypalPayment $paypalPayments,
+                                Country $countries, Location $locations, PaypalPayment $paypalPayments,
                                 PriceAmount $amounts)
     {
         $this->orders = $orders;
         $this->userInfo = $userInfo;
         $this->products = $products;
-        $this->municipalities = $municipalities;
+        $this->countries = $countries;
         $this->locations = $locations;
         $this->paypalPayments = $paypalPayments;
         $this->amounts = $amounts;
@@ -87,12 +87,11 @@ class CheckoutController extends BaseController {
             return Redirect::route('shopping-cart');
         }
 
-        $municipalities = $this->municipalities->all();
+        $jsObject = $this->countries->jsObject();
 
         $conversionRate = $this->conversionRate('QAR', 'USD');
 
-        $this->layout->template->addPart('body', array('checkout'), compact('municipalities', 'conversionRate'));
-        $this->layout->template->addPart('scripts', array('map_scripts'));
+        $this->layout->template->addPart('body', array('new_checkout'), compact('jsObject', 'conversionRate'));
 
 //        $this->layout->template->addPart('head', array('facebook_conversation_pixel'));
     }
@@ -253,9 +252,9 @@ class CheckoutController extends BaseController {
         $paypalPayment->grossAmount()->associate($grossAmount);
         $paypalPayment->save();
 
-        $municipalities = $this->municipalities->all();
+        $countries = $this->countries->all();
 
-        $data = compact('municipalities', 'paypal', 'order', 'token');
+        $data = compact('countries', 'paypal', 'order', 'token');
 
         if($order->isEmpty())
         {
@@ -276,7 +275,7 @@ class CheckoutController extends BaseController {
      *
      * @return mixed
      */
-    public function paypalCanceled()
+    public function paypalBackCanceled()
     {
         $token = Input::get('token');
 
@@ -360,11 +359,9 @@ class CheckoutController extends BaseController {
         {
             // Save delivery and user information
             $userInfo->save() && $deliveryLocation->save();
-
-            return array($userInfo, $deliveryLocation);
         }
 
-        return array();
+        return array($userInfo, $deliveryLocation);
     }
 
     /**

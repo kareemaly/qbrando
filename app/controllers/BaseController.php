@@ -42,7 +42,7 @@ class BaseController extends Controller {
      */
     protected function redirectBackWithErrors()
     {
-        return Redirect::back()->with($this->errors);
+        return Redirect::back()->withErrors($this->errors);
     }
 
 	/**

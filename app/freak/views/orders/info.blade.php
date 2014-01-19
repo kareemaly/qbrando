@@ -67,56 +67,60 @@
     </tr>
     </thead>
     <tr>
-        <th>Municipality</th>
+        <th>Country</th>
+        <td>{{ $deliveryLocation->municipality->country }}</td>
+    </tr>
+    <tr>
+        <th>City</th>
         <td>{{ $deliveryLocation->municipality }}</td>
     </tr>
     <tr>
-        <th>Extra information</th>
-        <td>{{ $deliveryLocation->extra_information }}</td>
+        <th>Address</th>
+        <td>{{ $deliveryLocation->address1 }}</td>
     </tr>
     </tbody>
 </table>
 
-<div id="map-canvas" style="height:400px; width:100%;"></div>
-
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIOc9JCY2NKcBhMEesyaC8Vm5ZbPtWoPs&sensor=false">
-</script>
-<script type="text/javascript">
-
-    var map;
-    var marker;
-    var infowindow = new google.maps.InfoWindow();
-
-    function initialize() {
-
-        var latlng = new google.maps.LatLng({{ $deliveryLocation->latitude }}, {{ $deliveryLocation->longitude }});
-
-        map = new google.maps.Map(document.getElementById("map-canvas"), {
-
-            center: latlng,
-            zoom: 15
-        });
-
-        marker = new google.maps.Marker({
-            map:map,
-            position: latlng
-        });
-
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({'latLng': marker.getPosition()}, function(results, status)
-        {
-            if (status == google.maps.GeocoderStatus.OK)
-            {
-                if (results[0])
-                {
-                    infowindow.setContent(results[0].formatted_address);
-                    infowindow.open(map, marker);
-                }
-            }
-        });
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+<!--<div id="map-canvas" style="height:400px; width:100%;"></div>-->
+<!---->
+<!--<script type="text/javascript"-->
+<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIOc9JCY2NKcBhMEesyaC8Vm5ZbPtWoPs&sensor=false">-->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!---->
+<!--    var map;-->
+<!--    var marker;-->
+<!--    var infowindow = new google.maps.InfoWindow();-->
+<!---->
+<!--    function initialize() {-->
+<!---->
+<!--        var latlng = new google.maps.LatLng({{ $deliveryLocation->latitude }}, {{ $deliveryLocation->longitude }});-->
+<!---->
+<!--        map = new google.maps.Map(document.getElementById("map-canvas"), {-->
+<!---->
+<!--            center: latlng,-->
+<!--            zoom: 15-->
+<!--        });-->
+<!---->
+<!--        marker = new google.maps.Marker({-->
+<!--            map:map,-->
+<!--            position: latlng-->
+<!--        });-->
+<!---->
+<!--        var geocoder = new google.maps.Geocoder();-->
+<!--        geocoder.geocode({'latLng': marker.getPosition()}, function(results, status)-->
+<!--        {-->
+<!--            if (status == google.maps.GeocoderStatus.OK)-->
+<!--            {-->
+<!--                if (results[0])-->
+<!--                {-->
+<!--                    infowindow.setContent(results[0].formatted_address);-->
+<!--                    infowindow.open(map, marker);-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!---->
+<!--    google.maps.event.addDomListener(window, 'load', initialize);-->
+<!--</script>-->
 @endif

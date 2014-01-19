@@ -11,7 +11,6 @@
 |
 */
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 ClassLoader::addDirectories(array(
 
@@ -24,6 +23,9 @@ ClassLoader::addDirectories(array(
 ));
 
 \PathManager\Path::init(URL::asset(''), public_path());
+
+// Quick fix for model not found exception !!!!!!
+class ModelNotFoundException extends  Illuminate\Database\Eloquent\ModelNotFoundException{}
 
 /*
 |--------------------------------------------------------------------------

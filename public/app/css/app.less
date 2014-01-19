@@ -347,15 +347,7 @@ a:hover{color:@primary-color-font}
 
   @checkout-primary-color: #860551;
 
-
-  .main-title{color:#333; font-size:13px; padding:10px 10px; background:#EEE; border-bottom:0px; position: relative; top:1px;}
-
-  .box{margin-bottom:0px; background:#FAFAFA; border:1px solid #DDD}
-
-  .main-extra-bright-title{background:#EEE; display: block; border:0px; border-left:10px solid @checkout-primary-color; border-right:1px solid @checkout-primary-color;}
-  .main-extra-bright-title:hover{text-decoration: none;}
-
-  .box-body{margin-top:10px;}
+  label{ margin-left:5px;}
 
   .radio-group{
     margin-top:10px;
@@ -365,15 +357,35 @@ a:hover{color:@primary-color-font}
     input{float:left; margin:0px 10px;}
   }
 
-  .submit-box{
-    .before-price{font-size:12px; color:#666; text-decoration: line-through;}
-
-    padding:10px;
-  }
-
   .paypal-advantages{font-size:12px; color:#4c950c;}
 
-  .btn{float:right; margin-right:20px;}
+  .btn{margin-left:20px; float:right; position: relative; bottom:1px; background:#fff4bc;
+    color:#333; padding:10px 20px; border:1px solid #C09853 }
+  .btn:hover{background:#feee9c;}
+  .submit-btn{background:#900; color:#FFF; border:0px;}
+  .submit-btn:hover{background:#B94A48;}
+
+  .step{padding:20px 10px 15px 10px; background:#FAFAFA; border:1px solid #CCC; margin-bottom:10px;}
+
+  .required-input{border-color:#ff7f7f;}
+
+  p.info{color:#666; font-size:12px; margin-left:5px; color:#ca8816}
+  p.text-left{margin-left:10px; font-size:12px;}
+  .before-price{text-decoration: line-through; font-size:11px; font-weight: bold;}
+
+  .step-titles{
+    cursor: pointer;
+    .step-title{float:left; margin-right:10px;
+      span{color:#CCC;}
+      h4{color:#BBB;}
+      background:#FAFAFA;
+      padding:10px 30px;
+      border:1px solid #CCC;
+      border-bottom:0px;
+    }
+    .active{h4{color:#CC0688} span{color:#666} position: relative; top:1px;}
+
+  }
 }
 
 
