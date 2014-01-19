@@ -2,6 +2,7 @@
 <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="qbrando">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     @if(! $seo)
     <title>Qbrando | Online shop for luxury in Qatar</title>
