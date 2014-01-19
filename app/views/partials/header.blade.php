@@ -17,7 +17,7 @@
         <div class="cart-info">
             <a href="{{ URL::route('shopping-cart') }}">
                 <span>Shopping Cart: </span>
-            </a><strong ng-bind="cart.total()" ng-show="cart.isReady()"></strong> <strong>items</strong>
+            </a><strong ng-bind="cart.total()" ng-show="cart.isReady()"></strong> <strong> items</strong>
         </div>
     </div>
 </div>
