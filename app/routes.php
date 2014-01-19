@@ -129,7 +129,16 @@ Route::get('/whaat', function()
     throw new Exception('Testing mail');
 });
 
+Route::get('/countries', function()
+{
+    Country::create(array('name' => 'Qatar', 'language' => 'en'));
 
+    foreach(Municipality::all() as $mu)
+    {
+        $mu->country_id = 1;
+        $mu->save();
+    }
+});
 
 Route::get('kareem', function()
 {
