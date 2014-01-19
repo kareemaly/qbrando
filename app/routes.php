@@ -131,6 +131,7 @@ Route::get('/whaat', function()
 
 Route::get('/countries', function()
 {
+    exit();
     Country::create(array('name' => 'Qatar', 'language' => 'en'));
 
     foreach(Municipality::all() as $mu)
