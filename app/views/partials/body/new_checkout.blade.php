@@ -45,7 +45,7 @@
 <div class="checkout">
     <form name="checkoutForm" id="checkoutForm" role="form" action="{{ URL::route('checkout.post') }}" method="POST" ng-controller="CheckoutController">
 
-        <div ng-hide="order" style="text-align: center; color:#666;">Please wait...</div>
+        <div ng-hide="order" style="text-align: center; color:#666;">Please wait loading checkout form...</div>
         <div ng-cloak>
             <div class="step-titles">
                 <div class="step-title" ng-class="{'active': isCurrentStep($index)}" ng-click="scrollTo($index)" ng-repeat="step in steps">
