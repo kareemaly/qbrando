@@ -375,13 +375,21 @@ a:hover{color:@primary-color-font}
 
   .step-titles{
     cursor: pointer;
-    .step-title{float:left; margin-right:10px;
+    .step-title{ margin-right:10px;
+      float:left;
+
       span{color:#CCC;}
       h4{color:#BBB;}
       background:#FAFAFA;
       padding:10px 30px;
       border:1px solid #CCC;
       border-bottom:0px;
+
+      @media(max-width:600px){
+        float:none;
+        width:100%;
+        border-bottom:1px solid #BBB;
+      }
     }
     .active{h4{color:#CC0688} span{color:#666} position: relative; top:1px;}
 

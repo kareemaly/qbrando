@@ -6651,8 +6651,8 @@ a:hover {
   cursor: pointer;
 }
 .checkout .step-titles .step-title {
-  float: left;
   margin-right: 10px;
+  float: left;
   background: #FAFAFA;
   padding: 10px 30px;
   border: 1px solid #CCC;
@@ -6663,6 +6663,13 @@ a:hover {
 }
 .checkout .step-titles .step-title h4 {
   color: #BBB;
+}
+@media (max-width: 600px) {
+  .checkout .step-titles .step-title {
+    float: none;
+    width: 100%;
+    border-bottom: 1px solid #BBB;
+  }
 }
 .checkout .step-titles .active {
   position: relative;
