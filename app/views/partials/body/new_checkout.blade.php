@@ -131,7 +131,8 @@
 
                 <p class="text-left text-danger">
                     <span class="glyphicon glyphicon-info-sign"></span>
-                    You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> and total cost:
+                    &nbsp
+                    You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> &nbspand total cost:
                     <strong class="price" ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
                 <span ng-show="cart.price.hasOffer()">instead of
                     <span class="before-price" ng-bind="cart.price.total() | currency:currency"></span>
@@ -140,6 +141,7 @@
 
                 <p class="text-left text-danger" ng-show="order.payment.method == 'paypal'">
                     <span class="glyphicon glyphicon-info-sign"></span>
+                    &nbsp
                     You will be redirected to Paypal to pay an equivalent amount: <strong>USD <span ng-bind="cart.price.totalInUSD({{ $part->conversionRate }})"></span></strong>
                 </p>
             </div>
