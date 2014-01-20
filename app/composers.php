@@ -21,3 +21,8 @@ View::composer('partials.sidebar.specials', function( $view )
 {
     $view->special = App::make('ProductAlgorithm')->specials()->available()->first();
 });
+
+View::composer('partials.product', function( $view )
+{
+    $view->showOfferPrice = true;
+});
