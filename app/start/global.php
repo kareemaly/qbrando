@@ -74,7 +74,26 @@ $sendMailWithException = function(Exception $exception, $code)
     });
 };
 
-App::error($sendMailWithException);
+App::error(function(Exception $e, $code) use($sendMailWithException)
+{
+    call_user_func_array($sendMailWithException, array($e, $code));
+
+    return Redirect::route('message-to-user')
+        ->with('title', 'Whoops! Something went wrong.')
+
+        ->with('message', 'Something went wrong while trying to process your request :(');
+});
+
+App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $e, $code)
+{
+    $contactUs = new ContactUs();
+
+    return Redirect::route('message-to-user')
+        ->with('title', 'We can\'t find this product in our stock :(')
+
+        ->with('message', 'Feel free to contact us at <strong>' . $contactUs->getMobileNumber() . '</strong><br />
+        Or Email us: <strong>' . $contactUs->getEmailAddress() . '</strong>');
+});
 
 App::error(function(PaypalException $e, $code) use($sendMailWithException)
 {
@@ -86,13 +105,6 @@ App::error(function(PaypalException $e, $code) use($sendMailWithException)
         ->with('message', 'Please try again. If this error occurred again try to choose pay on delivery.');
 });
 
-
-
-
-App::error(function(ModelNotFoundException $e)
-{
-    return Redirect::route('home');
-});
 
 App::missing(function($exception)
 {

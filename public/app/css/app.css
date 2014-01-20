@@ -6427,7 +6427,7 @@ a:hover {
 .full-product {
   margin-left: -15px;
   margin-right: -15px;
-  margin: 20px 10px 50px 10px;
+  margin-bottom: 40px;
 }
 .full-product:before,
 .full-product:after {
@@ -6449,29 +6449,70 @@ a:hover {
 .full-product:after {
   clear: both;
 }
-.full-product .img {
+.full-product .img-div {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
-@media (min-width: 992px) {
-  .full-product .img {
+@media (min-width: 768px) {
+  .full-product .img-div {
     float: left;
-    width: 33.33333333333333%;
+    width: 39.166666666666664%;
   }
+}
+@media (min-width: 992px) {
+  .full-product .img-div {
+    float: left;
+    width: 39.166666666666664%;
+  }
+}
+.full-product .img-div img {
+  margin: 0px auto;
+}
+.full-product .img-div .buttons {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .full-product .img-div .buttons {
+    float: left;
+    width: 100%;
+  }
+}
+.full-product .img-div .clickbank {
+  margin: 0px auto;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
 }
 .full-product .product-info {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-right: 40px;
   margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .full-product .product-info {
+    float: left;
+    width: 60.83333333333333%;
+  }
 }
 @media (min-width: 992px) {
   .full-product .product-info {
     float: left;
-    width: 58.333333333333336%;
+    width: 60.83333333333333%;
+  }
+}
+@media (max-width: 768px) {
+  .full-product .product-info {
+    padding-left: 40px;
   }
 }
 .full-product .product-info .row {
@@ -6488,6 +6529,7 @@ a:hover {
   float: left;
   color: #333;
   font-size: 14px;
+  text-align: justify;
 }
 .full-product .product-info .prices {
   font-size: 16px;
@@ -6498,6 +6540,21 @@ a:hover {
   font-size: 12px;
   text-decoration: line-through;
   color: #666;
+}
+.contact-us {
+  margin: 20px 0px 60px 0px;
+}
+.contact-us .row {
+  margin: 10px 40px 0px 30px;
+}
+.contact-us .row .key {
+  float: left;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.contact-us .row .value {
+  color: #666666;
 }
 .pagination .active span {
   background: #E24F69;
@@ -6631,6 +6688,7 @@ a:hover {
 }
 .checkout .required-input {
   border-color: #ff7f7f;
+  border-color: #F00;
 }
 .checkout p.info {
   color: #666;

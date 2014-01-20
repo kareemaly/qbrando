@@ -386,7 +386,11 @@ angular.module('qbrando.services', []).
                 // Style the border of all required
                 for(var i = 0; i < required.length; i ++) {
 
-                    $("[name='" + required[i] + "']").addClass('required-input');
+                    var input = $("[name='" + required[i] + "']");
+                    input.addClass('required-input');
+
+                    // If first input then focus on it...
+                    if(i == 0) input.focus();
                 }
 
                 // If is valid then set the validated step index to this.

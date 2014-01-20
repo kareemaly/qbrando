@@ -283,20 +283,49 @@ a:hover{color:@primary-color-font}
 .full-product{
   .make-row();
 
-  margin:20px 10px 50px 10px;
-  .img{.make-md-column(4)}
-  .product-info{.make-md-column(7); margin-bottom:20px;
+  margin-bottom:40px;
+
+  .img-div{
+
+    .make-sm-column(4.7);
+    .make-md-column(4.7);
+
+    img{margin: 0px auto;}
+    .buttons{.make-md-column(12); margin-top:20px; text-align: center; }
+    .clickbank{ margin: 0px auto; margin-top:20px; text-align: center; cursor: pointer;}
+  }
+  .product-info{
+
+    .make-sm-column(7.3);
+    .make-md-column(7.3);
+    padding-right:40px;
+
+    @media(max-width:@screen-sm) {
+      padding-left:40px;
+    }
+
+    margin-bottom:20px;
 
     .row{
       margin-top:10px;
       .key{float:left; margin-right:5px; color:#333; font-weight: bold; font-size:14px;}
-      .value{float:left; color:#333; font-size:14px;}
+      .value{float:left; color:#333; font-size:14px; text-align: justify}
     }
 
     .prices{font-size:16px; margin-top:10px; color:@primary-color-bright;
       .before-price{font-size:12px; text-decoration: line-through; color:#666;}
     }
   }
+}
+
+
+.contact-us{
+  .row{margin:10px 40px 0px 30px;
+    .key{float:left; margin-right:5px; font-weight: bold; font-size:12px;}
+    .value{color:#666}
+  }
+
+  margin:20px 0px 60px 0px;
 }
 
 
@@ -367,7 +396,10 @@ a:hover{color:@primary-color-font}
 
   .step{padding:20px 10px 15px 10px; background:#FAFAFA; border:1px solid #CCC; margin-bottom:10px;}
 
-  .required-input{border-color:#ff7f7f;}
+  .required-input{
+    border-color:#ff7f7f;
+    border-color:#F00;
+  }
 
   p.info{color:#666; font-size:12px; margin-left:5px; color:#ca8816}
   p.text-left{margin-left:10px; font-size:12px;}

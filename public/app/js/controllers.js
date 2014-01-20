@@ -59,7 +59,7 @@ angular.module('qbrando.controllers', ['qbrando.services']).
 
         $element.find('[ng-bind="product.title"]').attr('href', 'javascript:void(0)');
 
-        $element.find('img').imagezoomsl({
+        $element.find('img[data-large]').imagezoomsl({
 
             zoomrange: [3, 3],
             magnifiersize: [500, 200],

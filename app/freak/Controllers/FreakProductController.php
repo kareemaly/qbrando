@@ -1,5 +1,6 @@
 <?php
 
+use ClickBank\CBItem;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Kareem3d\Controllers\FreakController;
@@ -22,17 +23,25 @@ class FreakProductController extends FreakController {
     protected $colors;
 
     /**
+     * @var ClickBank\CBItem
+     */
+    protected $cbItems;
+
+    /**
      * @param Product $products
      * @param Category $categories
      * @param Color $colors
+     * @param ClickBank\CBItem $cbItems
      */
-    public function __construct( Product $products, Category $categories, Color $colors )
+    public function __construct( Product $products, Category $categories, Color $colors, CBItem $cbItems )
     {
         $this->products = $products;
 
         $this->categories = $categories;
 
         $this->colors = $colors;
+
+        $this->cbItems = $cbItems;
 
         $this->usePackages( 'Image' );
 
@@ -200,7 +209,21 @@ class FreakProductController extends FreakController {
     }
 
     /**
-     * @internal param \Product $product
+     * @param $id
+     * @return mixed
+     */
+    public function postClickbank($id)
+    {
+        $this->cbItems->createUnique(array(
+            'product_id' => $id,
+            'item_id' => Input::get('ClickBank.item_id')
+        ));
+
+        return $this->redirectBack('Product connected to clickbank successfully.');
+    }
+
+    /**
+     * @param $id
      */
     public function postFacebook($id)
     {

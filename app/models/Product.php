@@ -5,12 +5,11 @@ use Kareem3d\Ecommerce\Product as Kareem3dProduct;
 
 class Product extends Kareem3dProduct implements SlugInterface {
 
-
     /**
      * @var array
      */
     protected static $specs = array(
-        'title', 'model', 'gender'
+        'title', 'model', 'gender', 'description'
     );
 
     /**
@@ -114,6 +113,14 @@ class Product extends Kareem3dProduct implements SlugInterface {
     public function color()
     {
         return $this->belongsTo(Color::getClass());
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cbItem()
+    {
+        return $this->hasOne(\ClickBank\CBItem::getClass());
     }
 
     /**

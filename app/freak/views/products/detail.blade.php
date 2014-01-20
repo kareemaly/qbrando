@@ -42,6 +42,12 @@
         <th>Offer Price</th>
         <td>{{ $product->offer_price }}</td>
     </tr>
+    @if($product->description)
+    <tr>
+        <th>Description</th>
+        <td>{{ $product->description }}</td>
+    </tr>
+    @endif
     </tbody>
 </table>
 

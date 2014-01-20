@@ -92,8 +92,6 @@ class CheckoutController extends BaseController {
         $conversionRate = $this->conversionRate('QAR', 'USD');
 
         $this->layout->template->addPart('body', array('new_checkout'), compact('jsObject', 'conversionRate'));
-
-//        $this->layout->template->addPart('head', array('facebook_conversation_pixel'));
     }
 
     /**
