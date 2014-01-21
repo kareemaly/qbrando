@@ -3,6 +3,7 @@
 use Illuminate\Support\MessageBag;
 
 try{ View::share('categories', App::make('CategoryAlgorithm')->orderByProducts()->get()); }catch(Exception $e){}
+try{ View::share('contactUs', App::make('ContactUs')); }catch(Exception $e){}
 
 View::share('success', new MessageBag((array) Session::get('success', array())));
 
