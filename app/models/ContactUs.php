@@ -15,7 +15,7 @@ class ContactUs {
      */
     public function getMobileNumber()
     {
-       return '+974 70010560';
+       return '+97470010560';
     }
 
 }

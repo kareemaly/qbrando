@@ -89,10 +89,10 @@
 <div class="contact-us">
     <div class="row">
         <div class="key">Mobile number:</div>
-        <div class="value">+974534234244</div>
+        <div class="value">{{ $contactUs->getMobileNumber() }}</div>
     </div>
     <div class="row">
         <div class="key">Email:</div>
-        <div class="value">kareem3d.a@gmail.com</div>
+        <div class="value">{{ $contactUs->getEmailAddress() }}</div>
     </div>
 </div>
