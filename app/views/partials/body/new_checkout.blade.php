@@ -60,7 +60,7 @@
                     <span class="glyphicon glyphicon-warning-sign"></span>
                     We will use the contact number you provide to confirm order and delivery location.</p>
 
-                <div class="form-group" ng-init="countries={{ $part->jsObject }}">
+                <div class="form-group">
                     <label for="contact-name">Name*</label>
                     <input type="text" ng-model="order.contact.name" id="contact-name" class="form-control" name="UserInfo[name]" placeholder="Your name" required>
                 </div>
@@ -74,7 +74,7 @@
                 </div>
 
             </div>
-            <div class="step">
+            <div class="step" ng-init="countries={{ $part->jsObject }}">
                 <div class="form-group">
                     <p class="info">
                         <span class="glyphicon glyphicon-warning-sign"></span>
@@ -87,7 +87,6 @@
                             name="country_name"
                             ng-change="defaultCity()"
                             required>
-                        <option value="">Please select country</option>
                     </select>
                 </div>
 

@@ -104,12 +104,12 @@ angular.module('qbrando.controllers', ['qbrando.services']).
         $scope.steps = ['Contact Information', 'Shipping Address', 'Payment Method'];
 
         $scope.defaultCity = function() {
-            $scope.city = $scope.country[0];
+            $scope.city = $scope.country.length > 0 ? $scope.country[0] : '';
         }
 
-        $scope.$watch('country', function(country) {
-
-            console.log(country);
+        $scope.$watch('countries', function() {
+            $scope.country = $scope.countries['Qatar'];
+            $scope.defaultCity();
         });
 
         // Start stepify when the checkout form is ready
