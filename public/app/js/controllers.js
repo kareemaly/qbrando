@@ -101,7 +101,7 @@ angular.module('qbrando.controllers', ['qbrando.services']).
             payment: {method: 'paypal'}
         };
 
-        $scope.steps = ['Contact Information', 'Shipping Address', 'Payment Method'];
+        $scope.steps = ['Contact Information', 'Shipping Address'];
 
         $scope.defaultCity = function() {
             $scope.city = $scope.country.length > 0 ? $scope.country[0] : '';

@@ -107,45 +107,6 @@
                     <textarea id="location-address" class="form-control" name="DeliveryLocation[address1]" ng-model="order.location.address" required cols="30" rows="2"></textarea>
                 </div>
             </div>
-            <div class="step">
-                <div class="form-group">
-                    <div class="radio-group">
-                        <input type="radio" id="payment-paypal" name="Payment[method]" ng-model="order.payment.method" value="paypal"/>
-                        <label for="payment-paypal"><img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" align="left" style="margin-right:7px;"><span>The safer, easier way to pay.</span><br/></label>
-
-                        <div class="clearfix"></div>
-
-                        <div class="paypal-advantages" ng-show="order.payment.method == 'paypal'">
-                            <ul>
-                                <li>Get a <strong>FREE</strong> gift costs QAR 100 for 1 item and costs QAR 200 or above for more.</li>
-                            </ul>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <input type="radio" id="payment-delivery" name="Payment[method]" ng-model="order.payment.method" value="delivery"/>
-                        <label for="payment-delivery"><span>Pay on delivery</span></label>
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
-
-                <p class="text-left text-danger">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    &nbsp
-                    You are about to create an order with <strong ng-bind="cart.total() + ' items'"></strong> &nbspand total cost:
-                    <strong class="price" ng-bind="cart.price.totalAfterOffer() | currency:currency"></strong>
-                <span ng-show="cart.price.hasOffer()">instead of
-                    <span class="before-price" ng-bind="cart.price.total() | currency:currency"></span>
-                </span>
-                </p>
-
-                <p class="text-left text-danger" ng-show="order.payment.method == 'paypal'">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    &nbsp
-                    You will be redirected to Paypal to pay an equivalent amount: <strong>USD <span ng-bind="cart.price.totalInUSD({{ $part->conversionRate }})"></span></strong>
-                </p>
-            </div>
             <div class="navigation">
                 <button type="submit" class="btn submit-btn" ng-show="isLastStep()">
                     Submit
