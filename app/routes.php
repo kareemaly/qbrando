@@ -143,14 +143,13 @@ Route::get('/countries', function()
 
 Route::get('kareem', function()
 {
-    exit();
     foreach(Image::all() as $image)
     {
         foreach($image->versions as $version)
         {
-            if(strpos($version->url, 'http://www.qbrando.loc') !== false)
+            if(strpos($version->url, 'http://www.qbrando.com') !== false)
             {
-                $version->url = str_replace('http://www.qbrando.loc', 'http://www.qbrando.com', $version->url);
+                $version->url = str_replace('http://www.qbrando.com', 'http://www.arrabah.net/configuration/public', $version->url);
                 $version->save();
             }
         }

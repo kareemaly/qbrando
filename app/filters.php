@@ -14,15 +14,6 @@
 App::before(function($request)
 {
     Cart::setFromLocal();
-
-
-    if(strpos(Request::url(), 'arrabah.net') !== false)
-    {
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: http://www.qbrando.com/" . Request::path());
-
-        return Redirect::to('http://www.qbrando.com/' . Request::path());
-    }
 });
 
 
